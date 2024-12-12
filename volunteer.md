@@ -5,11 +5,10 @@ permalink: /volunteer/
 ---
 
 # Volunteer Work
-
-As the first female engineer in my family and a graduate of public schools, I am deeply motivated
-to make STEM education more accessible for minority and low-income students. Having experienced
-firsthand the intimidation of pursuing a field where I often felt out of place, I volunteer at least twice per
-semester to encourage young girls to embrace their curiosity and creativity. As a UF Society of Women
+<div style="text-align: center;">
+  <img src="images/swe.jpg?raw=true" width="400px" style="margin-right: 10px;"/>
+  </div>
+- I volunteer at least twice per semester to encourage young girls to embrace their curiosity and creativity. As a UF Society of Women
 Engineers member, I regularly lead and participate in creating hands-on activities for local K-8 public
 school visits and outreach events such as ‘Introduce A Girl To Engineering’ Day and UF’s Engineering
 Fair. One of my most successful lessons was about the Florida Aquifer, where students made a water filter
@@ -17,13 +16,16 @@ out of recycled materials and soil to understand how their clean water was made 
 in a fun outdoor project. The fulfilling experience of sharing my research and engineering skills with others
 motivates me to continue promoting STEM education, inclusion, and public engagement throughout
 my future career.
-My volunteer work offers a profound perspective on the real-world impacts of engineering. I
+<div style="text-align: center;">
+  <img src="images/hfh.png?raw=true" width="400px" style="margin-right: 10px;"/>
+  </div>
+- My volunteer work offers a profound perspective on the real-world impacts of engineering. I
 volunteer with Alachua County Habitat for Humanity, applying engineering principles to construct
 affordable, safe homes for community members. Contributing to the tangible benefits of technical outreach
 reinforced my dedication to societal well-being and local partnerships. These outreach efforts, combined
 with my academic achievement led to my recognition as a Southside Business Men’s Club Youth
 Achiever and a $20,000 scholarship.
-For the last year, I have volunteered weekly with Haven Hospice, a local nonprofit providing
+- For the last year, I have volunteered weekly with Haven Hospice, a local nonprofit providing
 care for end-of-life and nursing home residents, in the No One Dies Alone program. Playing music,
 reading out loud, and spending time with patients led me to witness the courage and relentless spirit of those
 affected by crippling neurodegenerative diseases like Parkinson’s and Alzheimer’s. Through my research
