@@ -4,16 +4,18 @@ title: "Enhanced Target Tracking Using Real-Time Residual Neural Networks"
 permalink: /ResNet/
 ---
 # Enhanced Target Tracking Using Real-Time Residual Neural Networks
-<div style="text-align: center;">
-  <img src="images/rnn.png?raw=true" width="300px" style="margin-right: 10px;"/>
-  <img src="images/Figure_1.png?raw=true" width="400px" style="margin-right: 10px;"/>
-  <img src="images/Figure_2.png?raw=true" width="400px"/>
-</div>
-I conducted an in-depth residual neural network architectural analysis to understand the effect of bias, neural depth, activation functions, and gains on system performance for double pendulum dynamics.  Based on the system’s results, I derived
-original mathematical improvements to deep residual neural networks and proved the precise correspondence between the simulation and theoretical predictions.
 
+- I defended my thesis successfully in November 2024!
+- I presented my contributions, including my design and mathematical proof of an original residual network (ResNet) architecture and its performance improvements related to bias and activation modifications. 
+- Within the project, I defined the research scope based on current limitations, wrote a Python program to evaluate neural network parameters, implemented the ResNet into the controller, and thoroughly analyzed the results. 
+- I led the lab’s first successful outdoor experiment, integrating ROS 2 with GPS, IMU, and LiDAR data for quadrotor drones. 
+- My controller used real-time deep learning to maintain stability throughout wind and uneven terrain while tracking a nonlinear trajectory. 
+
+<div style="text-align: center;">
+  <img src="images/Figure_1.png?raw=true" width="400px" style="margin-right: 10px;"/>
+</div>
 <div style="text-align: center;">
   <img src="images/drone.gif?raw=true" width="300px" style="margin-right: 10px;"/>
   <img src="images/dronesim.gif?raw=true" width="300px" style="margin-right: 10px;"/>
   </div>
-I designed and executed a multi-agent tracking simulation complemented by an outdoor experiment, leveraging Deep Neural Networks. I implemented a residual neural network architecture for real-time target tracking in dynamic settings using IMU and GPS data through ROS 2.
+
