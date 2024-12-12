@@ -4,9 +4,7 @@ title: "Design, Manufacturing, and Testing of UF's First Electric Formula-Style 
 permalink: /GMS/
 ---
 # Design, Manufacturing, and Testing of UF's First Electric Formula-Style Vehicle (2020-2023)
-<div style="text-align: center;">
-  <img src="images/gms.png?raw=true" width="300px" style="margin-right: 10px;"/>
-  </div>
+<img src="/images/gms.png" width="800px" style="margin-right: 10px;" />
 As soon as I arrived at UF, I joined the Formula SAE racing design team, Gator Motorsports, which
 designs, builds, and manufactures a Formula-style race car every year. I realized the team’s internal
 combustion vehicle lacked the performance and innovation of an electric vehicle (EV) powertrain. As a
