@@ -14,3 +14,4 @@ permalink: /ResNet/
 
 <img src="/images/Figure_1.png" width="800px" style="margin-right: 10px;" />
 <img src="/images/drone.gif" width="800px" style="margin-right: 10px;" />
+<img src="/images/sim.gif" width="800px" style="margin-right: 10px;" />
