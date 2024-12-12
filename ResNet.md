@@ -3,7 +3,7 @@ layout: default
 title: "Enhanced Target Tracking Using Real-Time Residual Neural Networks"
 permalink: /ResNet/
 ---
-# Enhanced Target Tracking Using Real-Time Residual Neural Networks
+# Enhanced Target Tracking Using Real-Time Residual Neural Networks (2024)
 
 - I defended my thesis successfully in November 2024!
 - I presented my contributions, including my design and mathematical proof of an original residual network (ResNet) architecture and its performance improvements related to bias and activation modifications. 
