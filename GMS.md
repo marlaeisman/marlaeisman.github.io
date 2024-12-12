@@ -3,7 +3,7 @@ layout: default
 title: "Design, Manufacturing, and Testing of UF's First Electric Formula-Style Vehicle"
 permalink: /GMS/
 ---
-# Design, Manufacturing, and Testing of UF's First Electric Formula-Style Vehicle
+# Design, Manufacturing, and Testing of UF's First Electric Formula-Style Vehicle (2020-2023)
 <div style="text-align: center;">
   <img src="images/gms.png?raw=true" width="300px" style="margin-right: 10px;"/>
   </div>
