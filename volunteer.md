@@ -17,7 +17,7 @@ in a fun outdoor project. The fulfilling experience of sharing my research and e
 motivates me to continue promoting STEM education, inclusion, and public engagement throughout
 my future career.
 <div style="text-align: center;">
-  <img src="images/hfh.png?raw=true" width="400px" style="margin-right: 10px;"/>
+  <img src="images/hfh.jpg?raw=true" width="400px" style="margin-right: 10px;"/>
   </div>
 - My volunteer work offers a profound perspective on the real-world impacts of engineering. I
 volunteer with Alachua County Habitat for Humanity, applying engineering principles to construct
