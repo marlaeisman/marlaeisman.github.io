@@ -6,6 +6,6 @@ I recieved my bachelor's degree in mechanical engineering graduate from the Univ
 ### Recent Projects:
 - <a href="/ResNet/">Enhanced Target Tracking Using Real-Time Residual Neural Networks</a> <!-- Link -->  
 - <a href="/DNN/">Adaptive Multi-Agent Herding With Deep Neural Networks</a> <!-- Link --> 
-- <a href="/GMS/">Design, Manufacturing, and Testing of UF's First Electric Formula-Style Vehicle</a> <!-- Link --> 
-- <a href="/volunteer/">Volunteer Work</a> <!-- Link to the Volunteer Work page -->
+- <a href="/GMS/">Design, Manufacturing, and Testing of UF's First Electric Formula-Style Vehicle</a> <!-- Link -->
+- <a href="/volunteer/">Volunteer Work</a> <!-- Link --> 
 ---
