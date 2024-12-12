@@ -16,15 +16,11 @@ permalink: /volunteer/
 - I regularly lead and participate in creating hands-on activities for local K-8 public school visits and outreach events such as ‘Introduce A Girl To Engineering’ Day and UF’s Engineering Fair.
 - One of my most successful lessons was about the Florida Aquifer, where students made a water filter out of recycled materials and soil to understand how clean water is made while engaging in a fun outdoor project.
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="images/swe.jpg?raw=true" width="400px" alt="Volunteering at SWE" style="border-radius: 8px;"/>
-</div>
+<img src="/images/swe.jpg" width="800px" style="margin-right: 10px;" />
 
 ### Habitat for Humanity
 - I volunteer with Alachua County Habitat for Humanity.
 - I apply engineering principles to construct affordable, safe homes for community members.
 - My contributions led to recognition as a Southside Business Men’s Club Youth Achiever and earning a $20,000 scholarship.
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="images/hfh.jpg?raw=true" width="400px" alt="Habitat for Humanity Volunteering" style="border-radius: 8px;"/>
-</div>
+<img src="/images/hfh.jpg" width="800px" style="margin-right: 10px;" />
