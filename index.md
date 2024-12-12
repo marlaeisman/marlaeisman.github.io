@@ -7,5 +7,4 @@ I recieved my bachelor's degree in mechanical engineering from the University of
 - [Enhanced Target Tracking Using Real-Time Residual Neural Networks](/ResNet/) (2024)
 - [Adaptive Multi-Agent Herding With Deep Neural Networks](/DNN/) (2023-2024)
 - [Design, Manufacturing, and Testing of UF's First Electric Formula-Style Vehicle](/GMS/) (2020-2023)
-- [Volunteer Work](/volunteer/) (2020-2024)
 ---
