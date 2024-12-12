@@ -5,7 +5,6 @@ permalink: /GMS/
 ---
 # Design, Manufacturing, and Testing of UF's First Electric Formula-Style Vehicle (2020-2023)
 <img src="/images/gms.png" width="800px" style="margin-right: 10px;" />
-
 The Formula SAE racing design team, Gator Motorsports,
 designs, builds, and manufactures a Formula-style race car every year.
 
