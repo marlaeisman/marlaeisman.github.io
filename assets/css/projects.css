@@ -1,0 +1,93 @@
+/* Project Cards Scrollable Section */
+
+/* Project Cards Scrollable Section */
+.projects-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+}
+.project-card {
+  flex: 0 0 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  scroll-snap-align: start;
+  transition: box-shadow 0.2s;
+  font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+}
+.project-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+}
+.project-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
+.project-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.15rem;
+  font-family: inherit;
+  font-weight: 600;
+}
+.project-card p {
+  font-size: 0.97rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+}
+.project-card .tags {
+  margin-top: 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.project-card .tag {
+  background: #e0e7ef;
+  color: #234;
+  border-radius: 6px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+}
+.project-meta {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.7rem;
+}
+.project-date {
+  color: #888;
+  font-size: 0.97em;
+  font-family: inherit;
+}
+.read-more {
+  background: #234;
+  color: #fff !important;
+  border-radius: 6px;
+  padding: 0.2rem 0.9rem;
+  font-size: 0.93em;
+  text-decoration: none;
+  font-family: inherit;
+  transition: background 0.18s;
+}
+.read-more:hover {
+  background: #3a4a6b;
+}
+@media (max-width: 600px) {
+  .project-card {
+    flex: 0 0 90vw;
+    padding: 0.8rem;
+  }
+  .projects-scroll {
+    gap: 0.7rem;
+  }
+}

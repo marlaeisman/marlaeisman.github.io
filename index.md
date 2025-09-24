@@ -4,10 +4,54 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
 
 ---
 ### Recent Projects:
-<ul>
-  <li><a href="/ResNet/"><span>Enhanced Target Tracking Using Real-Time Residual Neural Networks</span></a> (2024)</li>
-  <li><a href="/DNN/"><span>Adaptive Multi-Agent Herding With Deep Neural Networks</span></a> (2023-2024)</li>
-  <li><a href="/GMS/"><span>Design, Manufacturing, and Testing of UF's First Electric Formula-Style Vehicle</span></a> (2020-2023)</li>
-  <li><a href="/volunteer/"><span>Volunteer Work</span></a> (2020-2024)</li>
-</ul>
+<div class="projects-scroll">
+  <div class="project-card">
+    <img src="/images/drone.gif" alt="ResNet Project Drone" />
+    <h3>Enhanced Target Tracking Using Real-Time Residual Neural Networks</h3>
+    <p>Developed a novel ResNet architecture for real-time quadrotor tracking, integrating deep learning with GPS, IMU, and LiDAR for robust outdoor experiments.</p>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">Deep Learning</span><span class="tag">ROS2</span><span class="tag">Quadrotor</span>
+    </div>
+    <div class="project-meta">
+      <span class="project-date">2024</span>
+      <a class="read-more" href="/ResNet/">Read more →</a>
+    </div>
+  </div>
+  <div class="project-card">
+    <img src="/images/herding.gif" alt="DNN Herding Simulation" />
+    <h3>Adaptive Multi-Agent Herding With Deep Neural Networks</h3>
+    <p>Simulated and analyzed multi-agent herding using adaptive deep neural networks for dynamic, uncertain environments.</p>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">DNN</span><span class="tag">Multi-Agent</span>
+    </div>
+    <div class="project-meta">
+      <span class="project-date">2023-2024</span>
+      <a class="read-more" href="/DNN/">Read more →</a>
+    </div>
+  </div>
+  <div class="project-card">
+    <img src="/images/gms.png" alt="Gator Motorsports EV" />
+    <h3>UF's First Electric Formula-Style Vehicle</h3>
+    <p>Led the design and build of UF’s first electric racecar, including custom powertrain, battery, and simulation tools. Achieved top-3 global competition finish.</p>
+    <div class="tags">
+      <span class="tag">MATLAB</span><span class="tag">EV</span><span class="tag">Leadership</span><span class="tag">Manufacturing</span>
+    </div>
+    <div class="project-meta">
+      <span class="project-date">2020-2023</span>
+      <a class="read-more" href="/GMS/">Read more →</a>
+    </div>
+  </div>
+  <div class="project-card">
+    <img src="/images/swe.jpg" alt="Volunteer Work" />
+    <h3>Volunteer Work</h3>
+    <p>STEM outreach, hospice care, and Habitat for Humanity. Led hands-on engineering activities and contributed to community projects.</p>
+    <div class="tags">
+      <span class="tag">STEM Outreach</span><span class="tag">Community</span><span class="tag">Leadership</span>
+    </div>
+    <div class="project-meta">
+      <span class="project-date">2020-2024</span>
+      <a class="read-more" href="/volunteer/">Read more →</a>
+    </div>
+  </div>
+</div>
 ---
