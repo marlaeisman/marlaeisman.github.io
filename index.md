@@ -1,7 +1,13 @@
+## About Me
+
+I am a MS/PhD student at the University of California, Berkeley. I research model predictive control and machine learning with the [MPC lab](https://sites.google.com/berkeley.edu/mpc-lab). I received my bachelor's degree in mechanical engineering from the University of Florida (UF) in December 2024. During my undergraduate education, I was the Lead Engineer at Gator Motorsports, a researcher in UF’s Nonlinear Controls and Robotics Lab and the Cognition, Action, and Perception of Speech Lab, and completed internships at SpaceX, Tesla, and Vatn Systems. I also volunteered with the Society of Women Engineers and Haven Hospice.
+
+---
 
 ### Recent Projects:
 <div class="projects-scroll">
   <div class="project-card">
+    <img src="/images/mpc.gif" alt="ResNet Project Drone" />
     <h3>MPC Lab</h3>
     <p>Researching model predictive control and reinforcement learning theory development and applications to the Unitree Go2W </p>
     <div class="project-meta">
@@ -10,6 +16,7 @@
     </div>
   </div>
   <div class="project-card">
+    <img src="/images/vatn.gif" alt="ResNet Project Drone" />
     <h3>AUV Autonomy</h3>
     <p>Developing robust autonomous underwater vehicle (AUV) navigation and control using deep reinforcement learning and real-world field testing.</p>
     <div class="project-meta">
