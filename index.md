@@ -6,6 +6,17 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
 ### Recent Projects:
 <div class="projects-scroll">
   <div class="project-card">
+    <h3>AUV Autonomy</h3>
+    <p>Developing robust autonomous underwater vehicle (AUV) navigation and control using deep reinforcement learning and real-world field testing.</p>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">Reinforcement Learning</span><span class="tag">AUV</span><span class="tag">Robotics</span>
+    </div>
+    <div class="project-meta">
+      <span class="project-date">2025</span>
+      <a class="read-more" href="#">Read more →</a>
+    </div>
+  </div>
+  <div class="project-card">
     <img src="/images/drone.gif" alt="ResNet Project Drone" />
     <h3>Enhanced Target Tracking Using Real-Time Residual Neural Networks</h3>
     <p>Developed a novel ResNet architecture for real-time quadrotor tracking, integrating deep learning with GPS, IMU, and LiDAR for robust outdoor experiments.</p>
