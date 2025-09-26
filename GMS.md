@@ -1,26 +1,7 @@
 layout: default
-designs, builds, and manufactures a Formula-style race car every year.
-acceleration in the SAE competition and ranked 3rd out of 100 teams worldwide!
-reducing the global carbon footprint!
-Diversity, Equity, and Inclusion Award in 2023, awarding $1,000 to our team!
-develop UF’s first-ever electric racecar.
-race track with high-order dynamics including regenerative braking.
-energy distribution and battery geometry, I designed a custom 400-volt lithium-ion powertrain and
-robust cooling system to efficiently power the vehicle and maintain safe battery temperatures.
-the combustion team in parallel, where we personally manufactured over 90% of our vehicle components
-through manual/CNC machining and carbon fiber fabrication.
-cuts eliminated 100% of our funding.
-completely fulfill our $70,000 budget, ensuring that we could compete.
-partnership and public engagement skills of my team members, better equipping them to enter the STEM
-workforce.
-STEM education and sustainable engineering solutions.
-highlight the pivotal role of EV technologies in US infrastructure, economic competitiveness, and
-environmental protection.
-students to visit our team’s shop and meet current members, providing up-close educational tours of our
-race car’s systems and manufacturing machines. 
 
 title: "UF's First Electric Formula-Style Vehicle: Design, Manufacturing, and Testing"
-permalink: /projects/GMS/
+permalink: /GMS/
 ---
 
 # UF's First Electric Formula-Style Vehicle: Design, Manufacturing, and Testing (2020–2023)

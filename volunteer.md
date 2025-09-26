@@ -1,7 +1,7 @@
----
+
 layout: default
 title: "Volunteer Work"
-permalink: /projects/volunteer/
+permalink: /volunteer/
 ---
 
 # Volunteer Work

@@ -1,7 +1,7 @@
 layout: default
 
 title: "AUV Autonomy: Robust Underwater Vehicle Control with Deep RL"
-permalink: /projects/vatn/
+permalink: /vatn/
 ---
 
 # AUV Autonomy: Robust Underwater Vehicle Control with Deep RL (Vatn Systems, 2025)

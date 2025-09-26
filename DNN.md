@@ -1,7 +1,7 @@
 layout: default
 
 title: "Adaptive Multi-Agent Herding With Deep Neural Networks"
-permalink: /projects/DNN/
+permalink: /DNN/
 ---
 
 # Adaptive Multi-Agent Herding With Deep Neural Networks (2023–2024)

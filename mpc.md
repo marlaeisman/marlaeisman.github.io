@@ -1,7 +1,7 @@
 layout: default
 
 title: "MPC Lab: Model Predictive Control and Reinforcement Learning for Legged Robots"
-permalink: /projects/mpc/
+permalink: /mpc/
 ---
 
 # MPC Lab: Model Predictive Control and Reinforcement Learning for Legged Robots (2025– )

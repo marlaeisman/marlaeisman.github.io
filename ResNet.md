@@ -1,7 +1,7 @@
 layout: default
 
 title: "Enhanced Target Tracking Using Real-Time Residual Neural Networks"
-permalink: /projects/ResNet/
+permalink: /ResNet/
 ---
 
 # Enhanced Target Tracking Using Real-Time Residual Neural Networks (2024)
