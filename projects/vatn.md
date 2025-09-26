@@ -1,13 +1,17 @@
----
 layout: default
-title: "Autonomy Internship at Vatn Systems"
-permalink: /vatn/
----
-# Autonomy Internship at Vatn Systems (March - August 2025)
 
-## Contributions
-- I worked on the Autonomy software team with the Vatn Systems startup in Bristol, RI
-- I developed an autonomous underwater vehicle (AUV) model-based controller which managed six degrees of freedom and simulated trajectory tracking in 3D
-- I conducted hardware-in-loop sensor testing in lab and on the water
+title: "AUV Autonomy: Robust Underwater Vehicle Control with Deep RL"
+permalink: /projects/vatn/
+---
+
+# AUV Autonomy: Robust Underwater Vehicle Control with Deep RL (Vatn Systems, 2025)
+
+**Summary:**
+Developed a six-degree-of-freedom model-based controller for an autonomous underwater vehicle (AUV), integrating deep reinforcement learning for robust trajectory tracking and adaptive navigation.
+
+**Technical Contributions:**
+- Designed and simulated nonlinear AUV dynamics and control in Python.
+- Implemented deep RL algorithms for adaptive policy learning in uncertain aquatic environments.
+- Conducted hardware-in-the-loop sensor testing and field validation on real AUV platforms.
 
 <img src="/images/vatn.gif" width="800px" style="margin-right: 10px;" />

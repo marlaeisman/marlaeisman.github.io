@@ -7,54 +7,54 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
 ### Recent Projects:
 <div class="projects-scroll">
   <div class="project-card">
-    <img src="/images/dog.gif" alt="MPC dog" />
-    <h3>MPC Lab</h3>
-    <p>Researching model predictive control and reinforcement learning theory development and applications to the Unitree Go2W </p>
+  <img src="/images/dog.gif" alt="MPC dog" />
+  <h3>MPC Lab</h3>
+  <p>PhD research in model predictive control (MPC) and reinforcement learning, focusing on theoretical development and real-world deployment for agile legged robots (Unitree Go2W). Developing algorithms for optimal trajectory planning and robust feedback control in uncertain environments.</p>
     <div class="project-meta">
       <span class="project-date">2025</span>
   <a class="read-more" href="/projects/mpc/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
-    <img src="/images/vatn.gif" alt="AUV" />
-    <h3>AUV Autonomy</h3>
-    <p>Developing robust autonomous underwater vehicle (AUV) navigation and control using deep reinforcement learning and real-world field testing.</p>
+  <img src="/images/vatn.gif" alt="AUV" />
+  <h3>AUV Autonomy</h3>
+  <p>Designed and implemented a six-degree-of-freedom model-based controller for an autonomous underwater vehicle (AUV), integrating deep reinforcement learning for robust trajectory tracking. Conducted hardware-in-the-loop sensor testing and field validation in real-world aquatic environments.</p>
     <div class="project-meta">
       <span class="project-date">2025</span>
   <a class="read-more" href="/projects/vatn/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
-    <img src="/images/drone.gif" alt="ResNet Project Drone" />
-    <h3>Enhanced Target Tracking Using Real-Time Residual Neural Networks</h3>
-    <p>Developed a novel ResNet architecture for real-time quadrotor tracking, integrating deep learning with GPS, IMU, and LiDAR for robust outdoor experiments.</p>
+  <img src="/images/drone.gif" alt="ResNet Project Drone" />
+  <h3>Enhanced Target Tracking Using Real-Time Residual Neural Networks</h3>
+  <p>Developed and mathematically analyzed a custom residual neural network (ResNet) architecture for real-time quadrotor target tracking. Integrated GPS, IMU, and LiDAR data with ROS 2 for robust outdoor flight, achieving stable nonlinear trajectory tracking in challenging conditions.</p>
     <div class="project-meta">
       <span class="project-date">2024</span>
   <a class="read-more" href="/projects/ResNet/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
-    <img src="/images/herding.gif" alt="DNN Herding Simulation" />
-    <h3>Adaptive Multi-Agent Herding With Deep Neural Networks</h3>
-    <p>Simulated and analyzed multi-agent herding using adaptive deep neural networks for dynamic, uncertain environments.</p>
+  <img src="/images/herding.gif" alt="DNN Herding Simulation" />
+  <h3>Adaptive Multi-Agent Herding With Deep Neural Networks</h3>
+  <p>Created a Python-based simulation environment to study coordination in multi-agent herding tasks. Designed adaptive deep neural network controllers enabling agents to dynamically adjust strategies in response to environmental uncertainty and system nonlinearities.</p>
     <div class="project-meta">
       <span class="project-date">2023-2024</span>
   <a class="read-more" href="/projects/DNN/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
-    <img src="/images/gms.png" alt="Gator Motorsports EV" />
-    <h3>UF's First Electric Formula-Style Vehicle</h3>
-    <p>Led the design and build of UF’s first electric racecar, including custom powertrain, battery, and simulation tools. Achieved top-3 global competition finish.</p>
+  <img src="/images/gms.png" alt="Gator Motorsports EV" />
+  <h3>UF's First Electric Formula-Style Vehicle</h3>
+  <p>Led the design, simulation, and manufacturing of UF’s first electric Formula SAE racecar. Developed a custom 400V lithium-ion powertrain, MATLAB-based lap dynamics simulation, and robust cooling system. Managed a multidisciplinary team and secured full project funding, achieving a top-3 global finish.</p>
     <div class="project-meta">
       <span class="project-date">2020-2023</span>
   <a class="read-more" href="/projects/GMS/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
-    <img src="/images/swe.jpg" alt="Volunteer Work" />
-    <h3>Volunteer Work</h3>
-    <p>STEM outreach, hospice care, and Habitat for Humanity. Led hands-on engineering activities and contributed to community projects.</p>
+  <img src="/images/swe.jpg" alt="Volunteer Work" />
+  <h3>Volunteer Work</h3>
+  <p>Led and participated in STEM outreach, hospice care, and Habitat for Humanity projects. Organized hands-on engineering activities for K-12 students, contributed to affordable housing construction, and provided compassionate care for end-of-life patients.</p>
     <div class="project-meta">
       <span class="project-date">2020-2024</span>
   <a class="read-more" href="/projects/volunteer/">Read more →</a>
