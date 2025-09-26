@@ -1,7 +1,8 @@
 
-/* Set global font to monospace */
+/* Set global font to monospace and all text color to black */
 body, html {
   font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace !important;
+  color: #000 !important;
 }
 /* Project Cards Scrollable Section */
 

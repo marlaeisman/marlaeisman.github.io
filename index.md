@@ -7,21 +7,21 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
 ### Recent Projects:
 <div class="projects-scroll">
   <div class="project-card">
-    <img src="/images/mpc.gif" alt="ResNet Project Drone" />
+    <img src="/images/dog.gif" alt="MPC dog" />
     <h3>MPC Lab</h3>
     <p>Researching model predictive control and reinforcement learning theory development and applications to the Unitree Go2W </p>
     <div class="project-meta">
       <span class="project-date">2025</span>
-      <a class="read-more" href="/mpc/">Read more →</a>
+  <a class="read-more" href="/projects/mpc/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
-    <img src="/images/vatn.gif" alt="ResNet Project Drone" />
+    <img src="/images/vatn.gif" alt="AUV" />
     <h3>AUV Autonomy</h3>
     <p>Developing robust autonomous underwater vehicle (AUV) navigation and control using deep reinforcement learning and real-world field testing.</p>
     <div class="project-meta">
       <span class="project-date">2025</span>
-      <a class="read-more" href="/vatn/">Read more →</a>
+  <a class="read-more" href="/projects/vatn/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
@@ -30,7 +30,7 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
     <p>Developed a novel ResNet architecture for real-time quadrotor tracking, integrating deep learning with GPS, IMU, and LiDAR for robust outdoor experiments.</p>
     <div class="project-meta">
       <span class="project-date">2024</span>
-      <a class="read-more" href="/ResNet/">Read more →</a>
+  <a class="read-more" href="/projects/ResNet/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
@@ -39,7 +39,7 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
     <p>Simulated and analyzed multi-agent herding using adaptive deep neural networks for dynamic, uncertain environments.</p>
     <div class="project-meta">
       <span class="project-date">2023-2024</span>
-      <a class="read-more" href="/DNN/">Read more →</a>
+  <a class="read-more" href="/projects/DNN/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
@@ -48,7 +48,7 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
     <p>Led the design and build of UF’s first electric racecar, including custom powertrain, battery, and simulation tools. Achieved top-3 global competition finish.</p>
     <div class="project-meta">
       <span class="project-date">2020-2023</span>
-      <a class="read-more" href="/GMS/">Read more →</a>
+  <a class="read-more" href="/projects/GMS/">Read more →</a>
     </div>
   </div>
   <div class="project-card">
@@ -57,7 +57,7 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
     <p>STEM outreach, hospice care, and Habitat for Humanity. Led hands-on engineering activities and contributed to community projects.</p>
     <div class="project-meta">
       <span class="project-date">2020-2024</span>
-      <a class="read-more" href="/volunteer/">Read more →</a>
+  <a class="read-more" href="/projects/volunteer/">Read more →</a>
     </div>
   </div>
 </div>
