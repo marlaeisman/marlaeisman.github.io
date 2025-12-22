@@ -1,3 +1,4 @@
+---
 layout: default
 
 title: "MPC Lab: Model Predictive Control and Reinforcement Learning for Legged Robots"
