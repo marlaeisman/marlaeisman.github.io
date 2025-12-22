@@ -1,26 +1,24 @@
 .site-header {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
   gap: 1rem;
 }
 .column-center {
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
 }
-.profile-photo {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(0,0,0,0.06);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}
-/* larger profile above name */
-.profile-top {
-  width: 140px;
-  height: 140px;
-  margin-bottom: 0.6rem;
+/* Make photo rectangular and much larger, overriding theme */
+.site-header.column-center .profile-photo,
+.site-header.column-center .profile-top {
+  display: block !important;
+  width: 360px !important;
+  height: 240px !important;
+  border-radius: 8px !important; /* rectangular with slightly rounded corners */
+  object-fit: cover !important;
+  border: 2px solid rgba(0,0,0,0.06) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12) !important;
+  margin-bottom: 0.6rem !important;
 }
 .site-title h1 {
   margin: 0;
@@ -31,16 +29,21 @@
   font-size: 0.95rem;
   color: #333;
 }
-@media (max-width: 600px) {
-  .profile-photo {
-    width: 100px;
-    height: 100px;
+/* Small screens: scale down but keep rectangular and stacked */
+@media (max-width: 800px) {
+  .site-header.column-center .profile-photo,
+  .site-header.column-center .profile-top {
+    width: 240px !important;
+    height: 160px !important;
   }
-  .profile-top {
-    width: 100px;
-    height: 100px;
+}
+@media (max-width: 480px) {
+  .site-header.column-center .profile-photo,
+  .site-header.column-center .profile-top {
+    width: 160px !important;
+    height: 110px !important;
   }
   .site-title h1 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
