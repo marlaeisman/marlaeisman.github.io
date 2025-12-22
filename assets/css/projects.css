@@ -17,7 +17,8 @@ body, html {
 }
 .project-card {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
+  box-sizing: border-box;
   margin: 0 auto;
   background: #fff;
   border-radius: 12px;
@@ -36,7 +37,8 @@ body, html {
 .project-card img {
   width: 100%;
   height: auto;
-  max-height: 280px;
+  max-height: 320px;
+  display: block;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 0.8rem;
@@ -44,10 +46,29 @@ body, html {
 
 /* Ensure wider project scroll container doesn't cause horizontal overflow */
 .projects-scroll {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  overflow-x: hidden;
+}
+
+@media (max-width: 900px) {
+  .project-card {
+    width: calc(100% - 1rem);
+    max-width: none;
+    padding: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-card {
+    flex: 0 0 90vw;
+    padding: 0.8rem;
+  }
+  .projects-scroll {
+    gap: 0.7rem;
+  }
 }
 .project-card h3 {
   margin: 0 0 0.5rem 0;
