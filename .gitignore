@@ -1,0 +1,8 @@
+# Ignore local build artifacts and vendored gems
+vendor/bundle/
+.bundle/
+_site/
+.jekyll-cache/
+.sass-cache/
+.DS_Store
+private/
