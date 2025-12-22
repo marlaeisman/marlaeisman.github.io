@@ -45,7 +45,7 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
   <div class="project-card">
   <img src="/images/gms.png" alt="Gator Motorsports EV" />
   <h3>UF's First Electric Formula-Style Vehicle</h3>
-  <p>Led design/manufacture of UF’s first EV Formula SAE car: secured **$70,000** in sponsorships, designed a 400V battery powertrain, manufactured 90% of components in-house, and finished **3rd overall** at Formula SAE Michigan 2022 (1st Acceleration).</p>
+  <p>Led design/manufacture of UF’s first EV Formula SAE car: secured $70,000 in sponsorships, designed a 400V battery powertrain, manufactured 90% of components in-house, and finished 3rd overall at Formula SAE Michigan 2022 (1st Acceleration).</p>
     <div class="project-meta">
       <span class="project-date">2020–2023</span>
   <a class="read-more" href="{{ '/GMS/' | relative_url }}">Read more →</a>
