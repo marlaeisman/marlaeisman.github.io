@@ -1,6 +1,6 @@
 ## About Me
 
-I am a MS/PhD student at the University of California, Berkeley. I research model predictive control and machine learning with the [MPC lab](https://sites.google.com/berkeley.edu/mpc-lab). I received my bachelor's degree in mechanical engineering from the University of Florida (UF) in December 2024. During my undergraduate education, I was the Lead Engineer at Gator Motorsports, a researcher in UF’s Nonlinear Controls and Robotics Lab and the Cognition, Action, and Perception of Speech Lab, and completed internships at SpaceX, Tesla, and Vatn Systems. I also volunteered with the Society of Women Engineers and Haven Hospice.
+I am a MS/PhD student at the University of California, Berkeley. I research model predictive control and machine learning with the [MPC lab](https://sites.google.com/berkeley.edu/mpc-lab). I received my bachelor's degree in mechanical engineering from the University of Florida (UF) in December 2024. During my undergraduate education, I was the Lead Engineer at [Gator Motorsports](https://gatormotorsports.org/), a researcher in UF’s [Nonlinear Controls and Robotics Lab](https://ncr.mae.ufl.edu/), and completed internships at [SpaceX](https://www.spacex.com/), [Tesla](https://www.tesla.com/), and [Vatn Systems](https://www.vatnsystems.com/). I am an active volunteer with [Berkeley Public Schools](https://www.berkeleyschools.net/) and member of the [Society of Women Engineers](https://swe.org/).
 
 ---
 
@@ -27,7 +27,7 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
   <div class="project-card">
   <img src="/images/drone.gif" alt="ResNet Project Drone" />
   <h3>Enhanced Target Tracking Using Real-Time Residual Neural Networks</h3>
-  <p>Developed and mathematically analyzed a custom ResNet architecture for real-time quadrotor tracking (thesis, 2024). Resulting work was published as "Online ResNet-Based Adaptive Control for Nonlinear Target Tracking" in IEEE CDC / IEEE Control Systems Letters (2025).</p>
+  <p>Developed and mathematically analyzed a custom ResNet architecture for real-time quadrotor tracking (thesis, 2024). Resulting work was published as "Online ResNet-Based Adaptive Control for Nonlinear Target Tracking" at IEEE CDC / IEEE Control Systems Letters (2025).</p>
     <div class="project-meta">
       <span class="project-date">2024–2025</span>
   <a class="read-more" href="{{ '/ResNet/' | relative_url }}">Read more →</a>
