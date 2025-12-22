@@ -8,12 +8,15 @@ permalink: /ResNet/
 # Enhanced Target Tracking Using Real-Time Residual Neural Networks (2024)
 
 **Summary:**
-Developed a custom residual neural network (ResNet) architecture for real-time quadrotor target tracking, integrating deep learning with sensor fusion for robust outdoor flight.
+Developed and analyzed a residual neural network (ResNet) architecture for real-time quadrotor target tracking, integrating learning-based control with sensor fusion for robust outdoor operation.
 
-**Technical Contributions:**
-- Designed and mathematically analyzed a novel ResNet for nonlinear control tasks.
-- Implemented sensor fusion with GPS, IMU, and LiDAR using ROS 2 for real-time data integration.
-- Led successful outdoor experiments, achieving stable trajectory tracking in challenging conditions.
+**Key results & publications:**
+- Thesis: "Enhanced Target Tracking Using Real-Time Residual Neural Networks" (2024).
+- Peer-reviewed: C.F. Nino, O. Sudhir Patil, J.C. Insinger, **M.R. Eisman**, and W.E. Dixon, "Online ResNet-Based Adaptive Control for Nonlinear Target Tracking," IEEE Conference on Decision and Control / IEEE Control Systems Letters, 2025.
 
-<img src="/images/drone.gif" width="800px" style="margin-right: 10px;" />
-<img src="/images/sim.gif" width="800px" style="margin-right: 10px;" />
+**Technical details:**
+- Sensor fusion: GPS, IMU, and LiDAR fused in ROS 2; control and estimator pipelines implemented in C++/Python.
+- Theoretical correspondence: designed Lyapunov-style stability proofs and validated that simulation metrics matched experimental behavior.
+
+<img src="/images/drone.gif" width="100%" style="height:auto;" />
+<img src="/images/sim.gif" width="100%" style="height:auto;" />

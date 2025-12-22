@@ -9,16 +9,16 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
   <div class="project-card">
   <img src="/images/dog.gif" alt="MPC dog" />
   <h3>MPC Lab</h3>
-  <p>PhD research in model predictive control (MPC) and reinforcement learning, focusing on theoretical development and real-world deployment for agile legged robots (Unitree Go2W). Developing algorithms for optimal trajectory planning and robust feedback control in uncertain environments.</p>
+  <p>PhD research developing MPC and RL control pipelines for Unitree Go2W. Integrated ROS 2 interfaces and motion-capture state estimation to enable reproducible hardware benchmarks and lab-wide controller evaluations.</p>
     <div class="project-meta">
-      <span class="project-date">2025</span>
+      <span class="project-date">2025–</span>
   <a class="read-more" href="{{ '/mpc/' | relative_url }}">Read more →</a>
     </div>
   </div>
   <div class="project-card">
   <img src="/images/vatn.gif" alt="AUV" />
   <h3>AUV Autonomy</h3>
-  <p>Designed and implemented a six-degree-of-freedom model-based controller for an autonomous underwater vehicle (AUV), integrating deep reinforcement learning for robust trajectory tracking. Conducted hardware-in-the-loop sensor testing and field validation in real-world aquatic environments.</p>
+  <p>Model-based LQR controllers and navigation stacks for AUVs. Contributed to Vatn’s first multi-AUV swarm demonstration using acoustic communication and DVL feedback for coordinated stability.</p>
     <div class="project-meta">
       <span class="project-date">2025</span>
   <a class="read-more" href="{{ '/vatn/' | relative_url }}">Read more →</a>
@@ -27,36 +27,36 @@ I am a MS/PhD student at the University of California, Berkeley. I research mode
   <div class="project-card">
   <img src="/images/drone.gif" alt="ResNet Project Drone" />
   <h3>Enhanced Target Tracking Using Real-Time Residual Neural Networks</h3>
-  <p>Developed and mathematically analyzed a custom residual neural network (ResNet) architecture for real-time quadrotor target tracking. Integrated GPS, IMU, and LiDAR data with ROS 2 for robust outdoor flight, achieving stable nonlinear trajectory tracking in challenging conditions.</p>
+  <p>Developed and mathematically analyzed a custom ResNet architecture for real-time quadrotor tracking (thesis, 2024). Resulting work was published as "Online ResNet-Based Adaptive Control for Nonlinear Target Tracking" in IEEE CDC / IEEE Control Systems Letters (2025).</p>
     <div class="project-meta">
-      <span class="project-date">2024</span>
+      <span class="project-date">2024–2025</span>
   <a class="read-more" href="{{ '/ResNet/' | relative_url }}">Read more →</a>
     </div>
   </div>
   <div class="project-card">
   <img src="/images/herding.gif" alt="DNN Herding Simulation" />
   <h3>Adaptive Multi-Agent Herding With Deep Neural Networks</h3>
-  <p>Created a Python-based simulation environment to study coordination in multi-agent herding tasks. Designed adaptive deep neural network controllers enabling agents to dynamically adjust strategies in response to environmental uncertainty and system nonlinearities.</p>
+  <p>Built a Python-based simulator and recursive parameter-sweep framework (depth, learning rate, activations) producing quantitative error curves and convergence metrics; validated learned controllers in outdoor real-time experiments.</p>
     <div class="project-meta">
-      <span class="project-date">2023-2024</span>
+      <span class="project-date">2023–2024</span>
   <a class="read-more" href="{{ '/DNN/' | relative_url }}">Read more →</a>
     </div>
   </div>
   <div class="project-card">
   <img src="/images/gms.png" alt="Gator Motorsports EV" />
   <h3>UF's First Electric Formula-Style Vehicle</h3>
-  <p>Led the design, simulation, and manufacturing of UF’s first electric Formula SAE racecar. Developed a custom 400V lithium-ion powertrain, MATLAB-based lap dynamics simulation, and robust cooling system. Managed a multidisciplinary team and secured full project funding, achieving a top-3 global finish.</p>
+  <p>Led design/manufacture of UF’s first EV Formula SAE car: secured **$70,000** in sponsorships, designed a 400V battery powertrain, manufactured 90% of components in-house, and finished **3rd overall** at Formula SAE Michigan 2022 (1st Acceleration).</p>
     <div class="project-meta">
-      <span class="project-date">2020-2023</span>
+      <span class="project-date">2020–2023</span>
   <a class="read-more" href="{{ '/GMS/' | relative_url }}">Read more →</a>
     </div>
   </div>
   <div class="project-card">
   <img src="/images/swe.jpg" alt="Volunteer Work" />
   <h3>Volunteer Work</h3>
-  <p>Led and participated in STEM outreach, hospice care, and Habitat for Humanity projects. Organized hands-on engineering activities for K-12 students, contributed to affordable housing construction, and provided compassionate care for end-of-life patients.</p>
+  <p>STEM outreach (2+ events/semester), Habitat for Humanity construction support, and weekly hospice volunteering (30+ hours in the last year).</p>
     <div class="project-meta">
-      <span class="project-date">2020-2024</span>
+      <span class="project-date">2020–2024</span>
   <a class="read-more" href="{{ '/volunteer/' | relative_url }}">Read more →</a>
     </div>
   </div>

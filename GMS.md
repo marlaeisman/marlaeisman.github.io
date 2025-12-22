@@ -8,25 +8,16 @@ permalink: /GMS/
 # UF's First Electric Formula-Style Vehicle: Design, Manufacturing, and Testing (2020–2023)
 
 **Summary:**
-Led the design, simulation, and manufacturing of UF’s first electric Formula SAE racecar, focusing on high-performance powertrain and system integration.
+Led the design, simulation, and manufacturing of UF’s first electric Formula SAE racecar, focusing on a high-performance 400V powertrain and system integration.
 
-**Technical Contributions:**
-- Developed a MATLAB-based lap dynamics simulation for optimal energy distribution and regenerative braking.
-- Designed a custom 400V lithium-ion powertrain and robust cooling system for safe, efficient operation.
-- Managed manufacturing of 90% of vehicle components, including CNC machining and carbon fiber fabrication.
-- Led 30 members to contact over 250 potential sponsors and
-completely fulfill our $70,000 budget, ensuring that we could compete.
-- Coordinated and led STEM education events for public high school
-students to visit our team’s shop and meet current members, providing up-close educational tours of our
-race car’s systems and manufacturing machines. 
-## Updates
-- In 2022, our vehicle achieved the fastest
-acceleration in the SAE competition and ranked 3rd out of 100 teams worldwide!
-- I represented our team on [WUFT News](https://www.wuft.org/sports/2023-05-03/gator-motorsports-team-transitions-to-an-electric-car-for-the-formula-sae-competition-in-june) and the
-[Engineering MAEvericks podcast](https://podcasts.apple.com/us/podcast/005-gator-motorsports-formula-team/id1646256687?i=1000599057205), where I discussed the performance benefits of EVs and their role in
-reducing the global carbon footprint!
-- My efforts as Vice President won the Blue Origin
-Diversity, Equity, and Inclusion Award in 2023, awarding $1,000 to our team!
+**Key results:**
+- Secured full project funding of **$70,000** by coordinating sponsor outreach (30 members contacted >250 potential sponsors).
+- Manufactured 90% of vehicle components in-house (CNC machining, carbon fiber), reducing vendor lead time and costs.
+- Competitive results: Formula SAE Michigan 2022 — **3rd Overall**, **1st Acceleration**, **3rd Design**, **3rd Autocross** (among ~100 international teams).
+- Blue Origin Design Grant (2023) — $1,000 awarded for design innovation and DEI efforts.
 
+**Technical contributions:**
+- Developed a MATLAB lap-dynamics simulator modeling high-order vehicle dynamics including regenerative braking and thermal constraints.
+- Designed a 400V lithium-ion battery pack and implemented liquid/air cooling strategies to maintain safe operating temperatures under race loads.
 
-<img src="/images/gms.png" width="800px" style="margin-right: 10px;" />
+<img src="/images/gms.png" width="100%" style="height:auto;" />

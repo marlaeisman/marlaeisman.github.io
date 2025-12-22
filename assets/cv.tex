@@ -1,0 +1,158 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper, top=.7in, bottom=.7in, left=.7in, right=.7in]{geometry} % Smaller margins
+\usepackage{enumitem}
+\usepackage{parskip}
+\setlength{\parindent}{0pt} % No indentation
+\setlength{\parskip}{0.45em} % Reduce space between paragraphs
+ 
+% Custom section headers
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+ 
+\begin{document}
+ 
+% Adjust header space
+\vspace*{-0.5cm} % Adds a bit more space at the top of the page
+ 
+% Smaller name font size and contact info
+\begin{center}
+    \textbf{\Large Marla Eisman - Curriculum Vitae} \\[0.5em]
+    \small +1 904-923-2586 | marlaeism6@gmail.com | https://marlaeisman.github.io/
+\end{center}
+ 
+\vspace{1em} % Space after header section
+ 
+% Education Section
+\section*{EDUCATION}
+
+\textbf{PhD in Mechanical Engineering, Controls} \hfill August 2025 -- May 2030 \\
+\textit{University of California, Berkeley College of Engineering} \hfill Berkeley, CA \\
+
+\textbf{Bachelor of Science in Mechanical Engineering} \hfill August 2020 -- December 2024 \\
+\textit{University of Florida, Wertheim College of Engineering} \hfill Gainesville, FL \\
+\textbf{Upper Division GPA: 3.85/4.0}
+
+% Publications Section (moved under Education)
+\section*{PUBLICATIONS}
+\textbf{M.R. Eisman}, "Enhanced Target Tracking Using Real-Time Residual Neural Networks," University of Florida, 2024.
+\\ \\ 
+C.F. Nino, O. Sudhir Patil, J.C. Insinger, \textbf{M.R. Eisman} and W.E. Dixon, "Online ResNet-Based Adaptive Control for Nonlinear Target Tracking," IEEE Conference on Decision and Control, IEEE Control Systems Letters, 2025.
+ 
+% Experience Section
+\section*{RESEARCH EXPERIENCE}
+
+\textbf{Model Predictive Control Laboratory (Advisor: Dr. Francesco Borrelli)} \hfill Berkeley, CA \\
+\textit{Graduate Researcher} \hfill August 2025 -- Present
+\begin{itemize}[left=0em, itemsep=0.3em] % Smaller bullets and reduced spacing between items
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Researched model predictive control and reinforcement learning strategies for energy management, raceline optimization, and stability through obstacles.
+    \item Integrated Unitree Go2W quadruped into modular ROS 2 interface, establishing an open-source platform that combines motion-capture data with on-board state estimation for precise, lab-wide controller evaluation.
+\end{itemize}
+
+\textbf{Nonlinear Controls and Robotics Laboratory (Advisor: Dr. Warren Dixon)} \hfill Gainesville, FL \\
+\textit{Undergraduate Researcher} \hfill January 2023 -- March 2025
+\begin{itemize}[left=0em, itemsep=0.3em] % Smaller bullets and reduced spacing between items
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Applied nonlinear control theory and machine learning algorithms to design adaptive and robust dynamic models for multi-agent herding, tracking, and swarm dynamics with outdoor real-time learning experimentation
+    \item Developed novel deep residual neural network architecture and Lyapunov stable controller and proved the precise correspondence between the simulation and theoretical predictions
+    \item Created a recursive Python framework to analyze and simulate adaptive control and deep learning of multi-agent systems with seamless parameter modulation, including neural depth, learning rate, and activation functions, which produced error comparisons, function convergence graphs, and real-time dynamics visualizations 
+    \item Designed and built custom IP55-rated quadcopters and a ROS 2 framework for receiving GPS, IMU, Lidar, and other sensor data over a 5G Starlink network
+    \item Demonstrated drone control strategies to the US Air Force for multi-agent stability in communication interruptions
+\end{itemize}
+
+\textbf{Gator Motorsports (Advisor: Dr. Sean Niemi)} \hfill Gainesville, FL \\
+\textit{Lead Engineer, Vice President } \hfill August 2020 -- April 2023
+\begin{itemize}[left=0em, itemsep=0.3em] % Smaller bullets and reduced spacing between items
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Led the research and development of UF's first electric vehicle (EV) for the Formula SAE racing competition
+    \item Earned over \$70,000 in funding by writing grant proposals and leading 30 members to contact sponsors
+    \item Engineered a comprehensive Matlab lap dynamics model to simulate and analyze incremental race conditions with high-order dynamics including regenerative braking
+    \item Designed a custom 400-volt lithium-ion battery powertrain and robust liquid and air cooling system to efficiently power the vehicle and maintain safe battery temperatures
+    \item Presented research on WUFT News (PBS) and the Engineering MAEvericks podcast discussing EVs and their role in reducing the global carbon footprint
+\end{itemize}
+\textbf{Cognition, Action, and Perception Laboratory (Advisor: Dr. Matthew Masapollo)} \hfill Gainesville, FL \\
+\textit{Undergraduate Researcher} \hfill August 2021 -- January 2022
+\begin{itemize}[left=0em, itemsep=0.3em] % Smaller bullets and reduced spacing between items
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Developed a Matlab-based data repository and visualization system with integrated 3D oral modeling to analyze articulatory and linguistic movements
+    \item Developed a biomechanical soft robotic packaging solution for sensors attached to the human tongue, optimizing safety and minimizing sensor interference
+    \item Calibrated and operated an electromagnetic articulograph during studies to collect and evaluate millisecond-by-millisecond data for cognitive and speech-based patterns
+\end{itemize}
+
+\section*{PROFESSIONAL EXPERIENCE}
+
+\textbf{Vatn Systems} \hfill Bristol, RI \\
+\textit{Autonomy Engineering Intern} \hfill March -- August 2025
+\begin{itemize}[left=0em, itemsep=0.3em] 
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Developed cost-effective autonomous underwater vehicles (AUVs) with a custom inertial navigation system for use in low-communication environments.
+    \item Designed and implemented a model-based LQR controller coupling six-degree-of-freedom vehicle dynamics to control fins, rudder, and thruster; validated performance through Python/C simulation and real-world underwater testing.
+    \item Collaborated with PhD researchers to achieve the company’s first multi-AUV swarm demonstration, integrating acoustic communication, Doppler velocity logging, and machine learning to maintain stability under complex ocean conditions.
+\end{itemize}
+
+\textbf{Space Exploration Technologies Corp. (SpaceX)} \hfill Cape Canaveral, FL \\
+\textit{Final Integration Engineering Intern} \hfill May -- August 2023
+\begin{itemize}[left=0em, itemsep=0.3em] % Smaller bullets and reduced spacing between items
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Invented durable seat protection hardware for the Dragon capsule through finite element analysis, material testing, and convergence to critical Remove Before Flight constraints, saving \$7,900 per mission
+    \item Formulated new hazardous propellant handling standards through advanced data analysis and automated valve leak detection, reducing engineering labor by 35 tickets per mission
+    \item Invented tooling improvements for adhesive applications, reducing technician labor by 60 hours per campaign
+\end{itemize}
+ 
+\textbf{Tesla, Inc.} \hfill Fremont, CA \\
+\textit{Thermal Management Engineering Intern} \hfill May -- August 2022
+\begin{itemize}[left=0em, itemsep=0.3em] % Smaller bullets and reduced spacing between items
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Designed novel hardware-in-loop Python program to automate and parallelize continuous critical data logging and fault detection for fixtures cycling 1000+ hours from -50 to +60 ℃
+    \item Designed, fabricated, and operated seven robust electromechanical test fixtures based on extrapolated vehicle failure reports, reducing testing timeline by nine months
+    \item Maintained global partnerships and communication with suppliers to implement targeted reliability improvements based on failure analyses 
+\end{itemize}
+
+% Experience Section
+\section*{TEACHING/VOLUNTEER EXPERIENCE}
+\textbf{University of Florida Society of Women Engineers} \hfill Gainesville, FL\\
+\textit{Volunteer \& Member} \hfill May 2020 -- December 2024
+\begin{itemize}[left=0em, itemsep=0.3em] % Smaller bullets and reduced spacing between items
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Educated local public elementary and middle school students at 2+ events per semester to promote STEM exposure to diverse communities 
+    \item Designed and taught accessible and interactive lessons on vibrations, the water cycle, and engineering design
+    \item Volunteered with external events, including Alachua Habitat for Humanity to construct affordable, safe homes for community members
+\end{itemize}
+
+\textbf{University of Florida Mechanical \& Aerospace Engineering Department} \hfill Gainesville, FL\\
+\textit{Teaching Assistant} \hfill January -- May 2024
+\begin{itemize}[left=0em, itemsep=0.3em] % Smaller bullets and reduced spacing between items
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Taught engineering design, manufacturing, and analysis course as a teaching assistant for Dr. Daniel Dickrell
+ 
+    \item Conducted reviews, held 10 office hours per week, and graded assignments and exams for 84 students 
+\end{itemize}
+\textbf{Haven Hospice} \hfill Gainesville, FL\\
+\textit{No One Dies Alone Volunteer} \hfill September 2023 -- December 2024
+\begin{itemize}[left=0em, itemsep=0.3em] % Smaller bullets and reduced spacing between items
+    \footnotesize
+    \fontsize{10pt}{11pt}\selectfont 
+    \item Provided 1 hour per week of care through local nonprofit for end-of-life and nursing home residents, in the No One Dies Alone program
+    \item Played guitar and sang for individuals and groups as music therapy, read books out loud, and spent quality time with patients and families
+\end{itemize}
+% Awards Section
+\section*{AWARDS}
+\begin{itemize}[left=0em, itemsep=0.3em]
+    \item \textbf{UC Berkeley First-Year Fellowship (2025)} - Awarded one year of research funding in recognition of my outstanding graduate program application
+    \item \textbf{Blue Origin Design Grant (2023)} - Awarded funding for Gator Motorsports team based on my proposal for design innovation and diversity/inclusion efforts
+    \item \textbf{Formula SAE Michigan (2022)} – 3rd Overall, 1st Acceleration, 3rd Design, 3rd Autocross among 100 worldwide teams for the design, build, and manufacturing of Formula-style race car
+    \item \textbf{Southside Businessmen’s Club Youth Achiever Scholar (2020-2024)} - Awarded \$20,000 in recognition of my community outreach and academic achievement
+    \item \textbf{Florida Bright Futures Academic Scholar (2020-2024)} - Awarded 100\% university tuition coverage in recognition of my outstanding academic performance and volunteer work 
+\end{itemize}
+ 
+\end{document}
