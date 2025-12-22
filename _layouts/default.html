@@ -17,9 +17,9 @@
   <body>
     <div class="wrapper">
       <header>
-        <div class="site-header">
+        <div class="site-header column-center">
           {% if site.logo %}
-            <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" class="profile-photo" />
+            <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" class="profile-photo profile-top" />
           {% endif %}
           <div class="site-title">
             <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
