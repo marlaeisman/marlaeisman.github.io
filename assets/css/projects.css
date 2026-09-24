@@ -34,7 +34,8 @@ body, html {
 .project-card:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.16);
 }
-.project-card img {
+.project-card img,
+.project-card video {
   width: 100%;
   height: auto;
   max-height: 320px;

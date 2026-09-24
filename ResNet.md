@@ -12,7 +12,7 @@ Developed and analyzed a residual neural network (ResNet) architecture for real-
 
 **Key results & publications:**
 - Thesis: "Enhanced Target Tracking Using Real-Time Residual Neural Networks" (2024).
-- Peer-reviewed: C.F. Nino, O. Sudhir Patil, J.C. Insinger, **M.R. Eisman**, and W.E. Dixon, "Online ResNet-Based Adaptive Control for Nonlinear Target Tracking," IEEE Conference on Decision and Control / IEEE Control Systems Letters, 2025.
+- Peer-reviewed: C.F. Nino, O. Sudhir Patil, J.C. Insinger, **M.R. Eisman**, and W.E. Dixon, "Online ResNet-Based Adaptive Control for Nonlinear Target Tracking," *IEEE Control Systems Letters*, presented at the IEEE Conference on Decision and Control (CDC), 2025.
 
 **Technical details:**
 - Sensor fusion: GPS, IMU, and LiDAR fused in ROS 2; control and estimator pipelines implemented in C++/Python.
