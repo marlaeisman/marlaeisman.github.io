@@ -25,7 +25,7 @@ permalink: /racer/
 
 <img src="/images/racer_vs_unicycle_hw.jpg" alt="Hardware frames at a 3.2 m/s cap: kinematic-model planner fails at the first corner while RACER passes it" width="100%" style="height:auto;" />
 
-*3.2 m/s cap. Top: the kinematic-model planner fails at the first corner. Bottom: RACER takes it cleanly.*ß
+*3.2 m/s cap. Top: the kinematic-model planner fails at the first corner. Bottom: RACER takes it cleanly.*
 
 <img src="/images/racer_prediction_error.jpg" alt="Next-state prediction error along the track for RACER and the kinematic model" width="100%" style="height:auto;" />
 
