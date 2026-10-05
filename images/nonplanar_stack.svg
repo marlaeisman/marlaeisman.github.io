@@ -16,7 +16,7 @@
     <text x="290" y="120" text-anchor="middle" font-size="12">up to 3 m ahead</text>
     <rect x="400" y="40" width="160" height="96" rx="10" fill="#223344"/>
     <text x="480" y="72" text-anchor="middle" font-weight="bold" fill="#ffffff">Roll MPC</text>
-    <text x="480" y="96" text-anchor="middle" fill="#ffffff">min load transfer</text>
+    <text x="480" y="96" text-anchor="middle" font-size="13" fill="#ffffff">min load transfer</text>
     <text x="480" y="120" text-anchor="middle" font-size="12" fill="#ffffff">convex, under 1 ms</text>
     <rect x="590" y="40" width="160" height="96" rx="10" fill="#e0e7ef"/>
     <text x="670" y="72" text-anchor="middle" font-weight="bold">Lean</text>

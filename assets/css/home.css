@@ -1,0 +1,40 @@
+.home-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 400px) minmax(0, 1fr);
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+}
+.home-left .site-header {
+  margin-bottom: 1.2rem;
+}
+.home-left .site-header.column-center .profile-photo,
+.home-left .site-header.column-center .profile-top {
+  width: 100% !important;
+  max-width: 360px !important;
+  height: auto !important;
+  aspect-ratio: 3 / 2;
+}
+.home-about h2,
+.home-about h3,
+.home-right > h3 {
+  margin-top: 1.2rem;
+}
+.home-right > h3 {
+  margin-top: 0;
+}
+.home-right .projects-scroll {
+  padding-top: 0;
+  max-width: none;
+}
+@media (max-width: 900px) {
+  .home-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+}
+.home-left,
+.home-right {
+  min-width: 0;
+}

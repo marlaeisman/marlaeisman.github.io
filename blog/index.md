@@ -7,7 +7,7 @@ permalink: /blog/
 # Blog
 
 <div class="projects-scroll">
-{% for post in site.data.blog %}
+{%- for post in site.data.blog %}
   <div class="project-card">
   <img src="{{ post.image }}" alt="{{ post.title }}" />
   <h3>{{ post.title }}</h3>
@@ -17,5 +17,5 @@ permalink: /blog/
   <a class="read-more" href="{{ post.url | relative_url }}">Read →</a>
     </div>
   </div>
-{% endfor %}
+{%- endfor %}
 </div>

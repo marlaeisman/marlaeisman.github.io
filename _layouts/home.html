@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  <link rel="stylesheet" href="/assets/css/projects.css">
+  <link rel="stylesheet" href="/assets/css/header.css">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    {% include head-custom.html %}
+    {% if page.mathjax %}
+    <link rel="stylesheet" href="/assets/css/notes.css">
+    <script>
+      window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], macros: { degree: '^\\circ' } } };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    {% endif %}
+  <link rel="stylesheet" href="/assets/css/home.css">
+  </head>
+  <body>
+    <div class="home-grid">
+      <div class="home-left">
+        <div class="site-header column-center">
+          {% if site.logo %}
+            <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" class="profile-photo profile-top" />
+          {% endif %}
+          <div class="site-title">
+            <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+            <p class="site-description">{{ site.description | default: site.github.project_tagline }}</p>
+          </div>
+        </div>
+        <div class="home-about">
+        {{ content }}
+        </div>
+      </div>
+      <div class="home-right">
+        <h3>Projects</h3>
+        {% include projects.html %}
+      </div>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  </body>
+</html>
