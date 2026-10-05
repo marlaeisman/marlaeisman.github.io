@@ -16,7 +16,7 @@ Previously: B.S. Mechanical Engineering, University of Florida (2024); researche
 
 ### Publications
 - **Racing a Wheeled Quadruped: Active Load Transfer Mitigation via Model Predictive Control.** **M. Eisman**, B. Lam, S. Sonnino, F. Borrelli. *AVEC 2026.* [Page]({{ '/wheeled-quadruped/' | relative_url }}) · [Code](https://github.com/meisman-ucb/go2w-roll-control-mpc)
-- **RACER: Residual-Adaptive Closed-Loop Estimation for Sampling-Based Planning in Wheeled-Quadruped Racing.** Y. Liu, **M. Eisman**, L. Yang, A. Ames, F. Borrelli. *Submitted to ICRA 2027.* [Page]({{ '/racer/' | relative_url }})
+- **RACER: Residual-Adaptive Closed-Loop Estimation for Sampling-Based Planning in Wheeled-Quadruped Racing.** *Under review, ICRA 2027.* [Page]({{ '/racer/' | relative_url }})
 - **Online ResNet-Based Adaptive Control for Nonlinear Target Tracking.** *IEEE Control Systems Letters*, presented at CDC 2025. [Page]({{ '/ResNet/' | relative_url }})
 
 ---
