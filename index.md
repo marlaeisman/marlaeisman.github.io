@@ -32,16 +32,6 @@ Previously: B.S. Mechanical Engineering, University of Florida (2024); researche
 ### Projects
 <div class="projects-scroll">
   <div class="project-card">
-  <video src="/images/roll.mp4" autoplay loop muted playsinline aria-label="Unitree Go2W racing with active roll control"></video>
-  <h3>Wheeled Quadruped Robot Control</h3>
-  <p>MPC that races a Unitree Go2W on a minimum-time raceline while using its legs to roll the body against lateral load transfer. Validated on hardware. AVEC 2026, <a href="https://github.com/meisman-ucb/go2w-roll-control-mpc">code on GitHub</a>.</p>
-  <div class="tags"><span class="tag">MPC</span><span class="tag">raceline optimization</span><span class="tag">vehicle dynamics</span><span class="tag">hardware</span></div>
-    <div class="project-meta">
-      <span class="project-date">2026</span>
-  <a class="read-more" href="{{ '/wheeled-quadruped/' | relative_url }}">Read more →</a>
-    </div>
-  </div>
-  <div class="project-card">
   <img src="/images/racer_hardware.jpg" alt="Time-lapse of a Unitree Go2W racing an indoor track with RACER" />
   <h3>RACER: Learned Residual Dynamics for Quadruped Racing</h3>
   <p>Learns how an RL locomotion policy actually tracks commands, so a GPU-parallel MPPI planner can race on it. A low-rank sim-to-real adaptation needs only a few hundred real samples. On hardware: every lap completed up to 3.2 m/s, where the kinematic baseline completed none. Submitted to ICRA 2027.</p>
@@ -59,6 +49,16 @@ Previously: B.S. Mechanical Engineering, University of Florida (2024); researche
     <div class="project-meta">
       <span class="project-date">2026–</span>
   <a class="read-more" href="{{ '/nonplanar-terrain/' | relative_url }}">Read more →</a>
+    </div>
+  </div>
+  <div class="project-card">
+  <video src="/images/roll.mp4" autoplay loop muted playsinline aria-label="Unitree Go2W racing with active roll control"></video>
+  <h3>Racing a Wheeled Quadruped: Active Load Transfer Mitigation via Model Predictive Control</h3>
+  <p>MPC that races a Unitree Go2W on a minimum-time raceline while using its legs to roll the body against lateral load transfer. Validated on hardware. AVEC 2026, <a href="https://github.com/meisman-ucb/go2w-roll-control-mpc">code on GitHub</a>.</p>
+  <div class="tags"><span class="tag">MPC</span><span class="tag">raceline optimization</span><span class="tag">vehicle dynamics</span><span class="tag">hardware</span></div>
+    <div class="project-meta">
+      <span class="project-date">2026</span>
+  <a class="read-more" href="{{ '/wheeled-quadruped/' | relative_url }}">Read more →</a>
     </div>
   </div>
   <div class="project-card">
