@@ -1,0 +1,100 @@
+---
+layout: default
+title: "Lecture 21: The Feedback Linearization Theorem and MIMO Systems"
+permalink: /blog/nonlinear-control/lecture-21/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-20/">← Lecture 20</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-22/">Lecture 22 →</a></p>
+
+<h1>Lecture 21: The Feedback Linearization Theorem and MIMO Systems</h1>
+<p class="note-meta">Nonlinear Control Notes · Apr 21, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>FB linearization theorem:<br />
+\(\Sigma \dot x = f(x) +g(x)u\) is FB linearizable iff<br />
+(a) \([g(x), \text{ad}_fg(x), ..., \text{ad}^{nn-1}_fg(x)]\) has rank n \(\forall x\).<br />
+(b) \(\Delta=\text{span}\{g(x),\text{ad}_fg(x), ..., \text{ad}^{n-2}_fg(x)\}\) is involutive</p>
+<p>proposition: \(\Sigma\) has relative degree n at x iff satisfies:<br />
+(1) \(L_gh = L_gL_fh=...=L_gL_f^{n-2}h(x) =0\)<br />
+(2) \(L_gL_f^{n-1} \not =0\)<br />
+\(\iff\)<br />
+(3) \(L_gh=L_{\text{ad}_fg(x)}h=...=L_{\text{ad}^{n-2}_fg(x)}h=0\)<br />
+(4) \(L_{\text{ad}_fg(x)}h(x) \not = 0\)</p>
+<p>can write (3) and (4) as<br />
+(3) \(\iff (5) \frac{\partial h}{\partial x}[g(x) \text{ad}_fg(x) ... \text{ad}^{n-2}_fg(x)]=0\)</p>
+<p>solution \(h(x)\) to PDE in (5) exists if the distribution defined as \(\Delta := \{g,\text{ad}_fg(x),...,\text{ad}^{n-2}_fg(x)\}\) is involutive (Frobenius Theorem).</p>
+<p><em>proof (FB Lin. theorem):</em><br />
+given (a) and (b), show \(h(x)\) exists with relative degree r=n<br />
+\(\Delta(x)\) (defined in (a) and (b)) is involutive (by (b)) and nonsingular (by (a)) and has full rank.<br />
+\(\Delta\) involutive \(\implies\) (5) i.e. \(\exists h(x), \frac{\partial h}{\partial x} \not = 0, \frac{\partial h}{\partial x}[g(x), ..., \text{ad}^{n-2}_fg(x)]=0\)<br />
+need to show that h(x) satisfies (4) thru proof by contradiction:<br />
+assume \(L_{\text{ad}^{n-1}_fg(x)}=0\)<br />
+then, \(\frac{\partial h}{\partial x}[g(x), ..., \text{ad}^{n-2}_fg(x),\text{ad}^{n-1}_fg(x)]=0\)<br />
+\(\implies \frac{\partial h}{\partial x}=0\) is a contradiction</p>
+<p>example:<br />
+<span class="math-display">\[\dot x = \begin{bmatrix}
+  a\sin x_2 \\ -x_1^2
+  \end{bmatrix} + \begin{bmatrix}
+  0 \\1
+\end{bmatrix}
+  \]</span><br />
+is the system FB linearizable?<br />
+if so, find h(x)</p>
+<p><span class="math-display">\[\text{ad}_fg(x)=[f,g]=\begin{bmatrix}
+  -a\cos x_2 \\ 0
+  \end{bmatrix}
+  \]</span><br />
+<span class="math-display">\[[g,\text{ad}_fg]=\begin{bmatrix}
+    0 &amp; -a \cos x_2 \\ 1 &amp; 0
+    \end{bmatrix}
+    \]</span> is rank 2 \(\forall x\) s.t. \(\cos x_2 \not = 0\)<br />
+\(\Delta = \text{span}\{g\}\) is involutive<br />
+\(\implies\) FB linearizable \(\forall x\) s.t. \(\cos x_2 \not = 0\)</p>
+<p>find h(x) s.t. \(\frac{\partial h}{\partial x}g(x)=0, \frac{\partial L_fh}{\partial x}g(x) \not = 0\)<br />
+\(\frac{\partial h}{\partial x_2}=0 \implies h\) is independent of \(x_2\)<br />
+\(L_fh=\frac{\partial h}{\partial x_1}a\sin x_2\)<br />
+\(\frac{\partial L_fh}{\partial x}g=\frac{\partial L_fh}{\partial x_2}=\frac{\partial h}{\partial x_1}a\cos x_2 \not = 0\)<br />
+pick h that is independent and keeps term nonzero<br />
+\(h(x) = x_1\) and evaluate to be nonzero given previous conditions<br />
+could also pick \(h(x)=x_1^5\)</p>
+<p><em>MIMO (square) systems:</em><br />
+\(\Sigma: \dot x = f(x) + \sum^n_{i=1}g_i(x)u_i\)<br />
+\(y = [h_1(x) \dots h_m(x)]^\top=h(x)\)<br />
+\(g(x)=[g(x),\dots, g_m(x)], u = [u_1 \dots u_m]^\top\)</p>
+<p>look at I/O first<br />
+how do we define relative degree?</p>
+<p><em>vector relative degree</em>:<br />
+\(\Sigma\) has vector relative degree (\(r_1, r_2, ..., r_m\)) at \(x_0\) if<br />
+(a) for all \(1 \le j \le m, 1 \le i \le m, 0 \le k &lt; m\), \(L_{g_j}L_f^kh_i(x)=0,\forall x\) in nbd of x<br />
+(b) the mxm matrix (decoupling matrix)<br />
+<span class="math-display">\[A(x)=\begin{bmatrix}
+  L_{g_1}L_f^{n_i-1}h_1(x) &amp; \dots &amp;L_{g_m}L_f^{n_i-1}h_1(x) \\
+  \vdots \\
+  L_{g_1}L_f^{n_n-1}h_m(x) &amp; &amp; L_{g_m}L_f^{n_m-1}h_m(x)
+  \end{bmatrix}
+  \]</span> is nonsingular at \(x_0\)</p>
+<p>\(\implies y_i^{n_i}=L_f^{r_i}h_i(x)+L_{g_1}L_f^{r_i-1}h_i(x)u_i+\dots+L_{g_m}L_f^{r_i-1}h_i(x)u_m\)<br />
+\(= L_f^{r_i}h_i(x) + \sum_j L_{g_j}L_f^{r_1-1}h_i(x)u_j\)<br />
+at least one \(L_{g_j}L_f^{r_1-1}h_i(x)u_j \not = 0 \forall i\)<br />
+IO dynamics:<br />
+\([y_i^{r_1}\dots y_m^{r_m}]\top=[L_f^{r_1}h_1\dots L_f^{r_m}h_m]^\top+A(x)u\)</p>
+<ul>
+<li>y equation for each output</li>
+</ul>
+<p>MIMO IO lin:<br />
+choose \(u(x)=A^{-1}(x)\{-L_fh(x)+v\}\)<br />
+\(\implies [y_i^{r_1}\dots y_m^{r_m}]\top=v\)<br />
+linearized for control</p>
+<p>number of states in IO dynamics: \(r_1 + \dots + r_m\)<br />
+if \(r_1+\dots+r_m &lt;n \implies\) IO lin</p>
+<ul>
+<li>use v to drive \(y \rightarrow 0\) (has internal dynamics)<br />
+if \(r_1+\dots+r_m =n \implies\) feedback lin<br />
+if zero dynamics are exp stable, \(x \rightarrow 0\)</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-20/">← Lecture 20</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-22/">Lecture 22 →</a></p>

@@ -1,0 +1,102 @@
+---
+layout: default
+title: "Lecture 13: Sontag's Formula and the Small Control Property"
+permalink: /blog/nonlinear-control/lecture-13/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-12/">← Lecture 12</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-14/">Lecture 14 →</a></p>
+
+<h1>Lecture 13: Sontag's Formula and the Small Control Property</h1>
+<p class="note-meta">Nonlinear Control Notes · Mar 12, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>today: sontag control and backstepping</p>
+<p>CLF for multi-input control affine system:<br />
+\(\dot x = f(x)+\Sigma^m_{i=1}g_i(x)u_i\)</p>
+<p>V is a CLF if \(\forall x \not = 0\):<br />
+<span class="math-display">\[\inf_{u\in\mathbb{R}^m}\{L_fV(x)+\Sigma L_{g_i}V(x)u_i\}\]</span><br />
+if we want \(V(x)\) to not depend on the control input, all \(L_{g_i}\) must be zero.<br />
+<span class="math-display">\[\iff \forall x\not = 0,[L_{g_1}V(x),L_{g_2}V(x),...L_{g_m}V(x)]=[0,0,...,0]\implies L_f V(x)&lt;0\]</span><br />
+example: \(\dot x = x + x^2 u, x; u \in \mathbb{R}\)</p>
+<p>if we want AS for this system, for \(x&gt;0\), \(x+x^2u&lt;0\)<br />
+and for \(x&lt;0\), \(x+x^2u&lt;0\implies u&lt;-1/x\)</p>
+<p>for SISL, \(x+x^2u=0,u=-1/x\)<br />
+\(x \rightarrow 0 \implies |u|\rightarrow \infty\)</p>
+<p>this is a <strong>Large control property</strong></p>
+<ul>
+<li>as we move closer to equilibrium, input moves towards infinity</li>
+<li>we want to design for the opposite of this property</li>
+</ul>
+<p>definition: a CLF V satisfies the small control property if \(\forall \varepsilon &gt; 0, \exists \delta &gt; 0\) s.t. \(\forall x \in B_\delta (0), x\not = 0, \exists u \in \mathbb{R}^m\) and \(\|u\|&lt;\varepsilon\) s.t. \(\dot V(x) = L_fV + \Sigma L_{g_i}Vu_i &lt;0\)</p>
+<p>theorem (Sontag 1980s) single input case:<br />
+suppose \(V\) is a CLF for \(\dot x = f(x) + g(x)u; u\in \mathbb{R}, f(0)=0; f,g\) are Lipschitz, then</p>
+<p>(1)<br />
+<span class="math-display">\[
+  u=\alpha_s(x)= -\frac{L_fV+\sqrt{(L_fV)^2+(L_gV)^4}}{L_gV(x)} \text{ for } L_gV\not=0
+  \]</span><br />
+<span class="math-display">\[ u=0 \text{ for else} \]</span><br />
+results in \(\dot V(x) = -\sqrt{(L_fV)^2+(L_gV)^4}&lt;0, \forall x\not = 0 \implies x=0\) is GAS</p>
+<p>(2) \(\alpha_s\) is continuous \(\forall x \not = 0\)</p>
+<p>(3) \(\alpha_s\) is continuous at \(x = 0\) if CLF satisfies small control property</p>
+<p>(4) finally, if \(V(x)\) is k+1 times continuously differentiable \(\forall x \not = 0\) then \(\alpha_s(x)\) is k times continuously differentiable \(\forall x \not =0\)</p>
+<p>example: \(\dot x = \sin(x)-x^3+u,x\in\mathbb{R}, u\in \mathbb{R}\)<br />
+\(f(x)=\sin(x)-x^3, g(x)=1\)<br />
+candidate CLF: \(V(x)=\frac{1}{2}x^2\)</p>
+<p>to find if this is a valid CLF...</p>
+<ul>
+<li>compute Lie derivatives: check \(\forall x \not = 0, L_gV(x) =0 \implies L_fV(x)&lt;0\)</li>
+<li>\(L_gV(x)=\frac{\partial V}{\partial x}g(x)=x\)</li>
+<li>\(L_gV(x)=0 \iff x=0\)</li>
+<li>\(\implies\) condition is trivially satisfied \(\implies V(x)\) is a CLF</li>
+</ul>
+<p>now we can make a sontag controller to achieve GAS</p>
+<ul>
+<li>compute \(L_fV\)</li>
+<li>\(L_fV(x)=\frac{\partial V}{\partial x}f(x)=x[\sin x - x^3]\)<br />
+<span class="math-display">\[\alpha_s(x)=\begin{cases}
+  -\frac{L_fV+\sqrt{(L_fV)^2+(L_gV)^4}}{L_gV(x)}, &amp; L_gV\not = 0 \\
+  0, &amp; \text{else}
+  \end{cases}
+  \]</span><br />
+\(\sqrt{x^2[\sin x - x^3]^2+x^4}\rightarrow\)<br />
+<span class="math-display">\[\alpha_s(x)=\begin{cases}
+  -\frac{x^2[\sin x - x^3]+\sqrt{x^2[\sin x - x^3]^2+(x)^4}}{x}, &amp; x\not = 0 \\
+  0, &amp; \text{else}
+  \end{cases}
+  \]</span></li>
+</ul>
+<p>\(\sqrt{x^2[\sin x - x^3]^2+x^4}= |x|\sqrt{[\sin x - x^3]^2+x^2}\rightarrow\)</p>
+<p><span class="math-display">\[\alpha_s(x)=\begin{cases}
+  -{[\sin x - x^3]-\sin x\sqrt{(\sin x - x^3)^2+x^2}}, &amp; x\not = 0 \\
+  0, &amp; \text{else}
+  \end{cases}
+  \]</span><br />
+is continuous at \(x=0\) and infinitely differentiable for \(x\not =0\)<br />
+\(\dot V (x) =-\sqrt{x^2(\sin x - x^3)^2+x^4}&lt;0;\forall x \not =0\), \(x=0\) is GAS</p>
+<p>many other controllers can make \(\dot V&lt;0\)<br />
+\(\dot x= f(x)+g(x)\alpha(x)=:f_{CL}(x)\), \(V(x)=\frac{1}{2}x^2\)<br />
+\(\dot V(x)=\frac{\partial V}{\partial x}f_{CL}(x)=xf_{CL}(x)\)</p>
+<p>(1) \(u=\alpha_1 x=\sin x + x^3-x\) (cancel out nonlinear terms aka feedback linearization)</p>
+<ul>
+<li>\(\dot x = f_{CL}=-x\), \(\dot V = -x^2&lt;0\implies\) GAS<br />
+(2) \(u=\alpha_2(x)=\sin x -x\)</li>
+<li>don't cancel the stabilizing nonlinearity (\(-x^3\))</li>
+<li>\(\dot x = f_{CL}=-x^3-x\) is no longer linear</li>
+<li>\(V(x)=-x^2-x^4&lt;0\implies\) GAS<br />
+(3) \(u=\alpha_3(x)=-\sin x\)</li>
+<li>\(\dot x = f_{CL}=-x^3\)</li>
+<li>\(\dot V = -x^4&lt;0 \implies\) GAS<br />
+(4) \(u=\alpha_4(x)=-2x\) (linear feedback that dominates destabilizing nonlinearity \(\sin(x)\))</li>
+<li>\(\dot x = f_{CL}=\sin x - x^3-2x\)</li>
+<li>\(\dot V = x \sin x -x^4-2x^2=x[\sin x-2x]-x^4\leq -x^2-x^4&lt;0\implies\) GAS</li>
+</ul>
+<p><span class="math-display">\[\alpha_{\text{min-norm}}=\begin{cases}
+\frac{-L_fV}{L_gV}, &amp; L_gV\not = 0 \\
+0, &amp; \text{else}
+\end{cases}\]</span></p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-12/">← Lecture 12</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-14/">Lecture 14 →</a></p>

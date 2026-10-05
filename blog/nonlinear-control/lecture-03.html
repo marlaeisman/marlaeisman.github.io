@@ -1,0 +1,167 @@
+---
+layout: default
+title: "Lecture 3: Continuity, Lipschitz Functions and Local Existence and Uniqueness"
+permalink: /blog/nonlinear-control/lecture-03/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-02/">← Lecture 2</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-04/">Lecture 4 →</a></p>
+
+<h1>Lecture 3: Continuity, Lipschitz Functions and Local Existence and Uniqueness</h1>
+<p class="note-meta">Nonlinear Control Notes · Feb 3, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p><strong>continuity</strong></p>
+<p>definition: let \((v,||\cdot || )\&amp;(w,|||\cdot|||)\)  be normed spaces. A function h: V \(\rightarrow\) W is continuous at \(x_0 \in V\) if \(\forall \varepsilon &gt; 0,\exists \delta_{\varepsilon}&gt;0\) s.t. \(||x-x_0||&lt;\delta \implies |||h(x)-h(x_0)|||&lt;\varepsilon \iff x\in B_\delta (x_0) \implies h(x) \in B_\varepsilon(h(x_0))\)</p>
+<ul>
+<li>every ball of radius \(\delta\) in V gets mapped to a ball of radius \(\varepsilon\) in W.<br />
+example:</li>
+<li>how do we show that a function is not continuous?
+<ul>
+<li>for any \(\varepsilon &lt; 1, \not \exists \delta\)</li>
+<li>h is continuous if it is continuous \(\forall x \in V\).</li>
+</ul>
+</li>
+</ul>
+<p>what about a stronger notion of continuity?</p>
+<ul>
+<li>Lipschitz continuity: if we join any 2 points along the function, the slope should be less than the Lipschitz constant</li>
+<li>(at a particular point) - h: V \(\rightarrow\) W is Lipschitz continuous at \(x_0 \in V\) if \(\exists r &gt; 0,L&lt;\infty,|||h(x)-h(y)|||\le L||x-y||\)
+<ul>
+<li>where L = Lipschitz constant</li>
+</ul>
+</li>
+<li>h is <em>locally</em> Lipschitz if h is Lipschitz continuous \(\forall x_0 \in V\).</li>
+<li>h is <em>globally</em> Lipschitz continuous if (in addition to above), \(B_r (x_0)=V\).
+<ul>
+<li>\(h(x)=x^2\) is locally but not globally Lipschitz</li>
+</ul>
+</li>
+<li>remarks:
+<ul>
+<li>Lipschitz cont. at \(x_0 \implies\) cont. at \(x_0\).
+<ul>
+<li>stronger notion of continuity</li>
+</ul>
+</li>
+<li>suppose h is differentiable
+<ul>
+<li>h:\(R^n\rightarrow R^n \&amp; \exists r&gt;0,L&lt;\infty,x_0\in R^n\) s.t. \(\forall x \in B_r(x_0)||\frac{\partial h}{\partial x}(x_0)||\le L\) then h is Lipschitz cont. at \(x_0\).</li>
+<li>look at the derivative at every point... if it is bounded by L \(\implies\) cont.</li>
+</ul>
+</li>
+<li>If \(h: V \rightarrow V\) is Lipschitz w.r.t. \(||\cdot||, \&amp; |||\cdot||| \equiv||\cdot ||\implies\) h is Lipschitz w.r.t. \(|||\cdot|||\).
+<ul>
+<li>but L could be different</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>example: h: R\(\rightarrow\)R<br />
+<span class="math-display">\[h(x):= \text{sat}(x) := \begin{matrix} 
+ x, &amp; |x|&lt;1 \\
+ 1, &amp; x \ge 1 \\
+ -1, &amp; x \le -1
+ \end{matrix}\]</span></p>
+<ul>
+<li>something like a sigmoid is L.C.</li>
+</ul>
+<p>example: piecewise continuity</p>
+<ul>
+<li>requires jumps to be finite (not \(\tan(x)\))</li>
+<li>def: let h: R \(\rightarrow\) V. h is piecewise (pw) cont. if<br />
+a) \(\forall k &gt; 0\in Z,h:[-k,k]\rightarrow V\) is cont. except at a <em>finite</em> number of points<br />
+b) a point of discontinuity may have \(\lim_{\delta \rightarrow 0}h(t_i,+\delta) \&amp; \lim_{\delta \rightarrow 0}h(t_0,+\delta)\) both exist &amp; are finite.</li>
+</ul>
+<p>example:<br />
+<span class="math-display">\[f(x) = \begin{matrix}
+1, &amp; x \text{ is rational} \\
+0, &amp; x \text{ is irrational}
+\end{matrix}\]</span><br />
+is not piecewise continuous because it does not satisfy a.</p>
+<p><strong>solutions of differential equations in \(R^n\)</strong><br />
+\(\Sigma : \dot x \ f(t,x),t\ge t_0; x(t_0)=x_0\)</p>
+<ul>
+<li>def: \(\phi(t)\) is a soln. of \(\Sigma\) on \([t_0,t_1]\) if
+<ul>
+<li>a) \(\dot \phi(t)\exists\) on the interval \([t_0,t_1]\)</li>
+<li>b) \(\dot \phi(t)=f(t, \phi(t)) \forall t \in [t_0,t_1]\)</li>
+<li>c)\(\phi(t_0)=x_0\)</li>
+</ul>
+</li>
+<li>notation: \(x(t)=\phi(t,t_0, x_0)=\phi_t(t_0,x_0)\)</li>
+</ul>
+<p>equivalent integral definition:<br />
+<span class="math-display">\[\begin{align*}
+\dot x = f(t,x(t)),x(t_0)=x_0\iff \int^t_{t_0}\dot x(\tau)d\tau=\int^t_{t_0}(f(\tau), x(\tau))d\tau \\
+\iff x(\tau)|^t_{t_0}=\int^t_{t_0}(f(\tau), x(\tau))d\tau \\
+\iff x(t) = x_0 + \int^t_{t_0}(f(\tau), x(\tau))d\tau
+\end{align*}\]</span></p>
+<ul>
+<li>def: \(\phi(t)\) is soln. of \(\Sigma\) on \([t_0,t_1]\) if \(\forall \bar t \in [t_0,t_1],\bar t\)
+<ul>
+<li>\(\phi(\bar t) =x_0 + \int^{\bar t}_{t_0}(f(\tau), x(\tau))d\tau\)</li>
+</ul>
+</li>
+</ul>
+<p>theorem (3.1 khalil): local existence of uniqueness</p>
+<ul>
+<li>given (a) \(\dot x = f(t,x(t)),\forall t \ge t_0 ; x(t_0)=x_0\)</li>
+<li>and (b) f is p.w. cont. in t</li>
+<li>and (c) \(\exists T&gt;t_0,r&gt;0,L&lt;\infty\) s.t. \(\forall x,y\in B_r(x_0) \&amp; t\in [t_0,T]\)
+<ul>
+<li>\(||f(t,x)-f(t,y)||\le L||x-y||\)</li>
+<li>(f is L.C. w.r.t. x)</li>
+</ul>
+</li>
+<li>then: \(\exists \delta&gt;0\) s.t. soln exists &amp; is unique on \(t_0,t_0+\delta\) !!!</li>
+</ul>
+<p>proof: \(\delta &gt; 0\) to be found. key idea is contraction mapping.</p>
+<ul>
+<li>for contraction mapping we need banach space and a function on the space that is a contraction.</li>
+<li>\(C_n [t_0,t_0+\delta]=(\phi:[t_0,t_0+\delta]\rightarrow R^n|\phi\) continuous). is a complete space</li>
+<li>\(||\phi||_\infty = \sup_{t_0\le t \le t_0+\delta} ||\phi(t)||\)</li>
+<li>define P: \(C_n[t_0,t_0+\delta]\rightarrow C_n[t_0,t_0+\delta]\)
+<ul>
+<li>this maps \(\phi \rightarrow P(\phi) \implies \phi(t) \rightarrow P(\phi)(t)\)</li>
+</ul>
+</li>
+<li>define \(P(\phi)(t) :=x_0 + \int^t_{t_0}(f(\tau), \phi(\tau))d\tau\)
+<ul>
+<li>we now need to show that P is a contraction, and then apply C.M. theorem to show that x is a fixed point.</li>
+</ul>
+</li>
+<li>if x(t) is a fixed point of P, then x(t)=P(x(t))
+<ul>
+<li>\(x(t)=x_0 + \int^t_{t_0}(f(\tau), \phi(\tau))d\tau\)</li>
+<li>if this is satisfied + unique, we can solve the DE</li>
+<li>we only need to show that P is a contraction</li>
+</ul>
+</li>
+<li>when is P is a contraction?????
+<ul>
+<li>let \(x(t),y(t) \in C_n[t_0,t_0+\delta]\)</li>
+<li>\(||P(x)=P(y)||_\infty \le C||x-y||_\infty\) to show \(0\le C &lt; 1\)</li>
+<li>to show: for \(C&lt;1,\sup_{t_0\le t \le t_0+\delta} ||P(x)(t)-P(y)(t)||\le C \sup_{t_0\le t \le t_0+\delta} ||x(t)-y(t)||\)</li>
+<li>fix t: \(P(x)(t)-P(y)(t)=\int_{t_0}^t f(\tau,x(\tau))-f(\tau, y(\tau))d \tau\)</li>
+<li>\(||P(x)(t)=P(y)(t)||=\int_{t_0}^t f(\tau,x(\tau))-f(\tau, y(\tau))d \tau||\)</li>
+<li>\(\le \int_{t_0}^t f(\tau,x(\tau))-f(\tau, y(\tau))d \tau||\) (triangle inequality)</li>
+<li>\(\le \int_{t_0}^t ||x(\tau)-y(\tau)||d \tau\)</li>
+<li>\(\le \int_{t_0}^t ||x-y||_\infty d \tau=L(t-t_0)||x-y||_\infty\)</li>
+<li>\(\implies \sup_{t_0\le t \le t_0+\delta}||P(x)(t)=P(y)(t)||\le \sup_{t_0\le t \le t_0+\delta} L(t-t_0) ||x-y||_\infty\)</li>
+<li>= \(L\delta ||x-y||_\infty\)</li>
+<li>need \(L \delta &lt; 1\)
+<ul>
+<li>pick \(\delta = 1/L\)</li>
+<li>this implies existence of unique solution</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-02/">← Lecture 2</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-04/">Lecture 4 →</a></p>

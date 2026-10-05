@@ -1,0 +1,101 @@
+---
+layout: default
+title: "Lecture 11: Midterm Review"
+permalink: /blog/nonlinear-control/lecture-11/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-10/">← Lecture 10</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-12/">Lecture 12 →</a></p>
+
+<h1>Lecture 11: Midterm Review</h1>
+<p class="note-meta">Nonlinear Control Notes · Mar 3, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p><em>exam review</em><br />
+1- contraction mapping</p>
+<p>let \((x,\|\cdot\|)\) be a complete normed space. let \(P:x\rightarrow x\) be a contraction. then there exists a unique fixed point for your function P.</p>
+<ul>
+<li>let \(x_n:=P(x_{n-1}),x_0\in X\) be any vector, then vector (\(x_n\)) is a Cauchy sequence that converges to the fixed point of P.</li>
+<li>complete normed space: every Cauchy sequence converges to a point in the space.</li>
+<li>\(\forall \epsilon &gt;0, \exists N&lt;\infty\) s.t. \(\forall n,m \le N, \|x_n-x_m\|&lt;\epsilon\)</li>
+<li>contraction: \(P:x\rightarrow x\) is a contraction if \(\exists 0 \le C &lt;1\) s.t. \(\forall x,y \in X,\|P(x)-P(y)\|\le C\|x-y\|\)</li>
+<li>fixed point: \(x^* = P(x^*)\)</li>
+</ul>
+<p>2 - finite escape time<br />
+\(\Sigma:\dot x = f(x),x(t_0)=x_0\)<br />
+\(\Sigma\) has a finite escape time if \(\exists T&lt;\infty\) s.t. \(x(t,x_0)\rightarrow \infty,t\rightarrow T\).<br />
+can we express this as a solution?</p>
+<ul>
+<li>if f is p.w. in time or f is locally Lipschitz \(\implies\) \(x(t,x_0)\) exists &amp; is unique \(\forall t\in [t_0,t_0+\delta]\).</li>
+<li>if f is globally Lipschitz, \(\implies \forall T&gt;t_0,x(t,x_0)\) exists &amp; is unique \(\forall t\in [t_0,T]\implies\) no finite escape time.<br />
+example: \(\dot x = -x^2,x(0)=-1\)</li>
+<li>not globally Lipschitz \(\rightarrow\) cannot determine if there is a finite escape time</li>
+<li>\(\frac{1}{t-1}\rightarrow \infty\) as \(t\rightarrow 1\) shows finite escape time<br />
+example: \(\dot x = -x^2,x(0)=1\)</li>
+<li>no finite escape time<br />
+\(\dot x = x,x(0)=-1\)</li>
+<li>globally lipschitz so no finite escape time</li>
+<li>only reaches infinity when t is at infinity</li>
+</ul>
+<p>3- gronwall-bellman inequality</p>
+<ul>
+<li>\(\dot y (t)=\mu(t)y(t),y(a)=\lambda\iff y(t)=\lambda+\int^t_a \mu(\tau)y(\tau)d\tau\)</li>
+<li>\(\iff y(t)=\lambda \exp[\int^t_a\mu(\tau)d\tau]\)</li>
+<li>if \(y(t)\le\lambda+\int^t_a \mu(\tau)y(\tau)d\tau\), GB inequality asks if this implies \(y(t)\le\lambda \exp[\int^t_a\mu(\tau)d\tau]\)</li>
+<li>assumes \(\lambda\) is constant and \(\mu\) is continuous &amp; non-negative</li>
+<li>implicit inequality vs. explicit inequality</li>
+<li>proof in class</li>
+<li>why is this useful? we use it for continuous dependence on IC</li>
+</ul>
+<p>4 - continuous dependence on IC</p>
+<ul>
+<li>\(\dot x= f(t,x),x(t_0)=x_0\)</li>
+<li>\(\Psi: \mathbb{R}^n \rightarrow C_n[t_0,t_0+\delta]\)</li>
+<li>we have continuous dependence on IC \(\iff \Psi\) is continuous at \(x_0\)</li>
+<li>\(\iff \forall \varepsilon &gt;0 \exists \delta &gt;0\) s.t. \(\forall z_0\in B_\delta(x_0)\implies\exists \Psi(z_0) \in B_\epsilon(\Psi(x_0))\)</li>
+<li>\(\iff\|x_0-z_0\|_2&lt;\delta \implies \|\Psi(x_0)-\Psi(z_0)\|_\infty&lt;\epsilon\)</li>
+<li>f is p.w. cont. in time, f is globally lipschitz,  \(\implies\) continuous dependence on IC</li>
+<li>proof:<br />
+<span class="math-display">\[\begin{align*}
+   &amp; \dot x = f(t,x),x(t_0)=x_0,x(t)=x_0+\int f(\tau)x(\tau)d\tau \\
+   &amp; \dot z = f(t,z),z(t_0)=z_0,z(t)=z_0+\int f(\tau)z(\tau)d\tau \\
+   &amp; \Psi(x_0)-\Psi(z_0)=x_0-z_0 +\int f(\tau)x(\tau)-f(\tau)z(\tau)d\tau \\
+   &amp; \|\Psi(x_0)-\Psi(z_0)\|\le\|x_0-z_0\| +\int \|f(\tau)x(\tau)-f(\tau)z(\tau)\|d\tau \\
+ &amp; y(t)=\|x(t)-z(t)\| \le \|x_0-z_0\| +\int L\|x(\tau)-z(\tau)\|d\tau \\
+ &amp; \|x(t)-z(t)\| \le \lambda + \int \mu(\tau)\|x(\tau)-z(\tau)\|d\tau \\
+ &amp; \|x(t)-z(t)\| \le \|x_0-z_0\|\exp[\int L_T dt] \\
+  \end{align*}
+  \]</span>
+<ul>
+<li>for a given \(\epsilon\), find \(\delta\) s.t. the above holds (look at this later)</li>
+</ul>
+</li>
+</ul>
+<p>5 - Lasalle's invariance theorem</p>
+<ul>
+<li>let \(x_e=0\) be an eq. point of \(\dot x= f(x)\). let d be an open set containing \(x_e\). let \(V:D\rightarrow \mathbb{R}\) be \(C^1\)<br />
+example: \(\dot x_1 = x_2, \dot x_2=-x_1^3-x_2^3\)</li>
+<li>eq point at (0,0)</li>
+<li>indirect method:<br />
+<span class="math-display">\[\begin{align*}
+   &amp; A=\begin{bmatrix}
+0 &amp; 1 \\ 0 &amp; 0
+  \end{bmatrix}\implies \text{ no conclusion} \\
+  &amp; V(x)=1/4x_1^2+1/2x_2^2 \\
+ &amp;  \dot V(x) = x_1^3x_2+x_2[-x_1^3-x_2^3] \\
+ &amp; = -x_2^4 \le 0\implies \text{SISL}\\
+  \end{align*}
+  \]</span>
+<ul>
+<li>from here, look at Lasalle's invariance</li>
+<li>find \(S=\{x|\dot V(x)=0\}=\{x_2=0\}\)</li>
+<li>from here, we get \(\dot x_1=0,\dot x_2=0,\implies x_1=0\)</li>
+<li>and radially unbounded</li>
+</ul>
+</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-10/">← Lecture 10</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-12/">Lecture 12 →</a></p>

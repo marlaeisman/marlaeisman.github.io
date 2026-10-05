@@ -1,0 +1,131 @@
+---
+layout: default
+title: "Lecture 10: Class K Functions, Uniform and Exponential Stability"
+permalink: /blog/nonlinear-control/lecture-10/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-09/">← Lecture 9</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-11/">Lecture 11 →</a></p>
+
+<h1>Lecture 10: Class K Functions, Uniform and Exponential Stability</h1>
+<p class="note-meta">Nonlinear Control Notes · Feb 26, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>problems with TV nonlinear systems:<br />
+(1) properties depend on \(t_0\)</p>
+<ul>
+<li>rate of convergence</li>
+<li>region of attraction (\(R_A\rightarrow x_e,t_0\rightarrow \infty\))<br />
+(2) non-intuitive lyapunov conditions</li>
+<li>\(\dot x = x\) where \(V(x)\not \implies\) SISL</li>
+</ul>
+<p>redefine what positive definiteness is for a lyapunov function</p>
+<p>definition: a continuous function \(\alpha:[0,a)\rightarrow[0,\infty)\) is scalar and a <strong>class K function</strong> if it is <em>strictly increasing</em> and \(\alpha(0)=0\). \(\alpha\) is class \(K_\infty\) if \(a=\infty\) aka defined for all \(a\in \mathbb{R}&gt;0\).</p>
+<p>definition: \(V:[0,\infty)\times \mathbb{R}^n\rightarrow \mathbb{R}\) is locally positive definite if it satisfies:</p>
+<ol>
+<li>\(V(t,0)=0\forall t \ge 0\)</li>
+<li>\(\exists r&gt;0\) and a class K function \(\alpha:[0,r)\rightarrow[0,\infty)\) s.t. \(V(t,x)\ge\alpha(||x||),\forall t \ge 0, \forall x\in B_r(0)\) (\(\alpha\) does not depend on time)<br />
+in summary, lower bounded by some time-independent function (class k)</li>
+</ol>
+<p>definition: a continuous function \(V:[0,\infty)\times\mathbb{R}^n\rightarrow\mathbb{R}\) is <strong>decrescent</strong> if \(\exists \sigma &gt;0\) and a class k function \(\gamma:[0,\sigma)\rightarrow[0,\infty)\) s.t. \(V(t,x) \ge \gamma(||x||),\forall t \ge 0, \forall x \in B_\sigma(0)\)<br />
+in summary, upper bounded by some time independent (decrescent) function.</p>
+<p><strong>examples</strong></p>
+<ol>
+<li>\(w(x_1,x_2)=x_1^2+x_2^4\)
+<ul>
+<li>globally positive definite</li>
+<li>decrescent (can we find a function that upper bounds it?)</li>
+</ul>
+</li>
+<li>\(w(x_1,x_2)=x_1^8\)
+<ul>
+<li>not locally positive definite (for \(x_1=0\))</li>
+<li>decrescent</li>
+</ul>
+</li>
+<li>\(w(x_1,x_2)=x_1^2+(\sin(x_2))^2\)
+<ul>
+<li>locally positive definite</li>
+<li>decrescent</li>
+</ul>
+</li>
+<li>\(w(x_1,x_2)=(x_1+x_2)^4\)
+<ul>
+<li>not positive definite</li>
+<li>decrescent</li>
+</ul>
+</li>
+<li>\(v(x_1,x_2,t)=\frac{1}{1+t}[x_1^2+x_2^2]\)
+<ul>
+<li>not positive definite because shrinks as \(t\rightarrow\infty\)</li>
+<li>decrescent</li>
+</ul>
+</li>
+<li>\(v(x_1,x_2,t)=(1+t)[x_1^2+x_2^2]\)
+<ul>
+<li>positive definite</li>
+<li>not decrescent (\(t\rightarrow\infty\))</li>
+</ul>
+</li>
+<li>\(v(x_1,x_2,t)=(3+\sin(t))[x_1^2+x_2^2]\)
+<ul>
+<li>positive definite</li>
+<li>decrescent</li>
+</ul>
+</li>
+</ol>
+<p>fact: the following statements are equivalent</p>
+<ol>
+<li>\(V(t,x)\) is locally positive definite</li>
+<li>\(\exists W(x)\) locally positive definite s.t. \(V(t,x)\ge W(x),\space\forall\space t\ge 0, \forall x \in B_r(0)\)</li>
+<li>\(\bar W(x):=\inf_{t\ge0}V(t,x)\) is locally positive definite</li>
+</ol>
+<p>theorem: consider \(\dot x=f(t,x),x(t_0)=x_0,f(t,0)=0,\forall t\ge 0\), f locally Lipschitz in x and p.w. continuous in t.</p>
+<ol>
+<li>then, \(x_e=0\) is (uniformly) SISL if \(\exists V \in C^1;V:[0,\infty)\times \mathbb{R}^n\rightarrow\mathbb{R}\) (decrescent), locally positive definite and \(\rho&gt;0\) s.t. \(\dot V(t,x)\ge 0, \forall t \ge 0, \forall x \in B_\rho(0)\).</li>
+<li>\(x_e=0\) is (uniformly) AS if \(\exists V \in C^1\) (decrescent) locally positive definite and \(-\dot V\) is locally positive definite.</li>
+</ol>
+<p><strong>exponential stability</strong><br />
+consider \(\dot x = f(t,x), f(t,0)=0\forall t \ge 0\). def: \(x_e=0\) is exponentially stable if \(\forall t_0\ge 0,\exists \sigma&gt;0,\gamma&gt;0,N&lt;\infty\) s.t.</p>
+<ol>
+<li>\(\forall x_0 \in B_\sigma(0),x(t,t_0,x_0)\) exists on \([t_0,\infty)\) and is unique</li>
+<li>\(||x(t,t_0,x_0)|| \le N||x_0||e^{-\gamma t}, \forall t \ge t_0,x_0 \in B_\sigma(0)\)<br />
+if, in addition, \(\sigma,\gamma, N\) are independent of \(t_0\), then the origin is <em>uniformly exponentially stable.</em></li>
+</ol>
+<ul>
+<li>ES \(\implies\) AS \(\implies\) SISL</li>
+<li>uniform ES \(\implies\)uniform AS \(\implies\) uniform SISL</li>
+</ul>
+<p>example: \(\dot x= -x^3\)</p>
+<ul>
+<li>globally AS</li>
+</ul>
+<p>\(\dot x= -x^3+1^{-10}x\)</p>
+<ul>
+<li>via indirect method, we can take jacobian:</li>
+<li>\(A=\frac{\partial f}{\partial x}_{x=0}=1^{-10}&gt;0\implies\) unstable eigenvalue</li>
+<li>AS is fragile under small linear perturbations
+<ul>
+<li>this is prevented with ES conditions</li>
+</ul>
+</li>
+</ul>
+<p>theorem: suppose \(x_e=0\) is an eq. point of \(\dot x= f(t,x)\), f is Lipschitz in x, p.w. continuous in t. then, a sufficient condition for \(x_e=0\) is uniformly ES is:</p>
+<ul>
+<li>\(\exists V:[0,\infty)\times\mathbb{R}^n\rightarrow \mathbb{R}\) (Lyapunov function) and \(\alpha, \beta, \gamma&gt;0\) s.t. \(\forall x \in B_r(0),\forall t \ge 0\)</li>
+<li>a) \(\beta x^\top x \ge V(t,x) \ge \alpha x^\top x\implies\) locally positive definite and decrescent</li>
+<li>b) \(\dot V(t,x) \le \gamma V(t,x)\)
+<ul>
+<li>\(\implies V(t,x(t)\le e^{-\gamma t}V(t,x_0)\)</li>
+</ul>
+</li>
+<li>this is comparable to Lyapunov direct method</li>
+</ul>
+<p>comparable to Lyapunov indirect method ...</p>
+<p>theorem: (key for all of linear control)<br />
+consider a time-invariant NL system \(\dot x = f(x),f(0)=0,x\in \mathbb{R}^n\) . \(x_e=0\) is ES \(\iff\) all eigenvalues of \(A=\frac{\partial f }{\partial x}|{x=0}\) have negative real parts.</p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-09/">← Lecture 9</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-11/">Lecture 11 →</a></p>

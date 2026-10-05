@@ -1,0 +1,116 @@
+---
+layout: default
+title: "Lecture 17: Feedback Linearization and Input–Output Linearization"
+permalink: /blog/nonlinear-control/lecture-17/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-16/">← Lecture 16</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-18/">Lecture 18 →</a></p>
+
+<h1>Lecture 17: Feedback Linearization and Input–Output Linearization</h1>
+<p class="note-meta">Nonlinear Control Notes · Apr 2, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>sliding mode control (drive \(x\rightarrow 0\))</p>
+<p>\(\dot x_1 = x_2\)<br />
+\(\dot x_2 = h(x)+g(x)u\)<br />
+(C1) \(g(x) \ge g_0 &gt; 0,\forall x\)<br />
+(C2) \(|\frac{ax_2+h(x)}{g(x)}|\le \sigma(x),\forall x\)</p>
+<p>define \(s=ax_1+x_2\)<br />
+\(V(s)=1/2s^2\)<br />
+\(u=\beta(x)\text{sign}(s)\)<br />
+\(\beta(x)\ge \sigma(x) \beta_0\)<br />
+\(\implies \dot V \le g_0 \beta_0 |s|\)</p>
+<p>today: feedback linearization &amp; SISO linearization</p>
+<ul>
+<li>use feedback to transform nonlinear \(\rightarrow\) linear system
+<ul>
+<li>exact transformation (no approximation)</li>
+</ul>
+</li>
+</ul>
+<p>example: pendulum<br />
+<img src="/images/notes/nl-20260402142058.png" alt="" /><br />
+\(\dot x_1 =x_2, x_1 = \theta\)<br />
+\(\dot x_2 = -a\sin x_1 -b x_2 + c_u, x_2 = \dot \theta\)</p>
+<p>how do we design a controller to drive \(x \rightarrow 0\)?<br />
+\(u=-\frac{a}{c}\sin x_1 + v\) where v is a linear controller<br />
+\(v=-k_1x_1-k_2x_2\)<br />
+\(\downarrow\)<br />
+\(\dot x_1 = x_2\)<br />
+\(\dot x_2 = -bx_2 +v\)<br />
+\(\downarrow\)<br />
+\(\dot x_1 = x_2\)<br />
+\(\dot x_2 = --k_1x_1-(k_2+b)x_2\)</p>
+<p>transform intro closed-loop linear system with input transfer \(u=u(x,v)\)<br />
+can we cancel nonlinearities for any nonlinear system?<br />
+is this a general technique?</p>
+<p>example:<br />
+\(\dot x = Ax + B \gamma (x)[u -\alpha(x)]\)<br />
+assume \(\gamma(x)\) is invertible<br />
+\(u=\alpha(x)+\gamma(x)^{-1}v\)<br />
+\(\implies \dot x = Ax + Bv\)</p>
+<p>do we require systems to be in the above form?</p>
+<p>example:<br />
+\(\dot x_1 = a\sin x_2\)<br />
+\(\dot x_2 = -x_1^2+u\)<br />
+\(\downarrow\)<br />
+<span class="math-display">\[\dot x = \begin{bmatrix}
+  0 &amp; 0 \\ 0 &amp; 0
+  \end{bmatrix}x+I[\begin{bmatrix}
+  0 \\ u
+\end{bmatrix}-\begin{bmatrix}
+-a \sin x_2 \\ x_1^2
+\end{bmatrix}]
+  \]</span><br />
+we can only cancel the bottom term of the B term<br />
+is the system feedback linearizable?<br />
+\(z_1=x_1\rightarrow\dot z_1=z_2\) state transformation<br />
+\(z_2=a\sin x_2 \rightarrow \dot z_2 = a \cos x_2 \{-x_1^2+u\}=a\cos(sin^{-1}(z_2/a)\{-z_1^2+u\}\)<br />
+\(u=x_1^2+\frac{v}{\cos x_2}\downarrow\) input transformation<br />
+\(\dot z_1 = z_2;\dot z_2 = av\)</p>
+<p>definition: a nonlinear \(\Sigma: \dot x = f(x)+g(x)u,f,g\), sufficiently smooth, is said to be feedback linearizable if \(\exists\) \(u=\alpha(x)+\beta(x)v\) and change of coordinates \(z=T(x),T\) is diffeomorphism (\(T \in C^1,T^{-1}\in C^{-1},T\) invertible) s.t. \(\dot z = Az+Bv,(A,B)\) is controllable.</p>
+<p>when is a \(\Sigma\) FB linearizable?<br />
+what is the choice for \(\alpha(x),\beta(x),T(x)?\)</p>
+<p>\(\dot x = f(x)+g(x)u\)</p>
+<p>combination of state transformation + input transformation with state feedback<br />
+<img src="/images/notes/nl-20260402145641.jpg" alt="" /></p>
+<p>pro: can use linear control, easy<br />
+con: need to know dynamics precisely, may cancel stabilizing nonlinearities</p>
+<p>input-output linearization</p>
+<p>example: design u to solve tracking problem (\(x_2 \rightarrow x_2^d\))<br />
+\(\dot x_1=a\sin x_2\)<br />
+\(\dot x_2=-x_1^2+u\)<br />
+define output \(y=x_2(y \rightarrow y^d=x_2^d)\)<br />
+\(u=x_1^2+v\)<br />
+\(\implies \dot x_1=a\sin x_2;\dot x_2=v\)<br />
+\(v=-k(y=y^d)\)<br />
+\(y=x_2\)</p>
+<p>linearize input-output map \(\bf{\dot y = v}\)<br />
+input-output linearized system achieved by \(u=-x_1^2+v\)<br />
+\(x_1\) is unobservable from output y<br />
+\(x_1\) should be stable OR at least bounded (internal stability)</p>
+<p>generalize to SISO system:<br />
+\(\dot x = f(x)+g(x)u,x\in \mathbb{R}^n,u\in\mathbb{R}\)<br />
+\(y=h(x),y\in\mathbb{R}\)<br />
+f,g,h are sufficiently smooth</p>
+<p>output dynamics:<br />
+\(\dot y = \frac{\partial h}{\partial x}\dot x= \frac{\partial h}{\partial x}[f(x)+g(x)u]=L_fh(x)+L_gh(x)u\)<br />
+suppose \(L_gh(x)\not = 0\)<br />
+\(u=L_gh(x)^{-1}\{L_fh(x)+v\}\implies \dot y =v\)<br />
+if \(L_g h(x) = 0 \implies \dot y = L_fh(x)\)<br />
+\(\ddot y = \frac{\partial L_f h}{\partial x}[f(x)+g(x)u]=L_f(L_fh(x))+L_g(L_fh(x))u\)<br />
+\(=L_f^2h(x)+L_gL_fh(x) u\)</p>
+<p>suppose \(L_gL_fh(x)\not = 0,u=L_gL_fh(x)^{-1}\{-L_f^2h(x)+v\}\)<br />
+\(\implies \ddot y = v\)</p>
+<p>if \(L_gL_fh(x)=0,\ddot y = L_f^2h(x)\)<br />
+\(\dot {\ddot y}=L_f^3h(x)+L)gL_f^2h(x)u\) \(\implies \dot{\ddot y} = v\)<br />
+\(\vdots\)<br />
+\(y^r=L_f^rh(x)+L_gL_f^{r-1}h(x)u\)<br />
+\(L_gL_f^{h-1}h(x)\not = 0 \implies u = L_gL_f^{r-1}h(x)^{-1}\{-L_f^rh(x)+v\}\implies y^r=v\)<br />
+r is the relative degree of y</p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-16/">← Lecture 16</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-18/">Lecture 18 →</a></p>

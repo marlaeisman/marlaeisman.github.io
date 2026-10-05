@@ -1,0 +1,153 @@
+---
+layout: default
+title: "Lecture 7: Global Asymptotic Stability, LaSalle's Theorem and Instability"
+permalink: /blog/nonlinear-control/lecture-07/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-06/">← Lecture 6</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-08/">Lecture 8 →</a></p>
+
+<h1>Lecture 7: Global Asymptotic Stability, LaSalle's Theorem and Instability</h1>
+<p class="note-meta">Nonlinear Control Notes · Feb 17, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>last time: Lyapunov stability theorem</p>
+<p>today:</p>
+<ul>
+<li>global asymptotic stability</li>
+<li>Lasalle's theorem</li>
+<li>instability theorems</li>
+</ul>
+<p>def: global asymptotic stability</p>
+<ul>
+<li>\(x=0\) is  GAS if it is SISL &amp; \(\forall x_0 \in \mathbb{R}^n\), \(x(t,x_0)\) exists on \([0,\infty)\) &amp; \(\lim_{t \rightarrow \infty}x(t,x_0)=0\).</li>
+<li>we know that for AS, \(\dot V(x) &lt; 0; x\not = 0\), so for GAS...<br />
+theorem: \(\dot x= f(x),f(0)=0\). let \(V:\mathbb{R}^n \rightarrow \mathbb{R},V \in C^1\) s.t.<br />
+(i) \(V(0)=0,V(x)&gt;0,x\not = 0\)<br />
+(ii) \(V(x) \rightarrow \infty\) as \(||x|| \rightarrow \infty\) (V is radially unbounded)</li>
+<li>in some cases, this captures observability<br />
+(iii) \(\dot V (x)&lt;0 \forall x \in \mathbb{R}^n, x\not = 0\)<br />
+<strong>then \(x_e=0\) is GAS</strong>.</li>
+</ul>
+<p>radially unbounded is unique... why do we do this?</p>
+<ul>
+<li>look at \(x \in \mathbb{R}^2\)<br />
+<span class="math-display">\[V(x)=\frac{x_1^2}{1+x_1^2}+x_2^2\]</span><br />
+(i) \(V(0)=0\)<br />
+(ii) is not satisfied<br />
+(iii) assume satisfied</li>
+</ul>
+<p>example:mass spring damper cart (nonlinear spring \(k(x)\))<br />
+<img src="/images/notes/nl-20260217143647.png" alt="" /></p>
+<ul>
+<li>\(|x|&lt;d;xk(x)&gt;0\space \&amp; \space k(0)=0\)</li>
+<li>\(m\ddot x+b\dot x +k(x)=0\)</li>
+<li>\(x_1=x;x_2 =\dot x\implies\)<br />
+<span class="math-display">\[\begin{bmatrix}
+  \dot x_1 \\ \dot x_2
+  \end{bmatrix} = \begin{bmatrix}
+  x_2 \\ -b/m\cdot x_2 - 1/m \cdot k(x)
+\end{bmatrix}
+  \]</span><br />
+<span class="math-display">\[x_e = \begin{bmatrix}
+    0 \\ 0
+    \end{bmatrix}
+    \]</span></li>
+<li>in general, we can see this is asymptotically stable within d bounds (local)</li>
+<li>candidate Lyapunov function:  \(V(x) = KE+PE\)
+<ul>
+<li>\(KE=\frac{1}{2}mx_2^2\)</li>
+<li>\(PE=\int^{x_1}_0k(\sigma)d\sigma\)</li>
+<li>\(V(x)=\frac{1}{2}mx_2^2+\int^{x_1}_0k(\sigma)d\sigma\)</li>
+</ul>
+</li>
+<li>we can now check if it satisfies conditions
+<ul>
+<li>\(V(0)=V(0,0)=0\)</li>
+<li>\(V(x)&gt;0; x\not =0\because x_1k(x)&gt;0\)
+<ul>
+<li>\(D=[x||x_1|&lt;d]\)</li>
+</ul>
+</li>
+<li>\(\dot V(x_1,x_2)=\frac{\partial V}{\partial x_1}\dot x_1 + \frac{\partial V}{\partial x_2}\dot x_2\)
+<ul>
+<li>\(=k(x_1)x_2-bx_2^2-k(x_1)x_2\)</li>
+<li>\(=-bx_2^2\le 0\)</li>
+<li>NOT: \(\dot V(x)&lt;0\) for \(x=0\)</li>
+<li>\(x_e=0\) is SISL
+<ul>
+<li>this contradicts intuition... so we can
+<ul>
+<li>(i) find a better Lyapunov function
+<ul>
+<li>from 4.5 khalil \(\rightarrow\) \(W(x_1,x_2)=\frac{1}{m}\int^{x_1}_0k(\sigma)d\sigma\) <span class="math-display">\[+\begin{bmatrix} x_1 \\ x_2\end{bmatrix} \begin{bmatrix}
+ (1/2)(b/m)^2 &amp; (1/2)(b/m) \\ (1/2)(b/m) &amp; 1 \end{bmatrix} &gt;0\]</span> (positive definite)</li>
+</ul>
+</li>
+<li>(ii) find a better theorem to conclude AS
+<ul>
+<li>proof: Lasalle's theorem: \(\dot x=f(x),f(0)=0,f\) is locally Lipschitz, \(x\in \mathbb{R}^n\). Assume there exists open set D containing \(x_e=0\) &amp; exists \(V:D\rightarrow \mathbb{R},V\in C^1\) s.t.</li>
+<li>(1) \(V(0)=0,V(x)&gt;0,x\not - 0, x \in D\)</li>
+<li>(2) \(\dot V(x) \le 0, x\in D\)</li>
+<li>let \(S=[x \in D | \dot V(x)=0]\). suppose only function \(\phi:[0,T]\rightarrow \mathbb{R}^n\) that satisfies</li>
+<li>(3) \(\dot \phi (t) = f(\phi(t))\implies\) (\(\phi\)) is a solution</li>
+<li>(4) \(\phi(t) \in S \forall t\ge 0\) is \(\phi(t)\equiv x_e = 0\)</li>
+<li>them \(x_e\) is AS (<em>only</em> the eq point)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>now, can we apply Lasalle's to the example function:<br />
+\(V(x)=\frac{1}{2}mx_2^2+\int^{x_1}_0k(\sigma)d\sigma;\space \dot V(x)=-bx_2^2\)<br />
+construct \(S=[x\in D|\dot V(x)=0]=[x\in \mathbb{R}^2| |x_1|&lt;d,x_2=0]\)<br />
+let <span class="math-display">\[\phi(t)=\begin{bmatrix}
+  \phi_1(t) \\ \phi_2(t)
+  \end{bmatrix}
+  \]</span> be a solution of the system that lies in \(S\forall t \ge 0\implies \phi_2(t)\equiv 0,|\phi_1(t)|&lt;d\)<br />
+based on the dynamics, \(\dot \phi_2(t)|_s=-\frac{b}{m}\not \phi)2(t)-\frac{1}{m}k(\phi_1(t))\implies -\frac{1}{m}k(\phi_1(t)) = 0\)</p>
+<ul>
+<li>\(\iff \phi_1(t)=0\)</li>
+<li>the only solution is \(\phi_1=\phi_2=0=\implies x_e\) is AS</li>
+</ul>
+<p><strong>when is an equilibrium point unstable?</strong></p>
+<ul>
+<li>first, define where \(x_e=0\) is stable:</li>
+<li>\(\forall \varepsilon&gt;0\exists \delta&gt;0\) s.t. \(\forall x_0 \space ||x||&lt;\delta \implies ||x(t,x_0)||&lt;\varepsilon \space \forall t \ge 0\)</li>
+<li>definition: \(x_e\) is unstable if</li>
+<li>\(\exists \varepsilon&gt;0\forall \delta&gt;0\) s.t. \(\exists x_0 \space ||x||&lt;\delta \implies \space \exists T \ge 0 ||x(t,x_0)||&gt;\varepsilon\)</li>
+</ul>
+<p><strong>instability theorem:</strong></p>
+<ul>
+<li>\(\dot x = f(x),f(0)=0\), f is locally Lipschitz</li>
+<li>suppose \(\exists\) open set D containing \(x_e=0\)</li>
+<li>and, \(V:D\rightarrow R\), V is \(C^1\) s.t.
+<ul>
+<li>(1) \(V(0)=0\)</li>
+<li>(2) \(V(x)&gt;0,x\not =0, x \in D\)</li>
+<li>(3) \(\dot V(x)&gt;0,x\not = 0,x \in D\)</li>
+</ul>
+</li>
+<li>\(\therefore x_e=0\) is unstable.</li>
+</ul>
+<p><strong>Chetaev's instability theorem:</strong></p>
+<ul>
+<li>let \(x_e=0\) be an eq. pt. of \(\dot x = f(x)\)</li>
+<li>suppose \(\exists\) open neighborhood around \(x_e\) on which f is locally Lipschitz and \(\exists V:D\rightarrow\mathbb{R},V\in C^1\) s.t</li>
+<li>(a) \(V(0)=0\)</li>
+<li>(b) \(\forall \delta&gt;0,\exists x_0 \in B_\delta(0)\) s.t. \(V(x_0)&gt;0\)</li>
+<li>(c) \(\exists \varepsilon&gt;0\) s.t. \(\dot V(x)&gt;0\) on \(U=[x\in B_\varepsilon(0)|V(x)&gt;0]\subset D\)<br />
+<em>then, \(x_e=0\) is unstable</em></li>
+</ul>
+<p>note converse lyapunov theorems</p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-06/">← Lecture 6</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-08/">Lecture 8 →</a></p>

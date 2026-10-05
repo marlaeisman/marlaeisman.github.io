@@ -1,0 +1,11 @@
+# Newest first; each entry becomes a tile on the homepage and a row on /blog/
+- title: "Nonlinear Control Notes"
+  url: /blog/nonlinear-control/
+  image: /images/notes/nl-20260422174133.png
+  date: "Spring 2026"
+  summary: "My lecture notes from a graduate nonlinear control course: Lyapunov stability, control Lyapunov functions, backstepping, sliding mode control and feedback linearization."
+- title: "Presenting at AVEC 2026 in Japan"
+  url: /blog/avec-2026/
+  image: /images/me_avec.jpg
+  date: "September 2026"
+  summary: "Notes from presenting my wheeled-quadruped racing paper at the International Symposium on Advanced Vehicle Control in Tsukuba."

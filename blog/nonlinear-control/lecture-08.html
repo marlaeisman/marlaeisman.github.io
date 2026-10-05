@@ -1,0 +1,110 @@
+---
+layout: default
+title: "Lecture 8: Chetaev's Theorem, Quadratic Lyapunov Functions and Linearization"
+permalink: /blog/nonlinear-control/lecture-08/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-07/">← Lecture 7</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-09/">Lecture 9 →</a></p>
+
+<h1>Lecture 8: Chetaev's Theorem, Quadratic Lyapunov Functions and Linearization</h1>
+<p class="note-meta">Nonlinear Control Notes · Feb 19, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>Chetaev's instability theorem:<br />
+suppose \(\dot x - f(x), f(x_e)=0\). suppose \(\exists D\) containing \(x_e\) on which f is locally Lipschitz &amp; \(\exists V:D \rightarrow \mathbb{R},V\in C^1\) s.t.<br />
+(a) \(V(0)=0\)<br />
+(b) \(\forall \delta &gt; 0, \space \exists x_0 \in B_\delta(0)\) s.t. \(V(x_0)&gt;0\)<br />
+(c) \(\exists \varepsilon &gt; 0\) s.t. \(\dot V(x)\) on \(U \triangleq \{x \in B_\varepsilon(0)|V(x)&gt;0\}\subset D\)<br />
+then, \(x_e=0\) is unstable.</p>
+<p>recall definition for instability via Lyapunov</p>
+<p>example 1:<br />
+\(\dot x_1=x_1,\dot x_2=x_2\)<br />
+candidate \(V(x)=1/2x_1^2+1/2x_2^2&gt;0,x\not = 0\)<br />
+\(\dot V(x_1,x_2)=x_1^2+x_2^2&gt;0\implies x=0\) is unstable</p>
+<p>example 2:<br />
+\(\dot x_1=-x_1,\dot x_2=x_2\)<br />
+candidate \(V(x)=1/2x_1^2+1/2x_2^2&gt;0,x\not = 0\)<br />
+\(\dot V(x_1,x_2)=-x_1^2+x_2^2\implies\) cannot conclude definiteness<br />
+candidate \(V_1(x)=-1/2x_1^2+1/2x_2^2\)<br />
+\(\dot V_2(x_1,x_2)=x_1^2+x_2^2&gt;0,x\not=0\implies x=0\) is unstable via Chetaev's</p>
+<p><strong>linearization and quadratic Lyapunov functions</strong><br />
+linear \(\dot x = Ax,x\in \mathbb{R}^n\)<br />
+defn: \(V(x)=x^\top Px,P\in \mathbb{R}^{nxn}\) is a quadratic form<br />
+\(P=\frac{P+P^\top}{2}+\frac{P-P^\top}{2}\)<br />
+= symmetric component + asymmetric component</p>
+<ul>
+<li>note: \(M \in \mathbb{R}^{nxn}\) is symmetric if \(M^\top=M\) and antisymmetric if \(M^\top=-M\)<br />
+\(V(x)=x^\top Px=x^\top(\frac{P+P^\top}{2})x\)</li>
+<li>check: \(x^\top(\frac{P-P^\top}{2})x=0\)</li>
+<li>\(x^\top(\frac{P-P^\top}{2})x=x^\top(\frac{P^\top-P}{2})x=0\implies\)LHS=RHS=0</li>
+<li>we must assume P is symmetric</li>
+</ul>
+<p>def: \(V(x)=x^\top P x\) is positive definite if \(x^\top P x&gt;0,x\not=0\iff P\) is positive definite \(\iff P&gt;0\)</p>
+<ul>
+<li>fact: if \(P=P^\top,P&gt;0\iff \lambda_i(P)&gt;0\). aka if P is symmetric and positive definite, all eig. values are real and positive.<br />
+def: \(Q=Q^\top\) is negative definite if \(-Q&gt;0\) aka -Q is positive definite.</li>
+<li>\(-Q&gt;0\iff \lambda_i(Q)&lt;0\)<br />
+this means we can check eig. values for positive definiteness.</li>
+<li>we can also check leading principal minors &gt; 0</li>
+</ul>
+<p>theorem: given an nxn matrix with real entries, the following are equivalent:</p>
+<ol>
+<li>all eig. values of A have negative real parts</li>
+<li>there exists <em>some</em> (1+) positive definite Q s.t. \(A^\top P + PA = -Q\) has a solution P that is unique and positive definite (P&gt;0)</li>
+<li>for any positive definite Q (Q&gt;0), \(A^\top P + PA = -Q\) has a unique solution P&gt;0.<br />
+corollary: \(\dot x=Ax\) has a GAS eq. pt. \(\iff \exists\) quadratic lyapunov function \(V(x)=x^\top Px,P&gt;0\) s.t. \(\dot V = x^\top[A^\top P + PA]x\) is negative definite.<br />
+\(\implies \dot V = \dot x^\top P x + x^\top P \dot x = x^\top A^\top P x + x^\top P A x = x^\top[A^\top P + P A]x&lt;0\)</li>
+</ol>
+<p><strong>Lyapunov equation: \(A^\top P + PA = -Q\)</strong></p>
+<ul>
+<li>to find V(x) for \(\dot x = Ax\): pick Q&gt;0, Q=I</li>
+<li>we can find P by solving the equation</li>
+<li>we can then construct \(V(x)=x^\top P x \implies \dot V(x)=-x^\top Q x&lt;0\)</li>
+</ul>
+<p>linearization: \(\dot x = f(x),f(x_e)=0,f\in C^1\), \(A=\frac{\partial f}{\partial x}|_{x=x_e}\)</p>
+<ul>
+<li>linearization: \(\dot {\bar x} \approx A \bar x,\bar x = x-x_e\)</li>
+<li>if \(x_e=0\) then \(\bar x = x\)</li>
+<li>apply taylor series for f(x) about \(x_e\), \(f(x)=f(0)+Ax+R(x)\)</li>
+<li>\(R(x)\) satisfies \(\lim_{||x|||\rightarrow 0}=\frac{||R(x)||}{||x||}=0\)</li>
+<li>this means that \(R(x)\) satisfies \(\forall r&gt;0, \exists \sigma&gt;0\) s.t. \(x \in B_\sigma(0)\implies ||R(x)|| \le r||x||\)</li>
+<li>cauchy schwartz inequality: \(\forall xy \in \mathbb{R}^n,x\top y \le |x\top y|\le||x||_2\cdot ||y||_2\)</li>
+</ul>
+<p>prove lyapunov indirect method: (<em>this is a justification of linear control</em>)</p>
+<p>consider \(\dot x = f(x),f(x_e)=0,f\in C^1\)</p>
+<ol>
+<li>if the linearization of the system about \(x_e\) has eig. values with negative real parts, then we know the linear system is stable. in addition, \(x_e\) is <em>asymptotically stable</em> for \(\dot x = f(x)\) <em>locally</em>.</li>
+<li>if the linearization has 1+ eig. value with a positive real part, then the linear system is unstable. in addition , \(\dot x = f(x)\) is <em>unstable</em> for \(x_e\).</li>
+<li>if the linearization has all eigenvalues with real components \(\le 0\) and at least one real part \(=0\), the linear system is stable. there is <em>no conclusion</em> regarding the nonlinear system.</li>
+</ol>
+<p>proof:<br />
+will show (3) and (1).<br />
+3 \(\rightarrow\) \(\dot x = x^3, \dot x = -x^3\rightarrow\) unstable and GAS</p>
+<ul>
+<li>the first is unstable because it will go to infinity with positive x. the second will stay at the origin.</li>
+<li>\(A=\frac{\partial f}{\partial x}|_{x_e}=3x^2=0\implies\) eigenvalues are 0.</li>
+</ul>
+<p>1 \(\rightarrow\) assume \(x_e=0\)<br />
+\(A=\frac{\partial f}{\partial x}|_{x_e},Re\{\lambda_i\}&lt;0\)<br />
+\(\implies P&gt;0,\) s.t. \(A^\top P + PA = -I\)<br />
+choose candidate function: \(V(x)=x^\top P x &gt; 0, x\not = 0\)</p>
+<ul>
+<li>\(\dot x = f(x) = Ax + R(x)\)</li>
+<li>\(\dot V = \dot x^\top P x + x^\top P \dot x=[ax+R(x)]^\top Px+x^\top P[ax+R(x)]\)</li>
+<li>= \(x^\top[A^\top P + PA]x+R(x)^\top Px+x^\top P R(x)=-x^\top x+2x^\top P R(x)\)</li>
+</ul>
+<p>note: \(x^\top P R(x)\le|x^\top P R(x)|\rightarrow \text{ cauchy-schwartz } \le ||x||_2 \cdot ||PR(x)||_2\)</p>
+<ul>
+<li>\(\le ||x||_2 \cdot ||P||_2 ||R(x)||_2\)</li>
+<li>\(\forall r&gt;0,\exists \delta&gt;0\) s.t. \(||x||&lt;\sigma \implies ||R(x)||\le r||x||\)</li>
+<li>\(\implies x^\top P R(x) \le r||P||_i \cdot ||x||_2^2\) when \(||x||&lt;\sigma\)</li>
+<li>back to \(\dot V: \dot V(x) \le =x^\top x+ 2r||P||_i \cdot ||x||_2^2\) when \(||x||&lt;\sigma\)</li>
+<li>= \(-(1-2r||P||_i)x^\top x\)</li>
+<li>choose r to make \(1-2r||P||_i&gt;0 \rightarrow \frac{1}{2||P||_i}\implies \dot V&lt;0\) for A.S. when \(||x||&lt;\sigma\)</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-07/">← Lecture 7</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-09/">Lecture 9 →</a></p>

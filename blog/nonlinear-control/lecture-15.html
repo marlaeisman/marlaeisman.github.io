@@ -1,0 +1,101 @@
+---
+layout: default
+title: "Lecture 15: Strict-Feedback Systems and Sliding Mode Control"
+permalink: /blog/nonlinear-control/lecture-15/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-14/">← Lecture 14</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-16/">Lecture 16 →</a></p>
+
+<h1>Lecture 15: Strict-Feedback Systems and Sliding Mode Control</h1>
+<p class="note-meta">Nonlinear Control Notes · Mar 19, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>last time:</p>
+<ul>
+<li>clf</li>
+<li>backstepping<br />
+today:</li>
+<li>backstepping (contd)
+<ul>
+<li>strict feedback systems</li>
+</ul>
+</li>
+<li>sliding mode control</li>
+</ul>
+<p>example:<br />
+\(\Sigma_a:\dot x = x\zeta; \dot \zeta = u\)<br />
+come up with some controller for original system<br />
+\(\Sigma : \dot x = xu; f(x)=0,g(x)=0\)</p>
+<p>first, design controller for \(\alpha(x)\)<br />
+choose \(\alpha(x)=-x^2\implies \dot x = -x^3\)<br />
+for proof of stability, \(V(x) = x^2/2\implies \dot V = -x^4&lt;0\)</p>
+<p>for \(\Sigma_a\rightarrow u=-c(\zeta+x^2)+\frac{\partial \alpha}{\partial x}(f+g\zeta)\)<br />
+\(= -c(\zeta+x^2)+-2x(x\zeta)-x^2\)</p>
+<ul>
+<li>\(L_{f+g\zeta}=\frac{\partial \alpha}{\partial x}(f+g\zeta)\)</li>
+<li>\(L_gV(x)=\frac{\partial V}{\partial x}g(x)\)<br />
+\(V_a=V(x)+\frac{1}{2}(\zeta+x^2)^2\implies \dot V_a&lt;0\)</li>
+</ul>
+<p>try a different alpha:<br />
+\(\alpha(x)=0\implies \dot x = 0\)<br />
+\(V(x)=\frac{1}{2}x^2\implies \dot V(x) =0\le 0\)<br />
+for \(\Sigma_a:V_a=V(x)+\frac{1}{2}(\zeta+x)^2=V(x)+\frac{1}{2}(\zeta)^2\)<br />
+\(\dot V_a=x \dot x + \zeta \dot \zeta=x(x\zeta)+\zeta u=\zeta[x^2+u]\)<br />
+\(u=-x^2-c\zeta\)<br />
+\(\dot V_a=-c\zeta^2\le0\implies\) SISL for \(x=0,\zeta=0\)</p>
+<p>apply lasalle's theorem to check for further stability<br />
+\(S=\{(x,\zeta)|\dot V_a=0\}=\zeta=0\)<br />
+is the origin the only solution within this set?<br />
+\(\dot \zeta = 0=-x^2-c\zeta\implies x=0\)<br />
+by lasalle's (and also radially unbounded) we have GAS</p>
+<p><strong>strict feedback systems</strong><br />
+def: a system that can be expressed in the following form:<br />
+\(\dot x = f_0(x)+g_0(x)\zeta_1\)<br />
+\(\dot \zeta_1 = f_1(x,\zeta_1)+g_1(x,\zeta_1)\zeta_2\)<br />
+\(\dot \zeta_2= f_1(x,\zeta_1,\zeta_2)+g_1(x,\zeta_1,\zeta_2)\zeta_3\)<br />
+\(\vdots\)<br />
+\(\dot \zeta_k= f_k(x,\zeta_1,\zeta_2,\dots,\zeta_k)+g_k(x,\zeta_1,\zeta_2,\dots,\zeta_k)u\)<br />
+where \(x\in\mathbb{R}^n, \zeta_i \in \mathbb{R}, u\in\mathbb{R}\)<br />
+\(f_1(0,0)=0,f_2(0,0,0)=0,\dots,f_k(0,\dots,0)=0\)<br />
+and x dynamics satisfies assumption A1 (see prev. lecture)</p>
+<p>is called a <em>strict feedback system</em></p>
+<p>what do the \(\zeta\)'s look like?</p>
+<p>\(\dot x = f_0(x)+g_0(x)\zeta_1 \rightarrow \zeta_1=\alpha(x),V(x),\alpha(0)=0\)<br />
+\(\dot \zeta_1=f_1(x,\zeta)+g_1(x,\zeta_1)\zeta_2\rightarrow \zeta_2=\alpha_1(x,\zeta_1),V_1(x,\zeta_1)=V(x)+\frac{1}{2}[\zeta_1-\alpha(x)]^2\)<br />
+\(\dot\zeta_2=f_1(x,\zeta_1,\zeta_2)+g_1(x,\zeta_1,\zeta_2)\zeta_3=\alpha_2(x,\zeta_1,\zeta_2),V_2(x,\zeta_1,\zeta_2)=V_1(x,\zeta_1)+\frac{1}{2}[\zeta_3-\alpha_2(x,\zeta_1)]^2\)<br />
+\(\vdots\)<br />
+\(\dot V_2=\frac{\partial V_2}{\partial x}\dot x+\frac{\partial V_2}{\partial \zeta_1}\dot \zeta_1+\frac{\partial V_2}{\partial \zeta_2}\dot \zeta_2\)</p>
+<ul>
+<li>and recall \(\dot \zeta_2=\zeta_3\)</li>
+</ul>
+<p><strong>sliding mode control</strong> aka variables structure systems<br />
+<img src="/images/notes/nl-20260319145923.jpg" alt="" /><br />
+\(\iff\ddot y +ky=0\)<br />
+we want to find if we can pick \(k=\pm1\) with the goal of \(y \rightarrow 0\)<br />
+pick two states: \(x_1=y,x_2=\dot y\implies \dot x_1=x_2,\dot x_2=-kx_1\)</p>
+<p>\(k=+1:\)<br />
+draw phase-space plot<br />
+\(\frac{\dot x_1}{\dot x_2}=\frac{\frac{dx_1}{dt}}{\frac{dx_2}{dt}}=\frac{dx_1}{dx_2}=\frac{-x_2}{x_1}\)<br />
+\(x_1dx_1+x_2dx_2=0\)<br />
+\(\frac{x_1^2}{2}+\frac{x_2^2}{2}=c\) becomes circles corresponding to c<br />
+\(\rightarrow\) SISL</p>
+<p>\(k=-1:\)<br />
+\(\frac{dx_1}{dx_2}=\frac{x_2}{x_1}\iff x_1dx_1=x_2dx_2=0\)<br />
+\(\frac{x_1^2}{2}-\frac{x_2^2}{2}=c\) becomes parabolas approaching \(\infty\) in all directions<br />
+\(\rightarrow\) unstable</p>
+<p>\(\therefore k=\pm 1\rightarrow\) no convergence to \((0,0)!\)</p>
+<p>if we switch between \(\pm\), could we drive the system to \((0,0)\)?</p>
+<p><img src="/images/notes/nl-20260319151618.jpg" alt="" /><br />
+\(x_2=-ax_1,0&lt;a&lt;1\)<br />
+where the line is \(s=ax_1+x_2=0\)</p>
+<ul>
+<li>above the line, \(s&gt;0,\) and below \(s&lt;0\)</li>
+<li>\(k=\text{sign}(sx_1)\), either -1 or +1 depending on side of line</li>
+<li>switches from circle to parabola depending on k</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-14/">← Lecture 14</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-16/">Lecture 16 →</a></p>

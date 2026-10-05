@@ -1,0 +1,92 @@
+---
+layout: default
+title: "Lecture 16: Sliding Mode Control: Sliding Surfaces and the Reaching Phase"
+permalink: /blog/nonlinear-control/lecture-16/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-15/">← Lecture 15</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-17/">Lecture 17 →</a></p>
+
+<h1>Lecture 16: Sliding Mode Control: Sliding Surfaces and the Reaching Phase</h1>
+<p class="note-meta">Nonlinear Control Notes · Mar 31, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>today:</p>
+<ul>
+<li>sliding mode control continued</li>
+<li>project</li>
+</ul>
+<p>\(\ddot y = -ky\)<br />
+\(x_1=y,x_2=\dot y\)<br />
+\(\implies \dot x_1 = x_2, \dot x_2 = -kx_1\)</p>
+<p>note how system changes between k=1 (SISL) and k=-1 (unstable).<br />
+step 1: construct sliding surface<br />
+\(s=ax_1+x_2\)</p>
+<p>dynamics on \(s=0\):<br />
+\(x_2=-ax_1\)<br />
+\(\dot x_1 = x_2=-ax_1\)<br />
+\(x_1 \rightarrow 0\) as \(t \rightarrow \infty\)<br />
+\(\implies x_2 \rightarrow 0\)</p>
+<p>how fast do we reach the origin? finite time<br />
+remember for dynamics, we choose \(k=\text{sign}(sx_1)\)</p>
+<p>more general example:<br />
+\(\dot x_1 = x_2\)<br />
+\(\dot x_2 = h(x)+g(x)u\)<br />
+\(h(x),g(x)\) may be <em>unknown</em> but satisfy conditions: \(g(x)&gt;g_0&gt;0,\forall x \in \mathbb{R}^2\)</p>
+<p>i want to design some state feedback \(u(x)\) s.t. \(x=[0,0]\) is a.s.</p>
+<ul>
+<li>construct a sliding surface, look at the dynamics <em>on the sliding surface</em> to ensure they are a.s. and the dynamics <em>off the sliding surface</em> to ensure they are attractive. if we have both then we can guarantee a.s.</li>
+</ul>
+<ol>
+<li>construct sliding surface. what would the surface be?<br />
+\(s=ax_1+x_2,a&gt;0\)</li>
+<li>look at dynamics ON the surface<br />
+on \(s=0, x_2=-ax_1\)<br />
+\(\dot x_1=x_2=ax_1\implies\) a.s. \(\implies x_1\rightarrow 0, x_2\rightarrow 0\) as \(t \rightarrow \infty\)<br />
+note: dynamics on <em>s</em> are independent of <em>h(x)</em> and <em>g(x)</em></li>
+<li>look at reaching mode<br />
+look at dynamics off \(s=0\implies s\not = 0\)<br />
+\(\dot s =a \dot x_1 + \dot x_2\)<br />
+here, we only know that \(\dot s = ax_2+h(x)+g(x)u\)</li>
+</ol>
+<p>suppose \(h(x),g(x)\) satisfy \(|\frac{ax_2+h(x)}{g(x)}|\le \sigma(x),\forall x \in \mathbb{R}^2\implies \sigma(x)&gt;0\)</p>
+<ul>
+<li>here, we just need to know \(\sigma(x)\)</li>
+<li>to find u to drive \(s\) to zero, we want to first find a lyapunov function</li>
+</ul>
+<p>\(V(x)=\frac{1}{2}s^2\)<br />
+\(\dot V=s \dot s = s[ax_2+h(x)]+sg(x)u\)<br />
+\(\dot V = sg(x)\frac{ax_2+h(x)}{g(x)}+sg(x)u\)<br />
+\(\le g(x) |s| |\frac{ax_2+h(x)}{g(x)}|+sg(x)u\)<br />
+select \(u=-\beta(x)\text{sign}(s)\)<br />
+\(\beta(x)\ge \sigma(x) + \beta_0,\beta_0&gt;0\)</p>
+<p>\(\dot V \le g(x) |s| \sigma(x)-g(x)[\sigma(x)+\beta_0]s \cdot \text{sign}(s)\)<br />
+\(=g(x)\{\sigma(x)-\sigma(x)+\beta_0\}\)<br />
+\(\le -g_0 \beta_0 |s| &lt; 0 \implies V \rightarrow 0 \implies s=0\)<br />
+\(=-g_0\beta_0cV^{1/2}\) where \(c=\sqrt 2\)<br />
+this shows that we can drive V to zero in finite time<br />
+control is <em>robust</em> to \(h(x),g(x)\) (see hw 7)</p>
+<p>suppose we have a 3-state system</p>
+<p>\(\dot x_0=x_1\)<br />
+\(\dot x_1=x_2\)<br />
+\(\dot x_2=h(x)+g(x)u\)<br />
+\(x = [x_1 \space x_2 \space x_3]^\top \in \mathbb{R}^3\)</p>
+<p>how do we construct a sliding surface? (hw 7)</p>
+<p>first make the system of \(\dot x_1\) and \(\dot x_0\) stable + go to the origin</p>
+<p><span class="math-display">\[\begin{bmatrix}
+  \dot x_0 \\ \dot x_1
+  \end{bmatrix}=\begin{bmatrix}
+  0 &amp; 1 \\ -a_0 &amp; -a_1
+\end{bmatrix}\begin{bmatrix}
+x_0 \\ x_1
+\end{bmatrix}\]</span><br />
+\(x_2 = -a_0x_0-a_1x_1,a_0&gt;0,a_1&gt;0\)<br />
+\(s=a_0x_0+a_1x_1+x_2\)<br />
+(C1) \(g(x)&gt;g_0&gt;0\)<br />
+(C2) \(|\frac{a_0x_1+a_1x_2+h(x)}{g(x)}|\)</p>
+<p>project:</p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-15/">← Lecture 15</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-17/">Lecture 17 →</a></p>

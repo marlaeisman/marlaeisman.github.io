@@ -1,0 +1,96 @@
+---
+layout: default
+title: "Lecture 19: Zero Dynamics, Manifolds and Tangent Spaces"
+permalink: /blog/nonlinear-control/lecture-19/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-18/">← Lecture 18</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-20/">Lecture 20 →</a></p>
+
+<h1>Lecture 19: Zero Dynamics, Manifolds and Tangent Spaces</h1>
+<p class="note-meta">Nonlinear Control Notes · Apr 14, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>recall definitions of FB linearizable, relative degree:</p>
+<p>in linearizing control: \(u=L_gL_f^{r-1}h(x)^{-1}\{-L_f^rh(x)+v\}\implies y^r=v\)<br />
+zero dynamics: dynamics restricted to Z<br />
+\(z = q(0,z)\)<br />
+theorem: if \(z=0\) is locally exponentially stable for the zero dynamics \(z=q(0,z)\), then \(u_{IO},v=-k\zeta\) locally exponentially stabilizes \(z=0\)</p>
+<p>proof: \(\zeta = A_{cl} \zeta, A_{cl}=A-Bk, z=q(\zeta, z)\)</p>
+<p><span class="math-display">\[A_{cl}=\begin{bmatrix}
+  0 &amp; 1 &amp; \dots \\
+  \vdots &amp; \ddots \\
+  &amp; &amp; 0 &amp; 1 \\
+  -k_1 &amp; -k_2 &amp; ... &amp; -k_r
+  \end{bmatrix}, Re(\lambda_i(A_{cl}))&lt;0
+  \]</span><br />
+linearize about \(\zeta\), z=0<br />
+<span class="math-display">\[\begin{bmatrix}
+  \dot \delta \zeta \\
+  \dot \delta z
+  \end{bmatrix} = J\begin{bmatrix}
+	\delta \zeta \\
+  \delta z
+  \end{bmatrix}
+  \]</span><br />
+<span class="math-display">\[J=\begin{bmatrix}
+    A_{CL} &amp; 0 \\
+     \frac{\partial q(0,0)}{\partial \zeta} &amp; 
+     \frac{\partial q(0,0) }{\partial z}
+    \end{bmatrix}, \frac{\partial q(0,0) }{\partial z}
+    \]</span><br />
+J and \(A_{cl}\) are hurwitz \(\implies\) x is stable exponentially</p>
+<p>IO linearization vs FB linearization<br />
+suppose relative degree r=n and define \(u=L_gL_f^{r-1}h(x)^{-1}(-L_f^nh(x)+v)\)<br />
+then, <span class="math-display">\[\zeta = \begin{bmatrix}
+  h(x) \\ L_fh(x) \\ \vdots \\ L_f^{r-1}h(x)
+  \end{bmatrix}, \dot \zeta = \begin{bmatrix} 0 &amp; 1 &amp; \dots \\ &amp;  &amp; \ddots \\
+\end{bmatrix}\zeta + \begin{bmatrix}
+0 \\ \vdots \\ 0 \\ 1
+\end{bmatrix}v \]</span><br />
+\(\dot x = f(x) + g(z) u, y=h(x)\)<br />
+when \(u=u_{IO}\) and \(\zeta = T(x)\rightarrow\) \(\dot \zeta = A \zeta Bv\)<br />
+so now we want to find conditions s.t. \(T(x)\) is a diffeomorphism</p>
+<p>inverse function theorem:<br />
+if a function \(\tau:\mathbb{R}^n \rightarrow \mathbb{R}^n, T \in C^1, \frac{\partial \tau}{\partial x}(x_0)\) is full rank, then \(T^-1\) exists and is continually differential locally</p>
+<p>fact:<br />
+if nonlinear function \(\Sigma\) has relative degree r at \(x_0\), then in a nbd @ \(x_0\), the functions \(\{h(x),L_fh(x), L_f^2h(x), ...L_f^{r-1}h(x)\}\) are independent</p>
+<p>therefore, \(\Sigma_{NL}\) is FB linearizable iff \(\exists h(x)\) s.t. relative degree r=n.</p>
+<p>example:<br />
+\(\dot x = f(x) + g(x)u \rightarrow\) is it FB linearizable?</p>
+<ul>
+<li>start by trying y</li>
+<li>but can we know when such an h exists? this depends only on \(f(x), g(x)\).</li>
+</ul>
+<p>prereq: (i) Lie bracket: manifold, tangent space, tangent vector, vector, field<br />
+(ii) involute distribution: tangent bundle, distributions</p>
+<p>manifold:</p>
+<ul>
+<li>surface in \(\mathbb{R}^n\), maybe with orientation of plane, sphere, etc.</li>
+<li>have a dimension i.e. # to specify points on manifold<br />
+<img src="/images/notes/nl-20260422174133.png" alt="" /><br />
+definition: let M be a non-empty subset of \(\mathbb{R}^n\) and let the dimension of M be \(1 \le m \le n\), then M is an m-dim smooth manifold of \(\mathbb{R}^n\) if \(\forall p \in M, \exists r&gt;0, F=B_r(p)\rightarrow \mathbb{R}^{n-m}\) s.t.<br />
+(a) \(M \cap B_r(p)=\{x \in \mathbb{R}^n | F(x)=0\}\)<br />
+(b) F is smooth<br />
+(c) \(\forall \bar x \in M \cap B_r(p),\) rank \(\frac{\partial F}{\partial x}(\bar x)=n-m\)<br />
+\(\implies\) F is diffomorphism</li>
+</ul>
+<p>unit spheres:<br />
+\(x \in \mathbb{R}^2 \rightarrow F(x)=x_1^2+x_2^2-1\)<br />
+\(\mathbb{R}^3 \rightarrow F(c) = x_1^2 + x_2^2 + x_3^2 -1\)<br />
+unit circle in \(\mathbb{R}^3\)<br />
+<span class="math-display">\[F(x) = \begin{bmatrix}
+  x_1^2+x_2^2-1 \\ x_3
+  \end{bmatrix}
+  \]</span><br />
+tangent space:<br />
+linear approximation of a manifold M @ point \(p \in M\)</p>
+<p>definition:<br />
+let M be a smooth manifold on \(\mathbb{R}^n, P \in M, F: B_r(p) \rightarrow \mathbb{R}^{n-m}\). then, the tangent space @ p, \(\tau_p M = \{v \in \mathbb{R}^n | \frac{\partial F}{\partial x}(p)v=0\}=\text{Null}(\frac{\partial F}{\partial x})\)<br />
+\(\dim(\tau_p M)= \dim(M)=m\)<br />
+<img src="/images/notes/nl-20260422174114.png" alt="" /></p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-18/">← Lecture 18</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-20/">Lecture 20 →</a></p>

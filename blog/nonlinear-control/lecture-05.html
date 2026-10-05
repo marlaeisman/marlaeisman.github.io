@@ -1,0 +1,190 @@
+---
+layout: default
+title: "Lecture 5: Energy Functions, Compactness and Lyapunov Stability Definitions"
+permalink: /blog/nonlinear-control/lecture-05/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-04/">← Lecture 4</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-06/">Lecture 6 →</a></p>
+
+<h1>Lecture 5: Energy Functions, Compactness and Lyapunov Stability Definitions</h1>
+<p class="note-meta">Nonlinear Control Notes · Feb 10, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>for \(\dot x = Ax\)</p>
+<ul>
+<li>we can check SISL \(\rightarrow\) \(Re[\lambda_i(A)]\le 0\)</li>
+<li>AS/ES \(\rightarrow\) \(Re[\lambda_i(A)]&lt; 0\)</li>
+<li>unstable \(\rightarrow\) \(\exists i, Re[{\lambda_i(A)}] &gt;  0\)</li>
+</ul>
+<p><strong>for nonlinear systems \(\dot x = f(x)\), \(x_e=0\):</strong></p>
+<p>example: \(\ddot y + y =0\)<br />
+\(x_1=y\)<br />
+\(x_2=\dot y\)<br />
+\(x_e=0\) <span class="math-display">\[\implies \dot x = \begin{bmatrix}
+  0 &amp; 1 \\ -1 &amp; 0
+  \end{bmatrix}x
+  \]</span> \(\lambda_1 = j, \lambda_2=-j\)</p>
+<p>look at energy function: \(V(x)=x_1^2+x_2^2\)<br />
+where \(x_1\) is potential and \(x_2\) is kinetic energy and the sum is the total energy of the system</p>
+<p>facts:<br />
+(a) \(V(x) \le C^2 = \text{ const } \ge 0 \iff x_1^2+x_2^2 \le C^2\)</p>
+<ul>
+<li>sublevel sets of V: {\(x | V(x) \le C^2\)}</li>
+<li>sublevel set is a closed, bounded circle of radius C<br />
+(b) \(\frac{\partial V}{\partial x} = [\frac{\partial V}{\partial x_1}, \frac{\partial V}{\partial x_2}]\) = gradient of \(V\)</li>
+<li>= \([2x_1,2x_2]\)</li>
+<li>suppose we take a point on the boundary of the sublevel set, the vector is the gradient
+<ul>
+<li>the vector is normal to the tangent, pointing out of the circle</li>
+<li>\(\frac{\partial V }{\partial x}\) is orthogonal to \(V(x)=C^2\) &amp; points in increasing direction of V<br />
+(c) \(\dot x = f(x)\), \(\frac{dx}{dt}=f(x(t))\)</li>
+</ul>
+</li>
+<li>the direction of this vector is tangent to the curve</li>
+<li>shows us the direction that the system will continue moving (motion of system)<br />
+(d) \(V_1, V_2 \in \mathbb{R}^n\)</li>
+<li>\(\cos(\theta)=\frac{&lt;v_1,v_2&gt;}{||v_1||_2||v_2||_2}\)</li>
+<li>\(&lt;v_1,v_2&gt;=0\iff\) orthogonal (\(\theta = \pi/2\))</li>
+<li>\(&lt;v_1,v_2&gt;\space &gt; 0 \iff -90 \degree &lt;\theta &lt;90\degree\)</li>
+<li>\(&lt;v_1,v_2&gt; \space &lt; 0 \iff \theta &gt; 90 \degree\) or \(\theta &lt; -90 \degree\)<br />
+(e) consider \(&lt;\frac{\partial V}{\partial x},f(x)&gt;\)</li>
+<li>\(&lt;\frac{\partial V}{\partial x},f(x)&gt; \space =0\iff\) trajectory moves tangent to sublevel set {\(x | V(x) \le C^2\)} which means V(x) remains constant</li>
+<li>\(&lt;\frac{\partial V}{\partial x},f(x)&gt;\space &gt;0\iff\) trajectories moving towards increasing V</li>
+<li>\(&lt;\frac{\partial V}{\partial x},f(x)&gt;\space &lt;0\iff\) trajectories moving towards decreasing V<br />
+(f) consider \(\frac{d}{dt}V(x(t))\)</li>
+<li>\(\frac{d}{dt}V(x(t))=\frac{\partial V }{\partial x }\cdot \frac{dx}{dt} = \frac{\partial V}{\partial x} \cdot \dot x\)</li>
+<li>= \(&lt;\frac{\partial V }{\partial x}x,f(x)&gt;|_{x(t)}=\dot V(x)\)</li>
+</ul>
+<p>back to example:<br />
+<span class="math-display">\[ \dot x = \begin{bmatrix}
+  0 &amp; 1 \\ -1 &amp; 0
+  \end{bmatrix}x, \space x = \begin{bmatrix}
+  x_2 \\ -x_1
+\end{bmatrix}
+
+  \]</span> \(\lambda_1 = j, \lambda_2=-j, V(x)=x_1^2+x_2^2\)<br />
+<span class="math-display">\[\dot V(x)=\begin{bmatrix}
+  2x_1 &amp; 2x_2
+  \end{bmatrix}
+  \begin{bmatrix}
+  x_2 \\ -x_1
+\end{bmatrix}  =0\]</span></p>
+<p>V is constant along trajectories of the system. \(\implies\) if V is constant, the trajectory evolves along the circles.</p>
+<p>example: <span class="math-display">\[\dot x = \begin{bmatrix}
+  -1/2 &amp; 1 \\ -1 &amp; -1/2
+  \end{bmatrix} = f(x)\]</span><span class="math-display">\[V(x) = x_1^2+x_2^2\]</span><br />
+<span class="math-display">\[\dot V = \begin{bmatrix}
+    2x_1 &amp; 2x_2
+    \end{bmatrix}
+    \begin{bmatrix}
+    -1/2x_1+x_2 \\ -x_1-1/2x_2
+    \end{bmatrix}
+    \]</span><br />
+= \(-x_1^2-x_2^2\)<br />
+= \(&lt;\frac{\partial V}{\partial x}, f(x)&gt;=-x_1^2-x_2^2&lt;0\) for \(x \not = 0\)<br />
+\(V(x)\) decreases along trajectories until \(V(x)=0\), when the trajectory stops</p>
+<p><strong>useful math background</strong></p>
+<ol>
+<li>def: a subset \(S \subset \mathbb{R}^n\) is bounded if \(\exists K &lt; \infty\) s.t. \(\forall x \in S, ||x|| \le K\)</li>
+<li>lemma: suppose that \(V:\mathbb{R}^n \rightarrow \mathbb{R}\) is continuous. then, \(\forall C \in \mathbb{R}\), the set of points \(L(c)=\){\(x\in\mathbb{R}^n | V)x_ \le C\)}
+<ol>
+<li>proof: we will use the <em>sequence characterization</em> for closed sets. let x(n) be a sequence of points in L(c) (i.e., \(V(x_n) \le C \forall n \ge 1)\) s.t. \(x_n \rightarrow \bar x\).</li>
+<li>to show: \(\bar x \in L(c)\) (i.e. \(V(\bar x) \le C\)) . Since V is continuous, \(V(x) = V(\lim x_n) = \lim_{n\rightarrow \infty}V(x_n)\).</li>
+<li>But, \(\forall n,\space V(x_n) \le C \implies V(\bar x) \le C\)</li>
+</ol>
+</li>
+<li>def: a function V:\(\mathbb{R}^n \rightarrow \mathbb{R}_+\) is <em>radially unbounded</em> if \(\forall k_1 &lt; \infty, \space \exists k_2 &lt; \infty\) s.t. \(\forall x \in \mathbb{R}^n\) with \(||x|| \ge k_2\). it follows that \(V(x) \ge k_1\) (i.e., \(||x|| \ge k_2 \implies V(x) \ge k_1\))
+<ol>
+<li>notation: (i) \(V(x) \rightarrow \infty\) as \(||x|| \rightarrow \infty\)</li>
+<li>(ii) \(\mathbb{R}_+ = [x \in \mathbb{R} | x \ge 0]\)</li>
+</ol>
+</li>
+<li>lemma: suppose that V:\(\mathbb{R}^n \rightarrow \mathbb{R}_+\) is
+<ol>
+<li>continuous</li>
+<li>\(V(0)=0\)</li>
+<li>\(V(x)&gt;0\) for \(x \not = 0\)</li>
+<li>\(V(x) \rightarrow \infty\) as \(||x|| \rightarrow \infty\)<br />
+then, \(\forall C \ge 0\), \(L(c) :=[x\in \mathbb{R}^n | V(x) \ge C]\) is <em>closed</em> and <em>bounded</em>.</li>
+</ol>
+</li>
+<li>proof: that L(c) is closed was shown in lemma 2. it suffices to show that L(c) is bounded. fix \(C \ge 0\). if L(c) is NOT bounded, then \(\forall K &lt; \infty, \exists x \in L(c)\) with \(||x|| \ge K.\) that is, \(\forall K &lt; \infty, \exists x\) s.t. \(V(x) \le C\) and \(||x|| \ge K\) which implies that \(V\) is not radially unbounded. hence, \(L(c)\) must be bounded.</li>
+<li>def: a subset \(S \subset \mathbb{R}^n\) is <em>compact</em>  if it is closed and bounded.
+<ol>
+<li>note: this definition is <em>not</em> valid for infinite dimensional normed spaces (\(V, ||\cdot ||\))</li>
+<li>compact sets have some very nice properties, some of which would be brought out in the following</li>
+</ol>
+</li>
+<li>theorem (weirstrass): suppose that \(f:S\rightarrow \mathbb{R}\) is continuous and that S is compact. then, f achieves a maximum and a minimum on S, that is, \(\exists s^* \in S\) and \(s_* \in S\) such that \(f(s^*)=\sup_{x \in S}f(x)\) and \(f(s_*)= \inf_{x \in S}f(x)\).</li>
+<li>example:
+<ol>
+<li>\(S=[0,\infty) \subset \mathbb{R}\) closed but NOT bounded.
+<ul>
+<li>\(f(x)=\frac{1}{1+x^2};\space \inf_{x\in S}f(x) =0\)</li>
+</ul>
+</li>
+<li>\(S = (0,1)\) bounded but NOT closed
+<ul>
+<li>\(f(x) = x; \inf_{x\in S}f(x)=0\) BUT \(\not \exists x_* \in S\) s.t. \(f(x_*)=0\)</li>
+<li>\(f(x) = x; \sup_{x\in S}f(x)=1\) BUT \(\not \exists x^* \in S\) s.t. \(f(x^*)=1\)</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>definition: \(h:S \subset \mathbb{R}^n \rightarrow \mathbb{R}^m\) is <em>uniformly continuous</em> if \(\forall \varepsilon &gt; 0 \space \exists \delta(\varepsilon)&gt;0\) s.t. \(x,y \in S, ||x \cdot y || &lt; \delta \implies ||h(x) \cdot h(y) || &lt; \varepsilon\)
+<ol>
+<li>key point: some \(\delta\) must work for all x and y.</li>
+</ol>
+</li>
+</ol>
+<p>then what is the difference between being continuous and uniformly continuous?</p>
+<ul>
+<li>h is cont. at y if \(\forall \varepsilon &gt; 0, \exists \delta &gt; 0\) s.t. \(\forall x \in B_\delta(y) \implies f(x) \in B_\varepsilon(f(y)) \iff \forall x, ||x-y||&lt;\delta \implies ||f(x)-f(y)||&lt;\varepsilon\)</li>
+</ul>
+<ol start="10">
+<li>example: \(h: \mathbb{R} \rightarrow \mathbb{R}\) by \(x \rightarrow e^x\) (i.e. \(h(x)=e^x\)) is certainly continuous at every point in \(\mathbb{R}\). but, it is <em>NOT uniformly continuous.</em></li>
+<li>theorem: if \(h:S\rightarrow \mathbb{R}^m\) is <em>continuous</em> and S is compact, then h is <em>uniformly continuous</em> .
+<ol>
+<li>continuity + compactness \(\implies\) unif. continuity</li>
+</ol>
+</li>
+<li>example: \(S=(0,1];h(x)=1/x\) not unif. cont.
+<ol>
+<li>however, for \(S=[10^{-3},1]; h(x)=1/x\), IS unif. cont.</li>
+</ol>
+</li>
+<li>def: a function \(h:\mathbb{R} \rightarrow \mathbb{R}\) is bounded from below if \(\exists m&gt;-\infty\) s.t. \(h(x) \ge m \space \forall x \in \mathbb{R}\)
+<ol>
+<li>a function \(h: \mathbb{R} \rightarrow \mathbb{R}\) is <em>non-increasing</em> if \(x \ge y \implies h(x) \le h(y)\)</li>
+</ol>
+</li>
+<li>theorem: if \(h: \mathbb{R} \rightarrow \mathbb{R}\) is non-increasing and bounded from below, then \(\exists ! c \in \mathbb{R}\) s.t. \(\lim_{x\rightarrow \infty}h(x)=c\) (i.e. \(\forall \epsilon &gt; 0 \exists k &lt; \infty\) s.t. \(\exists x \ge k, |h(x)-c|&lt;\epsilon\))
+<ol>
+<li>similarly, if h is non-decreasing and bounded from below, then \(\exists !  c\in \mathbb{R}\) s.t. \(\lim_{x\rightarrow \infty}h(x) = c\).</li>
+</ol>
+</li>
+</ol>
+<p><strong>lyapunov stability theory</strong><br />
+\(\dot x = f(x)\) time-invariant<br />
+define \(x_e\) as eq. pt. where \(f(x_e)=0\) and \(x_e\) is an isolated eq. pt. if in addition \(\exists a&gt;0\) s.t. \(x_e\) is the only eq. pt. in \(B_a(x_e)\) .</p>
+<ul>
+<li>for this pt. to be stable in the sense of lyapunov (SISL):</li>
+<li>def: let \(x_e\) be an eq. point of \(\dot x = f(x)\). s.t. \(\exists \rho &gt;0\) for which \(x_0 \in B_\rho(x_e)\implies x(t,x_0)\) exists for all time and is unique.</li>
+<li>(a) \(x_e\) is SISL if \(\exists \varepsilon &gt; 0, \exists \delta &gt; 0,\) s.t. \(||x_0-x_e|| &lt; \delta \implies ||x(t,x_0)-x_e||&lt;\varepsilon \forall t \ge 0\)
+<ul>
+<li>\(\iff x_0 \in B_\delta (x_e) \implies x(t,x_0) \in B)_\varepsilon(x_e)\)</li>
+</ul>
+</li>
+<li>\(\Psi: \mathbb{R}^n \rightarrow  \mathbb{C}_n[0,\infty),x_0 \rightarrow x(t,x_0)\)
+<ul>
+<li>\(\Psi\) is cont. at \(x_e \iff \exists \varepsilon &gt;0,\exists \delta &gt;0\)</li>
+<li>s.t. \(\exists x_0 \in B_\delta(x_e) \implies \Psi(x_0) \in B_\varepsilon(\Psi(x_e))\)</li>
+</ul>
+</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-04/">← Lecture 4</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-06/">Lecture 6 →</a></p>

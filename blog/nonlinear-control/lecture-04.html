@@ -1,0 +1,165 @@
+---
+layout: default
+title: "Lecture 4: Global Existence, Gronwall–Bellman and Continuous Dependence on Initial Conditions"
+permalink: /blog/nonlinear-control/lecture-04/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-03/">← Lecture 3</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-05/">Lecture 5 →</a></p>
+
+<h1>Lecture 4: Global Existence, Gronwall–Bellman and Continuous Dependence on Initial Conditions</h1>
+<p class="note-meta">Nonlinear Control Notes · Feb 5, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>recall:<br />
+theorem for local existence &amp; uniqueness</p>
+<ul>
+<li>\(\dot x = f(t,x),x(t_0)=x_0\)</li>
+<li>f is p.w. cont. in t</li>
+<li>f is locally Lipschitz in x<br />
+then \(\exists \delta &gt; 0\) s.t. \(\exists !\) soln. on \([t_0,t_0+\delta]\)</li>
+</ul>
+<p>unique fixed point of p \(\iff\) solve \(x(t)=P(x)(t)\) \(\iff\) x(t) is soln. of DE \(\iff\) P is contraction</p>
+<p>today:<br />
+\(C^0:\) space of continuous function<br />
+\(C^1:\) space of continuous functions that are differentiable &amp; derivative is continuous<br />
+\(C^2:\) space of continuous functions where differentiable &amp; 2nd derivative is continuous<br />
+\(...\)<br />
+\(C^{\infty = n}:\) space of smooth functions<br />
+\(C^w:\) space of analytic functions (power series)</p>
+<p>\(C^w \subset C^\infty \subset C^2 \subset C^1 \subset C^0\)</p>
+<ul>
+<li>Lipschitz continuous functions <em>somewhere</em> within \(C^0\)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>f(x)</th>
+<th>\(C^0\)</th>
+<th>diff</th>
+<th>\(C^1\)</th>
+<th>\(\dot f\) bounded</th>
+<th>Lipschitz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>\(x^2\)</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>local</td>
+</tr>
+<tr>
+<td>|x|</td>
+<td>yes</td>
+<td>no</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>global</td>
+</tr>
+<tr>
+<td>\(\sqrt{|x|}\)</td>
+<td>yes</td>
+<td>no</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>corollary: suppose \(\dot x = f(t,x)\) is p.w. continuous in t and \(\exists r&gt;0,T&gt;0,L&lt;\infty\) s.t. \(||\frac{\partial f}{\partial x}(t,x)||\le L,\forall x \in B_r(x_0),t\in[0,T]\) then, \(\exists \delta &gt;0\) s.t. \(\dot x = f(t,x),x(t_0)=x_0\) has exactly one solution</p>
+<ul>
+<li>slightly stronger than just Lipschitz</li>
+</ul>
+<p>theorem (3.2 khalil): global existence and uniqueness:</p>
+<ul>
+<li>suppose \(f(t,x)\) is p.w. continuous in t &amp; \(\forall T \in [t_0,\infty),\exists L_T&lt;\infty\) s.t. \(||f(t,x)-f(t,y)||\le L_T ||x-y|| \forall x,y \in R^n, \forall t \in [t_0,T]\)</li>
+<li>this tells us then \(\forall T \in [t_0,\infty),\dot x(t,x),x(t_0)=x_0\) has exactly one solution on \([t_0,T]\).</li>
+<li>global Lipschitz \(\implies\) global uniqueness</li>
+<li>we can then evaluate finite escape time</li>
+</ul>
+<p>examples:</p>
+<ol>
+<li>\(\dot x(t) = Ax(t)+Bu(t),x(t_0)=x_0 \in R^n\)
+<ul>
+<li>\(f(t,x)=Ax(t)+Bu(t)\)</li>
+<li>f is p.w. cont. in t \(\iff\) u(t) is p.w. cont. in t</li>
+<li>\(||f(t,x)-f(t,y)||=||Ax-Ay||=||A(x-y)||\le||A||_{\bar A}||x-y||\)
+<ul>
+<li>\(||A||_{\bar A}\) must be finite for Lipschitz</li>
+</ul>
+</li>
+<li>\(\implies\) global existence + uniqueness</li>
+</ul>
+</li>
+<li>\(\dot x(t)=1+x(t)^2,x(0)=0\)
+<ul>
+<li>know \(x(t)=\tan (t)\)</li>
+<li>finite escape time at \(t=\pi / 2\)</li>
+<li>\(f(x)=1+x^2\)</li>
+<li>\(||\frac{\partial f}{\partial x}||=||2x||\)</li>
+<li>\(||\frac{\partial f}{\partial x}||\le 2\) when \(-1 \le x \le 1 \implies\) f locally Lipschitz \(\implies\) local existence + uniqueness</li>
+</ul>
+</li>
+</ol>
+<p>gronwall-bellman inequality:</p>
+<ul>
+<li>intuition: suppose \(\dot y = \mu (t) y(t), y(a)=\lambda \iff y(t)=\lambda + \int^t_a \mu(\tau)y(\tau)d \tau\)</li>
+<li>\(\iff\) \(y(t) = \lambda \exp[\int^t_a \mu(\tau)d \tau]\)</li>
+<li>then: suppose \(\lambda \in R\) is a ocnstant &amp; \(\mu:[a,b]\rightarrow R\) is continuous non-negative
+<ul>
+<li>under these conditions, function \(y:[a,b]\rightarrow R\) satisfies implicit inequality \(y(t) \le \lambda + \int^t_a \mu(\tau)y(\tau)d \tau\) for all \(a \le t \le b\)</li>
+</ul>
+</li>
+<li>then: \(y(t) \le \lambda + \int^t_a \mu(\tau)d \tau\) for all \(t \in [a,b]\)</li>
+</ul>
+<p>continuous dependance on initial conditions:</p>
+<ul>
+<li>\(\dot x = f(t,x)\), \(x(t_0)=x_0 \in R^n\)</li>
+<li>define \(\Psi:R^n\rightarrow C_n[t_0,T]\)
+<ul>
+<li>\(\Psi(x_0)(t):=x(t,t_0,x_0)\)</li>
+</ul>
+</li>
+<li>\(\Psi\) is cont. at \(x_0\) if \(\forall \varepsilon &gt; 0, \exists \delta &gt; 0\)
+<ul>
+<li>s.t. \(||x_0-x_0||&lt;\delta \implies ||\Psi(x_0)-\Psi(z_0)||_\infty &lt; \varepsilon\)</li>
+<li>\(x_0 \in B_\delta (x_0) \implies \Psi(Z_0) \in B_\varepsilon (\Psi (x_0))\)</li>
+</ul>
+</li>
+</ul>
+<p>theorem: continuous dependence on initial conditions</p>
+<ul>
+<li>considers \(\dot x = f(t,x),x\in R^n,f(t,x)\) satisfies the conditions of the global existence + uniqueness theorem</li>
+<li>fix \(T \in [t_0,\infty]\) &amp; suppose \(x()\&amp;z()\) are 2 solutions satisfying \(\dot x = f(t,x),x(t_0)=x_0\) and \(\dot z = f(t,z),x(t_0)=z_0\) .
+<ul>
+<li>under these conditions, \(\forall \varepsilon &gt; 0, \exists \delta &gt; 0\)\( s.t. \)||x_0-z_0||&lt;\delta \implies \sup_{t_0 \le t \le T}|x(t)-z(t)||&lt;\varepsilon$.</li>
+</ul>
+</li>
+</ul>
+<p>proof: \(x(t)=x_0+\int_{t_0}^tf(\tau,x(\tau))d\tau, z(t)=z_0+\int_{t_0}^tf(\tau,z(\tau))d\tau, t_0 \le t \le T\)</p>
+<ul>
+<li>\(x(t)-z(t)=x_0-z_0+\int_{t_0}^tf(\tau,x(\tau))-f(\tau,z(\tau))d\tau\)</li>
+<li>\(||x(t)-z(t)||\le ||x_0-z_0||+\int_{t_0}^tf(\tau,x(\tau))-f(\tau,z(\tau))d\tau\)</li>
+<li>because f is globally Lipschitz, \(\le||x_0-z_0||+\int_{t_0}^tL_T||x(\tau)-z(\tau)||d\tau\)</li>
+<li>\(y(t)=||x(t)-z(t)||,\lambda=||x_0-z_0||,\mu(t)=L_T\)</li>
+<li>\(\implies ||x(t)-z(t)|| \le ||x_0-z_0||\exp(L_T(t-t_0))\)</li>
+<li>\(\sup_{t_0 \le t \le T}||x(t)-z(t)||_\infty \le ||x_0-z_0|| \exp(L_T(T-t_0))\)</li>
+<li>given \(\varepsilon &lt; 0,\) choose \(\delta = \frac{\varepsilon}{\exp(L_T(T-t_0))}\)</li>
+<li></li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-03/">← Lecture 3</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-05/">Lecture 5 →</a></p>

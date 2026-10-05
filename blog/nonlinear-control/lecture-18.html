@@ -1,0 +1,132 @@
+---
+layout: default
+title: "Lecture 18: Relative Degree and Zero Dynamics"
+permalink: /blog/nonlinear-control/lecture-18/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-17/">← Lecture 17</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-19/">Lecture 19 →</a></p>
+
+<h1>Lecture 18: Relative Degree and Zero Dynamics</h1>
+<p class="note-meta">Nonlinear Control Notes · Apr 9, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>last time: feedback linearization<br />
+input-output feedback linearization</p>
+<p>this time: feedback linearization continued</p>
+<p>\(\Sigma_{NL}: \dot x = f(x)+g(x)u\)<br />
+this is feedback linearizable if</p>
+<ol>
+<li>exists input transformation that is state-based:
+<ul>
+<li>\(u=\alpha(x)+\beta(x)V\)</li>
+</ul>
+</li>
+<li>state transformation
+<ul>
+<li>\(Z=T(x)\)<br />
+\(x \in \mathbb{R}^n,u\in \mathbb{R}^m\)<br />
+transform to \(\Sigma_{linear}:\dot z = Az+Bv\)<br />
+assuming A and B are controllable</li>
+</ul>
+</li>
+</ol>
+<p>what systems are feedback linearizable?</p>
+<p>if so, how do i find my input to state estimation (\(\alpha, \beta, T\))?</p>
+<p>input-output linearization: (for SISO)<br />
+\(\dot x= f(x)+g(x)u, x\in \mathbb{R}^n, x\in\mathbb{R}\)<br />
+\(y = h(x), y \in \mathbb{R}\)<br />
+output dynamics:<br />
+\(\dot y = \frac{d}{dt}h(x)=\frac{\partial h}{\partial x}[f(x)+g(x)u]=L_fh(x)+L_gh(x)u\)<br />
+if \(L_gh(x)\not = 0\)<br />
+I can now design controller u to convert in/out dynamics to linear system:</p>
+<p>choose u = \(L_gh(x)^{-1}[-L_fh(x)+v]\implies \dot y = v\)<br />
+if \(L_gh(x)=0,\dot y = L_fh(x)\)<br />
+\(\ddot y = \frac{\partial L_fh}{\partial x}[f(x)+g(x)u]=L_f(L_fh)+L_f(L_gh)u\)<br />
+\(=L_f^2h(x)+L_gL_fh\)<br />
+if \(L_gL_fh(x)\not =0,\) choose \(u=L_gL_fh(x)^{-1}[-L_f^2h(x)+v]\implies \ddot y = v\) (2nd order linearization through IO dynamics)</p>
+<p>if h(x) is s.t. \(L_gh(x)=0,L_gL_fh(x)=0,...,L_gL_f^{r-2}h(x)=0\)<br />
+and \(L_gL_f^rh(x)\not = 0\)<br />
+\(y^r=L_f^rh(x)+L_gL_f^{r-1}h(x)u\)<br />
+this means \(\dot y,\ddot y, ...,y^{r-1}\) does not depend on u, but \(y^r\) depends on u</p>
+<p>choose \(u=L_gL_f^{r-1}h(x)^{-1}[-L_f^rh(x)+v]\implies y^r=v\)(rth order linear IO dynamics)<br />
+r is the relative degree of \(y=h(x)\)</p>
+<p>when r=n, IO linearization becomes feedback linearization<br />
+questions depend on if we can find y=h(x) output with degree n<br />
+then we can find \(\alpha, \beta, T\)</p>
+<p>define relative degree<br />
+SISO system \(\dot x = f(x)+g(x)u,y=h(x),x\in \mathbb{R}^n, y \in \mathbb{R}, y \in \mathbb{R}\)<br />
+is said to have a relative degree \(r\) at \(x_0\in X\) if<br />
+(1) \(\forall 0 \le k &lt; r-1, \space L_gL_f^kh(x)=0, \forall x\) in the neighborhood of \(x_0\)<br />
+(2) \(L_gL_f^{r-1}h(x)\not =0\)</p>
+<p>example 1:<br />
+\(\dot x_1 = x_2, \dot x_2 = -x_1^3+u, y =x_1\)<br />
+\(h(x) = x_1 \dot y = \dot x_1, = x_2, \ddot y = \dot x_2 = -x_1^3+u\)<br />
+\(\therefore r=2\) because \(\ddot y\) contains u</p>
+<p>example 2:<br />
+\(\dot x_1 = x_2+x_3^3, \dot x_2 = x_3, \dot x_3=u, y = x_1\)<br />
+\(r=2\)</p>
+<p>for the relative degree at any point \(x_3\not =0\) (in the neighborhood), but at the origin where \(x_3=0\), there is not a well-defined degree \(\rightarrow\) depends on the origin.</p>
+<p>example 3: SISO linear system<br />
+\(\dot x = Ax+Bu,y=Cx\)<br />
+\(f(x)=Ax, g(x)=B,h(x)=Cx\)<br />
+\(\dot y = L_fh+L_ghu\)<br />
+\(L_fh=\frac{\partial h}{\partial x}f(x)=CAx\)<br />
+\(L_gh=\frac{\partial h}{\partial x}g(x)=CB\)<br />
+\(CB \not = 0 \implies r=1\)<br />
+if \(CB=0,\ddot y = CA^2x+CABu\)<br />
+if \(CAB \not =0 \implies r =2\)<br />
+if \(CB=0,CAB=0,\dots,CA^{r-1}B=0,CA^{r-1}B\not=0\implies\) relative degree</p>
+<p>\(\dot x = f(x)+g(x)u,y=h(x),x\in\mathbb{R}^n, u,y\in \mathbb{R}\)<br />
+\(y=h(x)\) has rel. degree r \(y^r=L_f^rh(x)+L_gL_f^{r-1}h(x)u\)<br />
+\(u=L_gL_f^{r-1}h(x)^{-1}[-L_f^rh(x)+v]\implies y^r\)=v (rth order ODE)</p>
+<p>choose states<br />
+<span class="math-display">\[z=\begin{bmatrix}
+  y \\ \dot y \\ \vdots \\ y^{r-1}
+  \end{bmatrix}\in \mathbb{R}^r
+  \]</span></p>
+<p><span class="math-display">\[\dot z = \begin{bmatrix}
+    0 &amp; 1 &amp;  &amp;  &amp; \\
+     &amp; 0 &amp; 1 &amp;  &amp; \\
+     &amp;  &amp; 0 &amp; 1 &amp; \\
+     &amp;  &amp;  &amp; \vdots &amp; ...\\
+    \end{bmatrix}z + \begin{bmatrix}
+  0 \\ 0 \\ \vdots \\ 1
+  \end{bmatrix}v
+    \]</span></p>
+<p>(A,B) is controllable<br />
+choose linear control \(v=-kz\) s.t. \(\dot z=(A-Bk)z,Re\{\lambda_i(A-Bk)\}&lt;0)\)<br />
+\(v=-k_1h(x)-k_2L_fh(x)-...-k_rL_f^{r-1}h(x)\)<br />
+\(\implies z(t)\rightarrow 0\) as \(t \rightarrow \infty\), \(y(t)\rightarrow 0\)</p>
+<p>does this implies that the state goes to the origin?</p>
+<ul>
+<li>this depends on the remaining dynamics</li>
+</ul>
+<p>\(Z=\{x|h(x)=L_fh(x)=...=L_f^{r-1}h(x)=0\}\)<br />
+\(y = \dot y = ... = y^{r-1}=0, z\in Z, z_0=0\)</p>
+<p><img src="/images/notes/nl-20260422130916.jpg" alt="" /></p>
+<p>choice of u &amp; v do the following:<br />
+(1) create Z surface<br />
+(2) make Z attractive<br />
+(3) make Z invariant</p>
+<p>u &amp; v render Z invariant &amp; attractive<br />
+x \(\rightarrow\) 0 if dynamics on Z are stable (minimum-phase)</p>
+<p>how do i find the zero dynamics? (restricted to staying on Z)<br />
+\(z=0 \iff y = \dot y = \dots \ y ^{r-1}=0 \implies v =0\)<br />
+\(u=-L_gL_f^{r-1}h(x)^{-1}L_f^rh(x)\)</p>
+<p>example:<br />
+\(\dot x_1 = x_2, \dot x_2 = \alpha x_3+u, \dot x_3 = \beta x_3 + u\)<br />
+\(y=x_1\)<br />
+rel. degree r =2<br />
+find zero dynamics<br />
+on Z, \(y=x_1=0, \dot y = x_2=0\)<br />
+\(u^*=-\alpha x_3 (\ddot y =0)\)<br />
+zero dynamics: \(\dot x_3 = (\beta + \alpha)x_3\)<br />
+if \(\alpha + \beta &lt; 0 \implies\) stable zero dynamics (min phase)<br />
+\(\implies x(t) \rightarrow 0\) as \(t \rightarrow \infty\)</p>
+<p>for a linear system, \(\frac{s-(\alpha+\beta)}{s^2(s-\beta)}\) compare to relative degree to poles and zeros</p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-17/">← Lecture 17</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-19/">Lecture 19 →</a></p>

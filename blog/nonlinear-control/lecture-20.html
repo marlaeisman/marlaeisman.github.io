@@ -1,0 +1,107 @@
+---
+layout: default
+title: "Lecture 20: Vector Fields, Lie Brackets and Involutive Distributions"
+permalink: /blog/nonlinear-control/lecture-20/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-19/">← Lecture 19</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-21/">Lecture 21 →</a></p>
+
+<h1>Lecture 20: Vector Fields, Lie Brackets and Involutive Distributions</h1>
+<p class="note-meta">Nonlinear Control Notes · Apr 16, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>question: when does \(\exists h(x)\) with relative degree n?</p>
+<p>(a) manifold<br />
+(b) tangent space (tangent to pt. in manifold)<br />
+(c) tangent vector (some vector in TS)<br />
+(d) vector field<br />
+(e) tangent bundle</p>
+<p>all contained within Lie Bracket</p>
+<p>(f) distribution</p>
+<p>all contained in involutive distribution</p>
+<p><em>vector field</em><br />
+definition: vector field f on manifold M is an assignment to each point \(p \in M\) a vector \(f(p)\in T_pM\) (vector space). vector field \(C^k\) if f is \(C^k\) (cont. diff).</p>
+<p>Lie bracket:<br />
+f, g are vector fields. the Lie bracket is defined as \([f,g](x)=\frac{\partial g}{\partial x}f(x)-\frac{\partial f}{\partial x}g(x)\)<br />
+\(=L_fg(x)-L_gf(x)\)</p>
+<ul>
+<li>at each point on the vector field, it returns a manifold</li>
+</ul>
+<p>example:<br />
+<span class="math-display">\[f(x)= \begin{bmatrix}
+  x_2 \\ -\sin x_1 -x_2 
+  \end{bmatrix}, g(x) = \begin{bmatrix}
+  0 \\ x_1
+\end{bmatrix}
+  \]</span><br />
+\([f,g]=L_fg-L_gF= \frac{\partial g}{\partial x}f(x)-\frac{\partial F}{\partial x}g(x)\)<br />
+<span class="math-display">\[=\begin{bmatrix}
+    0 \\ x_2
+    \end{bmatrix} - \begin{bmatrix}
+  x_1 \\ -x_1
+  \end{bmatrix}
+    \]</span><br />
+<span class="math-display">\[= \begin{bmatrix}
+      -x_1 \\ x_1+x_2
+      \end{bmatrix}
+      \]</span><br />
+\([f,[f,g]](x)=?\)<br />
+\([f,[f,[f,[f,g]]]](x)=?\)<br />
+.... we can continue doing this because each of these are vector fields</p>
+<p>this is denoted with adjoint:<br />
+\(\text{ad}_fg(x):=[f,g](x)\)<br />
+\(\text{ad}^2_fg(x)=[f,\text{ad}_fg(x)](x)=[f,[f,g]](x)\)<br />
+\(\vdots\)<br />
+\(a_f^kg(x)=[f, \text{ad}_f^{k-1}g(x)](x),k\ge 1\)<br />
+\(\text{ad}^0_fg(x)=g(x)\)<br />
+note:<br />
+(i) \([f,f](x)=0\)<br />
+(ii) \([f,g](x)=-[g,f](x)\)<br />
+(iii) f,g are const. vectors</p>
+<ul>
+<li>\([f,g]=0\)</li>
+</ul>
+<p>example: \(\dot x = Ax+Bu\)<br />
+\(f(x) = Ax, g(x) = B\)<br />
+\(\text{ad}_fg(x)=[f,g]=L_fg-L_gF= \frac{\partial g}{\partial x}f(x)-\frac{\partial F}{\partial x}g(x)\)<br />
+\(=0-AB=-AB\)<br />
+\(\text{ad}^2_fg(x)=[f,[f,g]]=L_f[f,g]-L_{[f,g]}f=A^2B\)<br />
+\(\text{ad}^3_fg(x)=-A^3B\)<br />
+...<br />
+\(\text{ad}^k_fg(x)=[f,ad_f^{k-1}g]=(-1)^kA^kB\)</p>
+<p>tangent bundle:<br />
+tangent bundle of M is \(TM:= \cup_{P\in M}T_p M\)</p>
+<p>distributions:<br />
+suppose \(f_1, f_2, ..., f_n\) are vector fields and the distribution \(\Delta(x)=\space\{f_1(x),f_2(x), ...f_n(x)\}\) (all vectors).<br />
+at each particular x, \(\Delta(x)\) is a subspace of \(T_xM\)</p>
+<p>definition: \(\Delta\) is a nonsingular distribution if \(\dim(\Delta(x))=\) const.</p>
+<p>definition: \(\Delta\) is involutive if \(f,g \in \Delta \implies [f,g] \in \Delta\)<br />
+ex: <span class="math-display">\[f_1 = \begin{bmatrix}
+  2x_2 \\ 1 \\ 0
+  \end{bmatrix}, f_2 = \begin{bmatrix}
+    1 \\ 0 \\ x_2
+    \end{bmatrix}, \Delta = \text{span}\{f_1,f_2\}
+    \]</span><br />
+is \(\Delta\) nonsingular?<br />
+\(\dim(\delta(x))=2=\) const</p>
+<p>is \(\Delta\) involutive?<br />
+\([f_1,f_2]=[0 \space 0\space 1]^\top \in \Delta\) iff rank\([f_1(x), f_2(x), [f_1,f_2](x)]=2 \forall x\)<br />
+rank\(=3 \implies \Delta\) not involutive</p>
+<p>theorem: \(\Sigma\) is FB linearizable iff<br />
+(a) \([g(x), \text{ad}_fg(x), ..., \text{ad}^{n-1}_fg(x)]\) has rank n \(\forall x\)<br />
+(b) \(\lambda = \text{span}\{g,\text{ad}_fg, ... \text{ad}^{n-2}_fg\}\) is involutive</p>
+<p>system has relative degree n iff<br />
+(1) - \(L_gh=L_gL_fh=...=L_gL_f^{n-2}h=0 \space \forall x\)<br />
+(2) \(L_gL_f^{n-1}h \not = 0\)<br />
+\(\iff\)<br />
+(3) \(L_gh=L_{\text{ad}_fg}h=...L_{\text{ad}^{n-2}_fg}h=0 \space \forall x\)<br />
+(4) \(L_{\text{ad}^{n-1}_fg}h \not = 0\)</p>
+<p>why convert it? advantage of (3) over (1) is that (3) can be written as:<br />
+\(\frac{\partial h}{\partial x}[g(x), \text{ad}_fg(x), ..., \text{ad}^{n-2}_fg(x)=0\)<br />
+solution \(h(x)\) for above PDE exists if \(\Delta=\{g, \text{ad}_fg, ..., \text{ad}^{n-2}_fg\}\) is involutive</p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-19/">← Lecture 19</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-21/">Lecture 21 →</a></p>

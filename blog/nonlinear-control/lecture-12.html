@@ -1,0 +1,104 @@
+---
+layout: default
+title: "Lecture 12: Control Lyapunov Functions and Min-Norm Control"
+permalink: /blog/nonlinear-control/lecture-12/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-11/">← Lecture 11</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-13/">Lecture 13 →</a></p>
+
+<h1>Lecture 12: Control Lyapunov Functions and Min-Norm Control</h1>
+<p class="note-meta">Nonlinear Control Notes · Mar 10, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>control lyapunov functions</p>
+<p>given: \(\dot x = f(x,u), x \in \mathbb{R}^n, u \in \mathbb{R}^m\)</p>
+<ul>
+<li>\(f(0,0)=0, f(x_{eq},u_{eq}=0)\)<br />
+problem: find \(\alpha:\mathbb{R}^n\rightarrow \mathbb{R}^m\) (full state feedback)<br />
+s.t. \(x=0\) is GAS eq. pt. of the closed loop system \(\dot x = f(x,\alpha(x))\)</li>
+</ul>
+<p><em>how do we find \(\alpha\)? aka full-state feedback?</em></p>
+<p>observation:  suppose there exists a solution to the previous state-feedback control problem, then (by converse lyapunov theorem) there exists a lyapunov function that maps the state to a scalar \(\exists V:\mathbb{R}^n\rightarrow \mathbb{R},V\in C^1\)</p>
+<ul>
+<li>V is positive definite (\(V(0)=0,V(x)&gt;0\forall x\not = 0\))</li>
+<li>V is negative definite (\(\dot V &lt;0 \forall x \not = 0\))
+<ul>
+<li>\(\iff \forall x \not = 0, \frac{\partial V}{\partial x}(x),f(x,\alpha(x))&lt;0\)</li>
+<li>can we remove dependence on alpha? \(\implies \forall x \not = 0, \exists u \in \mathbb{R}^n, \frac{\partial V}{\partial x}(x)f(x,u)&lt;0\)
+<ul>
+<li>could take \(u=\alpha(x)\)</li>
+</ul>
+</li>
+<li>\(\iff \forall x \not = 0,\inf_{u\in\mathbb{R}^n}\frac{\partial V}{\partial x}(x)f(x,u)&lt;0\)</li>
+</ul>
+</li>
+<li>V is radially unbounded</li>
+</ul>
+<p>definition: <strong>control lyapunov function</strong> (CLF)<br />
+a continuously differentiable, positive definite, radially unbounded function \(V:\mathbb{R}^n \rightarrow \mathbb{R}\) is a CLF for \(\dot x = f(x,u),x\in \mathbb{R}^n, u\in \mathbb{R}^m\) if satisfies \(\forall x \not = 0, \inf_{u\in \mathbb{R}^m}\{\frac{\partial V}{\partial x}(x)f(x,u)\}&lt;0\).</p>
+<ul>
+<li>note that we <em>can</em> have local or ES CLFs too</li>
+</ul>
+<p>theorem: consider a nonlinear system \(\dot x = f(x,u),x\in \mathbb{R}^n, u\in \mathbb{R}^m,f(0,0)=0\).<br />
+suppose \(f\) is Lipschitz continuous and \(\exists\) a CLF \(V:\mathbb{R}^n\rightarrow\mathbb{R}\) i.e. \(V\in C^1,V\) is pos. def., radially unbounded, and \(\inf_{u\in \mathbb{R}^m}\{\frac{\partial V}{\partial x}(x)f(x,u)\}&lt;0\).  then, \(\exists \alpha: \mathbb{R}^n\rightarrow \mathbb{R}^m\) that is infinitely differentiable (smooth, \(C^\infty\)) \(\forall x\not = 0\) s.t. \(\dot x = f(x,\alpha(x))\) is GAS.</p>
+<ul>
+<li>if i can find a CLF, there exists \(\alpha\) which makes the system GAS.</li>
+<li>proof is not constructive</li>
+</ul>
+<p>definition: a control system of the form \(\dot x = f(x)+\Sigma^m_{i=1}g_i(x)u_i,x\in \mathbb{R}^n, u_i\in \mathbb{R}\) is a <strong>control affine nonlinear syste</strong>m (affine in \(u_i\))<br />
+<span class="math-display">\[\begin{align*}
+ &amp; u=\begin{bmatrix}
+  u_1 \\ ... \\ u_m
+  \end{bmatrix} \in \mathbb{R}^m \\
+ &amp; \dot x= f(x) + g(x) u \\
+&amp;\rightarrow \in \mathbb{R}^n + \in \mathbb{R}^{nxm}\cdot\mathbb{R}^m
+  \end{align*}
+  \]</span><br />
+notation: {Lie derivative}<br />
+consider a function \(h: \mathbb{R}^n \rightarrow \mathbb{R}\) &amp; let \(\dot x = f(x)\). then, \(L_f h(x):=\frac{\partial h}{\partial x}(x)f(x)\) is the <strong>Lie derivative</strong> of h with respect to f.</p>
+<ul>
+<li>aka directional derivative</li>
+</ul>
+<p>to combine: we have a control affine system \(\dot x = f(x)+\Sigma^m_{i=1}g_i(x)u_i\)<br />
+<span class="math-display">\[\begin{align*}
+&amp; \dot V(x)=\frac{\partial V}{\partial x}(x)\{f(x)+\Sigma^m_{i=1}g_i(x)u_i\} \\
+&amp; = L_fV(x) + \Sigma L_{g_i}V(x)u_i \\
+&amp; \dot x = f(x) + g(x) u \\
+&amp; \dot V(x) = \frac{\partial V}{\partial x}\{f(x)+g(x)u\} \\
+&amp; = L_fV(x)+L_gV(x)u
+  \end{align*}
+  \]</span></p>
+<p>claim: \(\forall x \not = 0, \inf_{u\in \mathbb{R}}\{L_fV(x)+L_gV(x)u\}&lt;0\) \(\iff \forall x \not = 0, L_gV(x)=0 \implies L_f V(x)&lt;0\)</p>
+<p>proof: suppose \(L_g V(x)=0,\inf_u\{L_fV(x)+L_gV(x)u\}=\inf_u\{L_fV(x)\}&lt;0 \iff L_f V(x) &lt;0\)</p>
+<p>alternatively, suppose<br />
+\(L_gV(x) \not = 0\text{ then, }\inf_{u\in \mathbb{R}}\{L_fV(x)+L_gV(x)u\}=-\infty&lt;0\) because it can be anything</p>
+<p>\(\dot x = f(x)+g(x)u, x\in \mathbb{R}^n, u\in \mathbb{R}\)<br />
+given CLF \(V(x)\{L_gV(x)=0\implies L_f V(x)&lt;0\}\) assume is satisfied</p>
+<ul>
+<li>
+<p>then, how do we choose \(u=\alpha(x)\)<br />
+<span class="math-display">\[u=\begin{cases}
+  0,&amp; L_gV(x) = 0 &amp; (\dot V=L_fV&lt;0) \\
+  \frac{-L_fV-\varepsilon}{L_gV},&amp;L_gV(x)\not = 0 &amp; (\dot V = L_fV+L_gVu&lt;0) \\
+   \mathbb{R}, &amp; L_fV &lt; 0
+  \end{cases} 
+  \]</span></p>
+<ul>
+<li>note that \(u=0\) uses least amount of energy</li>
+<li>note that \(\dot V =0 \implies\) SISL<br />
+<span class="math-display">\[  u=\begin{cases}
+  0,&amp;L_fV&lt;0) \\
+  \frac{-L_fV-\varepsilon}{L_gV},&amp;\text{else} \\
+  \end{cases}
+  \iff u = \arg \min u^\top u \text{ s.t. }L_fV+L_gVu \le 0
+  \]</span></li>
+<li>min-norm control minimizes the norm of u subject to the linear constraint of u</li>
+</ul>
+</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-11/">← Lecture 11</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-13/">Lecture 13 →</a></p>

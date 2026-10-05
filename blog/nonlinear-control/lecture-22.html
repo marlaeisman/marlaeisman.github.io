@@ -1,0 +1,50 @@
+---
+layout: default
+title: "Lecture 22: Final Exam Review"
+permalink: /blog/nonlinear-control/lecture-22/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-21/">← Lecture 21</a> · <a href="/blog/nonlinear-control/">All notes</a></p>
+
+<h1>Lecture 22: Final Exam Review</h1>
+<p class="note-meta">Nonlinear Control Notes · Apr 28, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>exam review<br />
+manifolds: \(M \in \mathbb{R}^n\) is a m-dim smooth manifold of \(\mathbb{R}^n\) if \(\forall p \in M, \exists r&gt;0, F:B_r(P)\rightarrow \mathbb{R}^{n-m}\) s.t.<br />
+a) \(M \cap B_r(P)=\{x \in B_r(P)|F(x)=0\}\)<br />
+b) F smooth<br />
+c) F local diff, i.e. \(\forall \bar x \in M \cap B_r(P), \frac{\partial F}{\partial x}(\bar x)\) has rank n-m</p>
+<p>region of attraction:<br />
+\(R_a(x_e=\{x_0\in\mathbb{R}^n|x(t,x_0\rightarrow x_e \text{ as } t \rightarrow \infty\}\)<br />
+\(\lim_{t\rightarrow \infty}x(t,x_0)=x_e\)</p>
+<p>\(\dot V&lt;0\) in D then \(R_A(x_e)=D\) is FALSE</p>
+<p>sum of squares<br />
+\(\dot x = f(x)+g(x)u,\quad f(x_e)=0\)<br />
+\(x_e\) is AS</p>
+<p>find CLF for \(\Sigma_L \quad V(x)=x^\top P x\)<br />
+solve \(A^\top P + PA = -Q\)<br />
+as valid CLF globally</p>
+<p>backstepping</p>
+<p>\(\dot x = f_0(x)+g_0(x)\zeta_1 \quad \dot \zeta_1=f_1(x,\zeta_1)+g_1(x,\zeta_1)u\)<br />
+stabilize by designing \(\zeta_1=\alpha(x)\) and \(V(x)\) is lyapunov form<br />
+design \(u=\alpha_1(x_1,\zeta_1)\) s.t. \(\zeta_1\rightarrow \alpha(x)\)<br />
+\(V_1(x,\zeta_1)=V(x)+1/2(\zeta_1-\alpha(x))^2\)</p>
+<p>sliding mode</p>
+<p>\(\dot x_1 = x_2 \quad \dot x_2 = h(x)+g(x)u\)<br />
+define \(s=ax_1+x_2\) on \(s\implies s \equiv 0 \implies x_2=-ax_1 \implies \dot x_1=-ax_1\)<br />
+\(x_1,x_2\rightarrow 0\)<br />
+dynamics off of s: \(\dot s = a \dot x_1 + \dot x_2 = ax_2 + [h(x)+g(x)u]\)<br />
+\(V(s)=1/2s^2\quad \dot V(s) = s \dot s\)<br />
+\(|\frac{ax_2+h(x)}{g(x)}|\le\sigma(x)\)<br />
+substitute into \(\dot V\rightarrow\) \(\dot V \le \sigma(x)g(x)|s|+g(x)su\)<br />
+then we need to design u<br />
+choose \(u=-\beta(x)(\text{sign} s),\quad \beta(x) \ge \sigma(x) +\beta_0\)<br />
+\(\dot V(s) \le -g(x)|s|\beta_0\le -g_0\beta_0|s|\)<br />
+\(s\rightarrow 0\) in finite time on \(s=0,x\rightarrow 0,t\rightarrow \infty\)</p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-21/">← Lecture 21</a> · <a href="/blog/nonlinear-control/">All notes</a></p>

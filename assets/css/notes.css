@@ -1,0 +1,21 @@
+.note-body .math-display {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0.6em 0;
+}
+.note-body img {
+  max-width: min(100%, 560px);
+  height: auto;
+  display: block;
+  margin: 0.8em 0;
+}
+.note-body table {
+  display: block;
+  overflow-x: auto;
+}
+.note-nav,
+.note-meta {
+  color: #666;
+  font-size: 0.9em;
+}

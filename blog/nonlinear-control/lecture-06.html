@@ -1,0 +1,117 @@
+---
+layout: default
+title: "Lecture 6: Lyapunov's Direct Method"
+permalink: /blog/nonlinear-control/lecture-06/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-05/">← Lecture 5</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-07/">Lecture 7 →</a></p>
+
+<h1>Lecture 6: Lyapunov's Direct Method</h1>
+<p class="note-meta">Nonlinear Control Notes · Feb 12, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>last time:</p>
+<ul>
+<li>intro to lyapunov stability</li>
+<li>math background</li>
+</ul>
+<p>this time:</p>
+<ul>
+<li>def of stability properties</li>
+<li>lyapunov stability theorem</li>
+</ul>
+<p>theorem: \(\dot x = f(x)\) - f is locally Lipschitz</p>
+<ul>
+<li>\(x_0 \in W\) is a compact set &amp; all solutions \(x(t,x_0)\in W\) then unique solution exists \(\forall t \ge 0\).</li>
+</ul>
+<p>lyapunov stability theory:<br />
+\(\dot x = f(x)\) (time-invariant)</p>
+<ul>
+<li>definition: let \(x_e\) be an equilibrium point s.t. \(\exists \rho&gt;0\) for which \(x_0 \in B_\rho (x_e)\implies x(t,x_0)\) exists &amp; is unique \(\forall t \ge 0\).</li>
+</ul>
+<p>(a) \(x_e\) is <em>stable in the sense of lyapunov</em>  (SISL) if \(\forall \varepsilon &gt; 0,\space \exists \delta&gt;0\) s.t. \(x_0 \in B_\delta(x_e) \implies x(t,x_0) \in B_\varepsilon(x_e)\)<br />
+(b) \(x_e\) is <em>unstable</em> otherwise<br />
+(c) \(x_e\) is <em>asymptotically stable</em> (AS) if it is SISL <em>and</em> \(\exists \eta &gt;0\) s.t. \(x_0 \in B_\eta(x_e) \implies \lim_{t\rightarrow \infty}||x(t,x_0)-x_e||=0\)</p>
+<ul>
+<li>AS = SISL + attractivity</li>
+</ul>
+<p>recall: \(\Psi: \mathbb{R}^n \rightarrow \mathbb{C}_n[0,\infty)\)</p>
+<ul>
+<li>\(x_e\) is SISL \(\iff \Psi\) is continuous at \(x_e\).</li>
+</ul>
+<p>theorem: Lyapunov stability theorem (lyapunov direct method):<br />
+assume \(x_e=0\) is an eq. pt of \(\dot x = f(x), \space \exists D \subset \mathbb{R}^n\) open set about \(x_e=0\) s.t.<br />
+(1) \(f:D\rightarrow \mathbb{R}^n\) locally Lipschitz<br />
+(2) \(\exists V:D \rightarrow \mathbb{R}, \space V \in \mathbb{C}^1\) s.t.<br />
+(a) \(V(0)=0\)<br />
+(b) \(V(x)&gt;0,x\in D\) \ \([0]\)<br />
+(c) \(\dot V(x) \le 0, \forall x \in D\)<br />
+then \(x_e\) is SISL<br />
+moreover, if \(\dot V(x)&lt;0,\forall x \in D\) \ \([0]\), then \(x_e\) is AS</p>
+<p><strong>proof:  part 1 \(\rightarrow\) SISL</strong></p>
+<p>(1) \(\exists \rho &gt; 0\) s.t. \(x_0 \in B_\rho(0) \implies\) solution exists on \([0,\infty)\) &amp; is unique<br />
+(2) \(\forall \varepsilon &gt; 0 ,\exists \delta&gt;0\) s.t. \(x_0 \in B_\delta(0) \implies x(t,x_0)\in B_\varepsilon(0)\)</p>
+<p>D is open in \(\mathbb{R}^n \implies\) can choose \(\varepsilon\) s.t. \(B_\varepsilon (0) \subset D\)</p>
+<ul>
+<li>choose \(0 &lt; r &lt; \varepsilon\) s.t. \(B_r(0) \subset B_\varepsilon (0)\)</li>
+<li>\(\bar B_r := [x \in D \text{ s.t. } ||x|| \le r]\)<br />
+define \(\alpha=\min_{||x||=r}V(x)&gt;0\forall x \not = 0\) (V is continuous &amp; \(V(x)&gt;0\forall x \not = 0\))</li>
+<li>fix \(\beta \in (0,\infty)\) &amp; define \(\Omega_\beta=[x \in \bar B_r (0) | V(x) \le \beta]\)</li>
+<li>by construction \(\Omega_\beta \subset \bar B_r(0)\) (open ball)</li>
+<li>claim 0: \(\Omega_\beta \subset \bar B_r(0)\)
+<ul>
+<li>proof: if \(\exists x \in \Omega_\beta\) s.t. \(||x|| = r\) then \(V(x) \ge \alpha\)</li>
+</ul>
+</li>
+<li>claim 1: solutions that start in \(\Omega_\beta\) stay in \(\Omega_\beta\)
+<ul>
+<li>proof: \(\forall x_0 \in \Omega_\beta,\) \(\Omega_\beta\) compact \(\implies\) solution exists + is unique \(t\in[0,\infty)\)</li>
+<li>fix \(\phi (t)\) solution of \(\dot x = f(x)\) defined on \([t_1,t_2],\phi(t_1)\in \Omega_\beta\)</li>
+<li>\(\phi(t_1)\in \Omega_\beta \iff V(\phi(t_1)) \le \beta \implies V(\phi(t)) \le \beta \forall t \implies \phi(t) \in \Omega_\beta \forall t\)</li>
+</ul>
+</li>
+<li>claim 2: \(\exists \delta &gt; 0\) s.t.  \(B_\delta \subset \Omega_\beta\)
+<ul>
+<li>proof: V is continuous at 0 \(\implies||x-0|| &lt; \delta \implies |V(x)-V(0)|&lt;\beta\)</li>
+</ul>
+</li>
+</ul>
+<p>thus \(x_0 \in B_\delta(0) \implies x_0 \in \Omega_\beta\) (claim 2)</p>
+<ul>
+<li>\(\implies x(t,x_0) \in \Omega_\beta\) and \(x(t,x_0)\) exists + is unique \(\forall t \ge 0\) (claim 1)</li>
+<li>\(\implies x(t,x_0)\in B_\varepsilon(0) \implies\) SISL</li>
+</ul>
+<p>part 2 (AS): \(\dot V(x) &lt; 0\) \(\forall x \in D\) \ {0}<br />
+proof:</p>
+<ul>
+<li>claim 3: \(||x_0||&lt;\delta \implies \lim_{t \rightarrow \infty}||x(t,\infty)||=0\)
+<ul>
+<li>proof: \(||x_0||&lt;\delta \implies x(t,x_0) \in \Omega_\beta \forall t \ge 0\)</li>
+<li>we have \(\dot V(x(t,x_0)) \le 0 \forall t \ge 0 \implies V(x(t,x_0))\) is not increasing</li>
+<li>\(\implies \lim_{t\rightarrow \infty}V(x(t,x_0))=C\) to show \(C=0\)</li>
+</ul>
+</li>
+<li>to show C =0 suppose \(C \not = 0\) then \(V(x(t,x_0)) \ge C/2 \forall t \ge 0\)
+<ul>
+<li>\(\implies x(t,x_0)\) never enters \(\Omega_{C/2}\)</li>
+<li>since V is continuous, \(\exists d &gt; 0\) s.t. \(B_d(0) \subset \Omega_{C/2}\)</li>
+<li>\(\therefore x(t,x)\) lies in annulus: \(-\gamma :=\max_{d \le ||x|| \le r}\dot V &lt; 0\)</li>
+<li>\(V(x(t,x_0)) = V(x_0)+\int^t_0\dot V(x(\tau,x_0))d\tau\)
+<ul>
+<li>= \(V(x_0)+\int^t_0-\gamma d\tau=v(x_0)-\gamma(t-t_0)\)
+<ul>
+<li>where \(\lim_{t\rightarrow \infty} = -\infty\) (contradiction)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-05/">← Lecture 5</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-07/">Lecture 7 →</a></p>

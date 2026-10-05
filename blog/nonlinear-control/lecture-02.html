@@ -1,0 +1,113 @@
+---
+layout: default
+title: "Lecture 2: Cauchy Sequences, Banach Spaces and Contraction Mapping"
+permalink: /blog/nonlinear-control/lecture-02/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-01/">← Lecture 1</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-03/">Lecture 3 →</a></p>
+
+<h1>Lecture 2: Cauchy Sequences, Banach Spaces and Contraction Mapping</h1>
+<p class="note-meta">Nonlinear Control Notes · Jan 29, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p><em>these definitions relate to existence and uniqueness of DEs</em></p>
+<p>convergence of sequences:</p>
+<ul>
+<li>a seq (\(x_n\)) in (v,||\(\cdot\)||) converges to a point \(\bar x\) if \(\forall \varepsilon \geq 0, \exists N&lt; \infty s.t. \forall k \geq N, x_k \in B_\varepsilon (\bar x)\)
+<ul>
+<li>\(\implies ||x_k - \bar x|| &lt; \varepsilon\)<br />
+cauchy sequence:</li>
+</ul>
+</li>
+<li>a seq. (\(x_n\)) is cauchy if \(\forall \varepsilon &gt; 0,  \exists N &lt; \infty, \forall n, m \geq N, ||x_n-x_m||&lt;\varepsilon\)</li>
+<li>fact: if \(x_n \rightarrow \bar x\) as \(n \rightarrow \infty\), then \((x_n)\) is cauchy.</li>
+<li>proof: let \(\varepsilon &gt; 0\), since \(x_n \rightarrow \bar x,\exists N&lt;\infty\) s.t. \(\forall n \geq N, ||x_n-\bar x||&lt;\varepsilon/2\)
+<ul>
+<li>let n,m \(\geq\) N, \(||x_n-x_m||=||(\bar x_n - \bar x)-(x_m - \bar x)||\) (triangle ineq.)</li>
+<li>=\(\leq||(x_n - \bar x)+(\bar x - x_m )||&lt; \varepsilon/2 + \varepsilon/2 = \varepsilon\)</li>
+</ul>
+</li>
+<li>def: (V, ||\(\cdot\)||) is complete if every cauchy sequence converges to a point in V</li>
+<li>facts:
+<ul>
+<li>a) every finite dim. vector space is complete</li>
+<li>b) (\(\subset[a,b],||\cdot||_\infty\)) (continuous space) is complete</li>
+</ul>
+</li>
+<li>def: a complete normed space is called a <em>banach space</em>.</li>
+</ul>
+<p>contraction mapping:</p>
+<ul>
+<li>let (x,|\(|\cdot|\)|) be a <em>banach (complete norm space)</em> &amp; let P\(:x\rightarrow x\)
+<ul>
+<li>def: a point \(x^* \in x\) is a fixed point (of P) if \(P(x^*)=x^*\)</li>
+<li>def: P is a <em>contraction</em> if \(\exists\) a const. \(0\leq C &lt;1\) s.t. \(\forall x,y \in x,||P(x),P(y)\leq C||x-y||\)</li>
+<li>do they map closer together?</li>
+</ul>
+</li>
+<li><em>when is there 1 fixed point? when is there exactly 1?</em></li>
+</ul>
+<p>contraction mapping principle:</p>
+<ul>
+<li>let (x,\(||\cdot||\)) be a complete normed space &amp; let P:\(x\rightarrow x\) be a contraction. then, \(\exists ! x^* \in X\) s.t. \(P(x^* = x^*)\).</li>
+<li>moreover, \(\forall x_0 \in X\), define seq. \(x_{n+1}=P(x_n),n \geq 0\). Then \(x_n\) is cauchy &amp; converges to \(x^*\).<br />
+remarks:</li>
+<li>a) uniqueness: suppose P(\(x^*\))=\(x^*\), P(\(y^*\))=\(y^*\) (2 different fixed points).</li>
+<li>||\(x^*-y^*\)||=||P(\(x^*\))-P(\(y^*\)) \(\geq C ||x^*-y^*||,0\leq C &lt; 1 \implies ||x^*-y^*||=0 \implies x^*-y^*\)</li>
+<li>why cauchy property holds:</li>
+<li>\(||x_{n+1}-x_n||=||P(x_n)-P(x_{n-1})||\leq C ||x_n-x_{n-1}=C||P(x_n)-P(x_{n-1})||\)...\(\leq C^n||x_1-x_0||\)
+<ul>
+<li>\(\lim_{n\rightarrow \infty}C^n||x_1-x_0||=0\)</li>
+</ul>
+</li>
+</ul>
+<p>example:</p>
+<ul>
+<li>(\(R^2,||\cdot||_2\)) is complete because it is a finite directional vector space</li>
+<li>find solution of Ax=b, \(x \in R^2\) by contraction mapping principle</li>
+<li>define \(P(x)=x+(Ax-b)\)
+<ul>
+<li>note: \(P(x^*)=x^* \iff x^* +Ax^*-b=x^*\iff Ax^*-b=0\iff Ax^*=b\)</li>
+<li>where \(x^*\) is the solution of Ax=b</li>
+</ul>
+</li>
+<li>when is P a contraction?
+<ul>
+<li>\(||P(x)-P(y)||=||x+(Ax-b)-y-(Ay-b)||\)
+<ul>
+<li>=\(||(I+A)x-b-((I+A)y-b)||=||(I+A)(x-y)||\)
+<ul>
+<li>*norm of matrix * vector</li>
+<li>\(\leq ||I+A||_i||x-y||=\sqrt{\lambda_{\max}(I+A)^{\top}(I+A)}||x-y||\)</li>
+</ul>
+</li>
+<li>P is a contraction when \(||I+A||_i=\sqrt{\lambda_{\max}(I+A)^{\top}(I+A)}||&lt;1\)</li>
+<li>note \(||Ax||\leq ||A||_i ||x|| \sqrt{\lambda_\max A^\top A}\)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>for i=1:50<br />
+x(:,i+1)=x():,i)+(Ax(:,i)-b); \(\rightarrow\) converges to solution of Ax=b</p>
+<p>let sequence converge to \(x^*\) to show \(P(x^*)=x^*=P(\lim x_n)=\lim P(x_n)=\lim x_{n+1}=x^*\)</p>
+<p>continuous functions:</p>
+<ul>
+<li>let \((V,||\cdot||) \&amp; (W, ||\cdot||)\) be normed spaces. a function \(h: V \rightarrow W\) is continuous at \(x_0 \in V\)</li>
+<li>\(\forall \varepsilon &gt; 0, \exists \delta &gt; 0\) s.t. \(||x-x_0||&lt;\delta \implies ||h(x)-h(x_0)||&lt;\varepsilon\)
+<ul>
+<li>continuous at a <em>particular point</em></li>
+</ul>
+</li>
+<li>h is continuous <em>throughout the space</em>
+<ul>
+<li>if \(\bar h\) is continuous \(\forall x_0 \in V\)</li>
+</ul>
+</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-01/">← Lecture 1</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-03/">Lecture 3 →</a></p>

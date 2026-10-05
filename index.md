@@ -6,6 +6,23 @@ Previously: B.S. Mechanical Engineering, University of Florida (2024); researche
 
 ---
 
+### Blog
+<div class="projects-scroll">
+  <div class="project-card blog-card">
+  <ul class="blog-list">
+  {% for post in site.data.blog %}
+    <li><a href="{{ post.url | relative_url }}"><strong>{{ post.title }}</strong></a> <span class="project-date">· {{ post.date }}</span><br />{{ post.summary }}</li>
+  {% endfor %}
+  </ul>
+    <div class="project-meta">
+      <span class="project-date">{{ site.data.blog | size }} posts</span>
+  <a class="read-more" href="{{ '/blog/' | relative_url }}">All posts →</a>
+    </div>
+  </div>
+</div>
+
+---
+
 ### Skills
 - **Robot learning:** deep RL (PPO), sim-to-real transfer, learned dynamics models, low-rank adaptation, CNNs
 - **Control and planning:** MPC, MPPI and sampling-based planning, trajectory optimization, system identification

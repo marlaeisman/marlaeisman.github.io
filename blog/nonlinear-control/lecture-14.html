@@ -1,0 +1,117 @@
+---
+layout: default
+title: "Lecture 14: Backstepping"
+permalink: /blog/nonlinear-control/lecture-14/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-13/">← Lecture 13</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-15/">Lecture 15 →</a></p>
+
+<h1>Lecture 14: Backstepping</h1>
+<p class="note-meta">Nonlinear Control Notes · Mar 17, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>last time:</p>
+<ul>
+<li>CLFs, comparison of controllers<br />
+today:</li>
+<li>backstepping</li>
+</ul>
+<p>finding CLFs:<br />
+\(\Sigma_{nl}:\dot x = f(x)+g(x)u,x\in\mathbb{R}^n,u\in \mathbb{R}^m\)<br />
+\(\Sigma_{lin}:\dot x = Ax+Bu,A=\frac{\partial f}{\partial x}|_{x_e,u_e},B=\frac{\partial g}{\partial x}|_{x_e,u_e}\)<br />
+LQR: \(J=\int^\infty_0 x^\top (t) Q x(t)+u^\top(t) R u(t) dt, Q&gt;0,R&gt;0\)<br />
+\(u=-kx\) and if (A,B) is stabilizable \(\implies k=R^{-1}B^\top P\)<br />
+\(P&gt;0\) solves ARE: \(A^\top P + PA - PBR^{-1}B^\top P + Q =0\)<br />
+\(V(x)=x^\top P x\) is a CLF for the linear system \(\Sigma_{lin}\)<br />
+\(\implies V(x)\) is also a local CLF for \(\Sigma_{nl}\)</p>
+<p><strong>backstepping</strong> aka recursive feedback design</p>
+<p>design a controller for the nonlinear system</p>
+<p>\(\dot x = f(x)+g(x)u\)<br />
+\(u=\alpha(x),V(x)\)</p>
+<p>\(\dot x = f(x)+g(x) \zeta\)<br />
+\(\dot \zeta = u\)</p>
+<p>we need to design u, but we want to use the state feedback and stability proof<br />
+suppose we can compose \(\zeta\) directly, then \(\zeta = \alpha(x), V(x)\) but this is not possible with the given dynamics</p>
+<p>we could choose \(u\) s.t. \(\zeta \rightarrow \alpha(x)\) as \(t \rightarrow \infty\)</p>
+<ol>
+<li>\(u = ?\)</li>
+<li>augmented CLF \(V_a(x,\zeta)=V(x)+?\)<br />
+and then could we show that it works?</li>
+</ol>
+<p>begin with linear system: \(\dot x_1 = x_2, \dot x_2 = u, x_e = 0,0\)<br />
+to drive eq. to the origin, we can design \(u=-c_1x_1-c_2x_2 \implies\)<br />
+<span class="math-display">\[\begin{bmatrix}
+  \dot x_1 \\ \dot x_2
+  \end{bmatrix} = \begin{bmatrix}
+  0 &amp; 1 \\ -c_1 &amp; -c_2
+\end{bmatrix}\begin{bmatrix}
+x_1 \\ x_2
+\end{bmatrix}
+  \]</span><br />
+if \(c_1,c_2&gt;0,Re\{\lambda\}&lt;0\)<br />
+assume \(x_2\) is a virtual control input. choose \(x_2=\alpha(x_1)=-c_1x_1,c_1&gt;0\)<br />
+drive \(x_2\) to \(\alpha(x_1)\) because \(x_2\) cannot be arbitrarily specified. choose \(u\) s.t. \(x_2\rightarrow \alpha(x_1)\) as \(t\rightarrow \infty\).</p>
+<p>can pick simple \(V_1(x)=\frac{1}{2}x_1^2\rightarrow \dot V_1(x)=x_1 \dot x_1=-c_1x_1^2&lt;0\implies\) GAS<br />
+define error \(Z=x_2-\alpha(x_1)=x_2+c_1x_1\)<br />
+error dynamics: \(\dot z = \dot x_2 - \frac{\partial \alpha}{\partial x_1}\dot x_1=u+c_1x_2\)</p>
+<p><span class="math-display">\[\begin{bmatrix}
+  x_1 \\ x_2
+  \end{bmatrix}\rightarrow \begin{bmatrix}
+  x_1 \\ z
+\end{bmatrix}
+  \]</span><br />
+\(\dot x_1 = z-c_1x_1, \dot z = u + c_1(z-c_1x_1)\)</p>
+<p>augmented CLF candidate: \(V_a(x_1,z)=V_1(x_1)+\frac{1}{2}z_1^2=\frac{1}{2}x_1^2+\frac{1}{2}z_1^2\)<br />
+\(\dot V_a = x_1 \dot x_1 + z \dot z\)<br />
+\(= x_1[z-c_1x_1]+z\{u+c_1(z-c_1x_1)\}=-c_1x_1^2+z\{x_1+u+c_1(z-c_1x_1)\}\)<br />
+we want to design \(u\) s.t . the second term becomes \(-c_2z^2\)<br />
+\(u=-x_1-c_1(z-c_1x_1)-c_2z\)<br />
+\(V_a(x_1,x_2),u=\alpha(x_1,x_2) \leftarrow\) can formulate in original coordinates \(\implies\) GAS</p>
+<p><em>nonlinear example:</em> \(\dot x_1=x_1^2+x_2,\dot x_2=u\)<br />
+this system should suggest that we need to use backstepping</p>
+<p>choose \(x_2\) as a virtual control input<br />
+\(x_2=\alpha(x_1)=-x_1^2-c_1x_1\) if we choose feedback linearization<br />
+\(V_1(x_1)=\frac{1}{2}x_1^2, \dot V_1 = x_1 \dot x_1 = -c_1x_1^2&lt;0\implies\) GAS</p>
+<p>backstepping: choose \(u\) to drive \(x_2 \rightarrow \alpha(x_1)\)<br />
+\(z=x_2-\alpha(x_1)=x_2+x_1^2+c_1x_1\)<br />
+drive \(z \rightarrow 0 \iff x_2 \rightarrow \alpha (x_1)\)<br />
+\(\dot x_1 = x_1^2+z-x_1^2-c_1x_1\)<br />
+\(\dot z = u + 2x_1[z-c_1x_1]+c_1[z-c_1x_1]=u+(2x_1+c_1)(z-c_1x_1)\)<br />
+find clf: \(V_a=V_1(x_1)+\frac{1}{2}z^2\)<br />
+\(\dot V_a=x_1(z-c_1x_1)+z\{u+(2x_1+c_1)(z-c_1x_1)\}\)<br />
+\(=-c_1x_1^2+z\{x_1+u+(2x_1+c_1)(z-c_1x_1)\}\)<br />
+\(u=-x_1-(2x_1+c_1)(z-c_1x_1)-c_2 z\)<br />
+\(\implies \dot V_a = -c_1x_1^2-c_2z^2&lt;0\implies\) GAS<br />
+<span class="math-display">\[\begin{bmatrix}
+  x_1 \\ z
+  \end{bmatrix} \rightarrow 0 \iff
+  \begin{bmatrix}
+    x_1\rightarrow 0\\ x_2\rightarrow \alpha (x_1)
+	 \end{bmatrix} \implies \begin{bmatrix}
+	x_1 \\ x_2
+	\end{bmatrix} \rightarrow 0
+  \]</span> (requires \(\alpha(0)=0\))</p>
+<p><em>assumption A1:</em><br />
+consider \(\Sigma: \dot x  = f(x)+g(x)u,f(0)=0,f,g\) are Lipschitz, \(x \in \mathbb{R}^n, u \in \mathbb{R}^m\)<br />
+suppose \(\alpha: \mathbb{R}^n \rightarrow \mathbb{R}^m,\alpha \in C^1, \alpha(0)=0\) (feedback \(u=\alpha(x)\)) and \(V:\mathbb{R}^n\rightarrow \mathbb{R},V\in C^1,\) positive definite, radially unbounded s.t. \(L_fV(x)+L_gV(x)\alpha(x) \le -w(x),w\) is positive definite</p>
+<p><em>integrator backstepping lemma</em>:<br />
+suppose assumption A1 holds for \(\Sigma: \dot x = f(x)+g(x)u\). consider the system augmented with an integrator \(\Sigma_a:\dot x= f(x)+g(x)\zeta,\dot \zeta =u\). this tells us:</p>
+<p>(i) if \(w(x)\) is positive definite, then \(\dot V\) is negative definite \(\rightarrow\) \(V_a(x,\zeta)=V(x)+\frac{1}{2}[\zeta-\alpha(x)]^2\) is a CLF for \(\Sigma_a\) which renders \((x,\zeta)=(0,0)\) is GAS<br />
+one such control is \(u=-c[\zeta-\alpha(x)]+\frac{\partial \alpha }{\partial x}(x)[f(x)+g(x)\zeta]-\frac{\partial V}{\partial x}(x)g(x), c&gt;0\)</p>
+<p>(ii) if \(w(x)\) is only positive <em>semi-definite</em>, then there exists a feedback which renders \(\dot V_a(x,\zeta)\le-w_a(x,\zeta)\le 0\) s.t. \(w_a(x,\zeta)&gt;0\) when \(w(x)&gt;0\) or \(\zeta \not = \alpha(x)\). this control provides SISL and convergence of \(x(t),\zeta(t)\) to \(z_a:=\{x,\zeta\}\in\mathbb{R}^{n+1}|w(x)=0,\zeta=\alpha(x)\).</p>
+<p>example (revisited):<br />
+\(\dot x = f(x)+g(x)u=x^2+u\)<br />
+\(f(x)=x^2,g(x)=1\)<br />
+\(u=\alpha(x)=-x^2-c_1x,c_1&gt;0\)<br />
+\(v=\frac{1}{2}x^2\implies \dot V = -c_1x^2\)<br />
+\(\Sigma_a = \dot x= f(x)+g(x)\zeta = x^2+\zeta, \dot \zeta = u\)<br />
+\(V_a(x,\zeta)=V(x)+\frac{1}{2}[\zeta+x^2+c_1x]\)<br />
+\(u=-c_2[\zeta+x^2+c_1x]+(-2x-c)[x^2+\zeta]\)<br />
+\(-x,c_2&gt;0\)<br />
+makes the example easier to apply the lemma vs deriving it completely</p>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/lecture-13/">← Lecture 13</a> · <a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-15/">Lecture 15 →</a></p>

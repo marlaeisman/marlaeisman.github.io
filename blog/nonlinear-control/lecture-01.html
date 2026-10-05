@@ -1,0 +1,191 @@
+---
+layout: default
+title: "Lecture 1: Math Background: Norms, Open Sets and Convergence"
+permalink: /blog/nonlinear-control/lecture-01/
+mathjax: true
+---
+
+<p class="note-nav"><a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-02/">Lecture 2 →</a></p>
+
+<h1>Lecture 1: Math Background: Norms, Open Sets and Convergence</h1>
+<p class="note-meta">Nonlinear Control Notes · Jan 27, 2026</p>
+
+<div class="note-body">
+{% raw %}
+<p>math background</p>
+<ol>
+<li>
+<p>fields (\(R, C\))</p>
+</li>
+<li>
+<p>vector space (\(R^n\))</p>
+</li>
+<li>
+<p>\(R = R_e=-\infty \cup R \cup \infty\)</p>
+</li>
+<li>
+<p>supremum (least upper bound: let \(S \subset R\), an element of \(a \in R_e\) is the supremum of \(S\) if</p>
+<ul>
+<li>
+<p>\(s\leq a \forall s \in S\) (a is an upper bound)</p>
+</li>
+<li>
+<p>if \(b \in R_e\) satisfies \(s \leq b \forall s \in S\), then \(a \leq b\) (least upper bound)</p>
+</li>
+<li>
+<p>notation: \(a =\sup S\)</p>
+</li>
+<li>
+<p><strong>maximum</strong>: if \(S\subset R\) and \(\sup S \in S\) then \(\bbox[#e0daf7, 5px]{\max S = \sup S}\).</p>
+<p>example:</p>
+<ul>
+<li>S=(0,1) : \(\sup S = 1\), max DNE</li>
+<li>S=(0,1]: \(\sup S = \max S =1\)</li>
+<li>\(S=[x \geq 0 \mid x \in R]\): \(\sup S = + \infty\), max DNE</li>
+</ul>
+</li>
+<li>
+<p><strong>infimum</strong> (greatest lower bound): \(S \subset R, \inf S=C \in R_e\)</p>
+<ul>
+<li>\(s\geq c, \forall s \in S\)</li>
+<li>if \(d \in R_e\) satisfies \(s \geq d \forall s \in S\) then \(c \geq d\)</li>
+</ul>
+</li>
+</ul>
+<p>suppose \(s \subset R, f:s\rightarrow R\)</p>
+<ul>
+<li>\(\sup f(x) := \sup [f(x) \mid x \in S]\) (\(\subset R\))</li>
+</ul>
+</li>
+<li>
+<p>norms: let V be a vector space over the reals R then \(\mid \mid x \mid \mid : V \rightarrow R\) is a norm if<br />
+a) \(\forall x \in V, \mid \mid x \mid \mid \geq 0\) and \(\mid \mid x \mid \mid = 0 \implies x=0\)<br />
+b) \(\forall x \in V, \alpha \in R,\mid \mid \alpha V \mid \mid = \mid \alpha \mid \mid \mid v \mid \mid\)<br />
+c) \(\forall x, y \in V, \mid \mid x+y\mid \mid \leq \mid \mid x\mid \mid + \mid \mid y \mid \mid\) (triangle ineq)</p>
+<p>def: \((V, \mid \mid \cdot \mid \mid)\) is a norm space if V is a vector space over R &amp; \(\mid \mid \cdot \mid \mid:V\rightarrow R\) is a norm</p>
+<ul>
+<li>example:</li>
+<li>a)  \(V \rightarrow R^n\),
+<ul>
+<li>\(\mid \mid x \mid \mid _2 = \sqrt{\sum x_i^2}\)</li>
+<li>\(\mid \mid x \mid \mid _1 = \sum x_i^2\)</li>
+<li>\(\mid \mid x \mid \mid _\infty = \max x_i\)</li>
+</ul>
+</li>
+<li>b ) \(V = [f:[a,b]] \rightarrow R \mid f\) is continuous (\(\subset [a,b]\))
+<ul>
+<li>\(\mid \mid f \mid \mid _\infty = \max_{a\leq x \leq b} \mid f(x) \mid\)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>induced norm: let \(A:V\rightarrow V\) be a linear operator and (\(v, \mid \mid \cdot \mid \mid\)) be a normed space. The induced norm of A is \(\mid \mid A \mid \mid_i := \sup \frac{\mid \mid Ax \mid \mid}{\mid \mid x \mid \mid} = \sup_{\mid \mid x \mid \mid = 1}\mid \mid Ax \mid \mid\).</p>
+<ul>
+<li>note: type of norm does not matter</li>
+<li>\(\mid \mid Ax \mid \mid \leq \mid \mid A \mid \mid \mid \mid x \mid \mid \forall x \in V\)</li>
+<li>if we map x through A, it can map anywhere
+<ul>
+<li>typically an ellipsoid corresponding to Ax</li>
+<li>for each point, we are finding norm and sup of that norm which is the induced norm</li>
+<li><strong>what is the maximum we can stretch this unit circle?</strong></li>
+</ul>
+</li>
+<li>\((V, \mid \mid \cdot \mid \mid)=(R^n,\mid \mid \cdot \mid \mid_2)\)</li>
+<li>\(\mid \mid A \mid \mid_i = \sqrt{\lambda_{\max}(A ^{\top}A)}\)</li>
+</ul>
+<p>def: two norms \(\mid \mid \cdot \mid \mid \&amp; \mid \mid \cdot \mid \mid\) on V are equivalent if \(\exists\) constants \(k_1, k_2 &gt; 0 \text{ s.t. } \forall x \in V, k_1 \mid \mid x \mid \mid \leq \mid \mid \mid x \mid \mid \mid \leq k_2 \mid \mid x \mid \mid\)</p>
+<ul>
+<li>fact: V is finite dimensional if and only if all norms on V are equivalent</li>
+</ul>
+</li>
+<li>
+<p>open sets &amp; open balls</p>
+<ul>
+<li>
+<p>let \(x_0 \in V, (V,\mid \mid \cdot \mid \mid)\) is a normed space &amp; \(a \in R,a&gt;0\).</p>
+</li>
+<li>
+<p>then \(B_a(x_0):=[x \in V \mid \mid \mid x-x_0 \mid \mid &lt; a]\)  is an open ball of radius a centered at \(x_0\)<br />
+example: \((R^2 \mid \mid \cdot \mid \mid_2) B_1(0)\)</p>
+<ul>
+<li>this is a unit circle and the space inside of it.</li>
+<li>circumference is not included</li>
+</ul>
+</li>
+<li>
+<p>\((R^2,\mid \mid \cdot \mid \mid_1)\) where \(\sum x_i &lt; 1\)</p>
+<ul>
+<li>becomes a diamond (edge not included)</li>
+</ul>
+</li>
+<li>
+<p>(\(R^2 \mid \mid \cdot \mid \mid_\infty\))</p>
+<ul>
+<li>this becomes a square (edge not included)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>
+<p>open set:  A set \(s \in V\) is <strong>open</strong> if \(\forall s_0 \in S, \exists \varepsilon &gt; 0 \mid B_\varepsilon(s_0) \subset S\).</p>
+<ul>
+<li>by convention, the empty set is open.</li>
+</ul>
+<p>example:</p>
+<ul>
+<li>\(S=(0,1)\subset(R,\mid \cdot \mid)\) is open</li>
+<li>\(S=[0,1)\subset(R,\mid \cdot \mid)\) is not open because \(s_0=0,\forall \varepsilon &gt;0, B_\varepsilon \not \subset S\)
+<ul>
+<li>note: not open \(\not \implies\) closed</li>
+</ul>
+</li>
+<li>def: \(S \subset V\) is closed if ~\(S\) (complement) is open. \(\star \star \star\)
+<ul>
+<li>example: \([0,1] \subset R\), ~\(S=(-\infty,0)\cup(1,\infty)\)</li>
+<li>example: \(S=[0,1) \subset R\), ~\(S=(-\infty,0) \cup [1,\infty)\) (not closed)</li>
+</ul>
+</li>
+<li>fact: arbitrary unions of open sets are open
+<ul>
+<li>arbitrary intersections of closed sets are closed</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="8">
+<li>convergences of sequences:
+<ul>
+<li>def: a sequence \(x_k\) in \((V, \mid \mid \cdot \mid \mid)\) converges to a point \(\bar x\) if:
+<ul>
+<li>\(\forall \varepsilon &gt; 0 \exists N&lt; \infty\) s.t. \(\forall K \geq N, ||x_k-\bar x|| &lt; \varepsilon\)
+<ul>
+<li>note: \(||x_k-\bar x|| &lt; \varepsilon\) is  \(x_k \in B_\varepsilon(\bar x)\)</li>
+<li>if \(\exists\) some k=N along the x axis , \(x_k=\bar x\) on y axis intersects it where N is a function of \(\varepsilon\).</li>
+<li>after we pass N, all points are within the ball (this is the sequence converging)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>examples:</strong></p>
+<ol>
+<li>\((V, ||\cdot ||=(R, |\cdot |)\)</li>
+</ol>
+<ul>
+<li>\((x_n),x_n=\frac{1}{n},\bar x=0\)
+<ul>
+<li>\(\lim_{n\rightarrow \infty}x_n = \bar x\)</li>
+</ul>
+</li>
+<li>\((x_n),x_n=(1+\frac{1}{n})^n,\bar x =e\)</li>
+</ul>
+{% endraw %}
+</div>
+
+<p class="note-nav"><a href="/blog/nonlinear-control/">All notes</a> · <a href="/blog/nonlinear-control/lecture-02/">Lecture 2 →</a></p>
