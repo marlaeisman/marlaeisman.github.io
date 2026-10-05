@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" font-family="Menlo, Monaco, Consolas, monospace">
+  <rect width="960" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#223344"/>
+    </marker>
+  </defs>
+  <g font-size="15" fill="#223344">
+    <rect x="20" y="40" width="160" height="96" rx="10" fill="#e0e7ef"/>
+    <text x="100" y="72" text-anchor="middle" font-weight="bold">RGB-D camera</text>
+    <text x="100" y="96" text-anchor="middle">+ IMU</text>
+    <text x="100" y="120" text-anchor="middle" font-size="12">fused onboard</text>
+    <rect x="210" y="40" width="160" height="96" rx="10" fill="#e0e7ef"/>
+    <text x="290" y="72" text-anchor="middle" font-weight="bold">Terrain</text>
+    <text x="290" y="96" text-anchor="middle" font-weight="bold">lookahead</text>
+    <text x="290" y="120" text-anchor="middle" font-size="12">up to 3 m ahead</text>
+    <rect x="400" y="40" width="160" height="96" rx="10" fill="#223344"/>
+    <text x="480" y="72" text-anchor="middle" font-weight="bold" fill="#ffffff">Roll MPC</text>
+    <text x="480" y="96" text-anchor="middle" fill="#ffffff">min load transfer</text>
+    <text x="480" y="120" text-anchor="middle" font-size="12" fill="#ffffff">convex, under 1 ms</text>
+    <rect x="590" y="40" width="160" height="96" rx="10" fill="#e0e7ef"/>
+    <text x="670" y="72" text-anchor="middle" font-weight="bold">Lean</text>
+    <text x="670" y="96" text-anchor="middle" font-weight="bold">interface</text>
+    <text x="670" y="120" text-anchor="middle" font-size="12">policy unchanged</text>
+    <rect x="780" y="40" width="160" height="96" rx="10" fill="#223344"/>
+    <text x="860" y="72" text-anchor="middle" font-weight="bold" fill="#ffffff">RL policy</text>
+    <text x="860" y="96" text-anchor="middle" fill="#ffffff">PPO, 50 Hz</text>
+    <text x="860" y="120" text-anchor="middle" font-size="12" fill="#ffffff">legs + wheels</text>
+  </g>
+  <g stroke="#223344" stroke-width="2" marker-end="url(#a)">
+    <line x1="180" y1="88" x2="208" y2="88"/>
+    <line x1="370" y1="88" x2="398" y2="88"/>
+    <line x1="560" y1="88" x2="588" y2="88"/>
+    <line x1="750" y1="88" x2="778" y2="88"/>
+  </g>
+  <g font-size="13" fill="#555555">
+    <text x="290" y="160" text-anchor="middle">terrain bank ahead</text>
+    <text x="480" y="160" text-anchor="middle">lean command</text>
+    <text x="860" y="160" text-anchor="middle">Unitree Go2W</text>
+  </g>
+  <rect x="20" y="200" width="920" height="70" rx="10" fill="none" stroke="#223344" stroke-dasharray="6 5"/>
+  <text x="480" y="230" text-anchor="middle" font-size="15" fill="#223344" font-weight="bold">All onboard: ROS 2 on Jetson Orin</text>
+  <text x="480" y="254" text-anchor="middle" font-size="13" fill="#555555">remote velocity command (v, ω) feeds the MPC and the policy</text>
+</svg>

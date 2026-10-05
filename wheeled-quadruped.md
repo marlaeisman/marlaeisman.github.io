@@ -12,6 +12,8 @@ permalink: /wheeled-quadruped/
 
 [**Code & videos on GitHub**](https://github.com/meisman-ucb/go2w-roll-control-mpc) · [Presenting at AVEC 2026 in Japan]({{ '/blog/avec-2026/' | relative_url }})
 
+**Keywords:** model predictive control · nonlinear optimization · minimum-time raceline · vehicle dynamics · load transfer · legged-wheeled robots
+
 **Summary:**
 Wheeled quadrupeds like the Unitree Go2W can drive like a car, but at racing speeds lateral load transfer pushes weight onto the outer wheels and risks tipping. Unlike a car, the legs can actively shift the body. This work uses a high-level model predictive controller to race the robot along a minimum-time raceline while commanding body roll to counteract load transfer.
 
@@ -23,7 +25,4 @@ Wheeled quadrupeds like the Unitree Go2W can drive like a car, but at racing spe
 **Code:**
 The [GitHub repository](https://github.com/meisman-ucb/go2w-roll-control-mpc) contains the MPC from the paper, the raceline generator, and a closed-loop simulation on the dynamic-bicycle model (Python, IPOPT). It also links videos of the hardware experiments.
 
-<!-- TODO: add simulation plots from the repo (track_result.png, roll_comparison.png), e.g.:
-<img src="/images/track_result.png" width="100%" style="height:auto;" />
-<img src="/images/roll_comparison.png" width="100%" style="height:auto;" />
--->
+Related: [RACER, learned residual dynamics for MPPI racing]({{ '/racer/' | relative_url }}) · [perception-driven roll control on 3D terrain]({{ '/nonplanar-terrain/' | relative_url }})
